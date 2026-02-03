@@ -1,0 +1,733 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Perfect Circle Game</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&family=Roboto:wght@300;400;500;700&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Poppins', sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding: 20px;
+            color: #333;
+        }
+
+        .game-container {
+            background: rgba(255, 255, 255, 0.95);
+            border-radius: 20px;
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
+            padding: 30px;
+            max-width: 800px;
+            width: 100%;
+            text-align: center;
+        }
+
+        .game-header {
+            margin-bottom: 30px;
+        }
+
+        h1 {
+            font-size: 2.5em;
+            color: #667eea;
+            margin-bottom: 10px;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.1);
+        }
+
+        .subtitle {
+            font-size: 1.1em;
+            color: #666;
+            margin-bottom: 20px;
+        }
+
+        .canvas-container {
+            position: relative;
+            margin: 20px auto;
+            max-width: 500px;
+            width: 100%;
+            height: 500px;
+            background: #f8f9fa;
+            border-radius: 15px;
+            border: 3px solid #e0e0e0;
+            box-shadow: inset 0 0 20px rgba(0, 0, 0, 0.1);
+            overflow: hidden;
+        }
+
+        canvas {
+            cursor: crosshair;
+            border-radius: 12px;
+        }
+
+        .instructions {
+            background: #e3f2fd;
+            padding: 15px;
+            border-radius: 10px;
+            margin: 20px 0;
+            text-align: left;
+            font-size: 1em;
+            line-height: 1.6;
+        }
+
+        .instructions ol {
+            padding-left: 20px;
+            margin-top: 10px;
+        }
+
+        .instructions li {
+            margin-bottom: 8px;
+        }
+
+        .score-display {
+            font-size: 1.8em;
+            font-weight: 700;
+            margin: 20px 0;
+            color: #667eea;
+            min-height: 60px;
+        }
+
+        .perfect-score {
+            color: #4caf50;
+            animation: pulse 1s ease-in-out;
+        }
+
+        .good-score {
+            color: #2196f3;
+        }
+
+        .bad-score {
+            color: #f44336;
+        }
+
+        .buttons {
+            display: flex;
+            justify-content: center;
+            gap: 15px;
+            margin-top: 20px;
+            flex-wrap: wrap;
+        }
+
+        .btn {
+            padding: 12px 30px;
+            font-size: 1em;
+            font-weight: 600;
+            border: none;
+            border-radius: 50px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+        }
+
+        .btn-primary {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+        }
+
+        .btn-primary:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px rgba(102, 126, 234, 0.4);
+        }
+
+        .btn-secondary {
+            background: white;
+            color: #667eea;
+            border: 2px solid #667eea;
+        }
+
+        .btn-secondary:hover {
+            background: #667eea;
+            color: white;
+        }
+
+        .stats {
+            display: flex;
+            justify-content: space-around;
+            margin: 25px 0;
+            flex-wrap: wrap;
+            gap: 15px;
+        }
+
+        .stat-box {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 15px 25px;
+            border-radius: 15px;
+            min-width: 120px;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+        }
+
+        .stat-box i {
+            font-size: 1.5em;
+            margin-bottom: 5px;
+        }
+
+        .stat-value {
+            font-size: 1.8em;
+            font-weight: 700;
+        }
+
+        .stat-label {
+            font-size: 0.9em;
+            opacity: 0.9;
+        }
+
+        .feedback {
+            margin-top: 15px;
+            font-size: 1.1em;
+            font-weight: 500;
+            min-height: 30px;
+        }
+
+        .tips {
+            background: #fff8e1;
+            padding: 15px;
+            border-radius: 10px;
+            margin-top: 20px;
+            text-align: left;
+        }
+
+        .tips h3 {
+            color: #ff9800;
+            margin-bottom: 10px;
+        }
+
+        .tips ul {
+            padding-left: 20px;
+        }
+
+        .tips li {
+            margin-bottom: 5px;
+        }
+
+        .progress-bar {
+            width: 100%;
+            height: 20px;
+            background: #e0e0e0;
+            border-radius: 10px;
+            margin: 15px 0;
+            overflow: hidden;
+        }
+
+        .progress {
+            height: 100%;
+            background: linear-gradient(90deg, #4caf50, #8bc34a);
+            border-radius: 10px;
+            transition: width 0.5s ease;
+        }
+
+        @keyframes pulse {
+            0%, 100% {
+                transform: scale(1);
+            }
+            50% {
+                transform: scale(1.05);
+            }
+        }
+
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .game-container {
+            animation: fadeIn 0.6s ease-out;
+        }
+
+        .circle-perfect {
+            animation: perfectCircle 1s ease-in-out;
+        }
+
+        @keyframes perfectCircle {
+            0%, 100% {
+                transform: scale(1);
+            }
+            50% {
+                transform: scale(1.1);
+            }
+        }
+
+        @media (max-width: 600px) {
+            .game-container {
+                padding: 20px;
+            }
+
+            h1 {
+                font-size: 1.8em;
+            }
+
+            .canvas-container {
+                height: 400px;
+            }
+
+            .buttons {
+                flex-direction: column;
+            }
+
+            .btn {
+                width: 100%;
+                justify-content: center;
+            }
+
+            .stats {
+                flex-direction: column;
+            }
+
+            .stat-box {
+                width: 100%;
+            }
+        }
+
+        .drawing-guide {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 300px;
+            height: 300px;
+            border: 2px dashed rgba(102, 126, 234, 0.3);
+            border-radius: 50%;
+            pointer-events: none;
+            opacity: 0.5;
+            transition: opacity 0.3s ease;
+        }
+
+        .drawing-guide.hidden {
+            opacity: 0;
+        }
+
+        .circle-result {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            border-radius: 50%;
+            pointer-events: none;
+            transition: all 0.5s ease;
+        }
+
+        .confetti {
+            position: absolute;
+            width: 10px;
+            height: 10px;
+            background: #ff4081;
+            border-radius: 50%;
+            animation: confetti-fall 3s ease-in-out forwards;
+        }
+
+        @keyframes confetti-fall {
+            0% {
+                transform: translateY(-100px) rotate(0deg);
+                opacity: 1;
+            }
+            100% {
+                transform: translateY(500px) rotate(720deg);
+                opacity: 0;
+            }
+        }
+
+        .glow {
+            box-shadow: 0 0 30px rgba(102, 126, 234, 0.5);
+        }
+
+        .rainbow-text {
+            background: linear-gradient(45deg, #ff4081, #3f51b5, #4caf50, #ff9800);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+    </style>
+</head>
+<body>
+    <div class="game-container">
+        <div class="game-header">
+            <h1><i class="fas fa-circle"></i> Perfect Circle Challenge</h1>
+            <p class="subtitle">Test your drawing skills and see how perfect your circles are!</p>
+        </div>
+
+        <div class="canvas-container">
+            <canvas id="circleCanvas" width="500" height="500"></canvas>
+            <div class="drawing-guide" id="drawingGuide"></div>
+        </div>
+
+        <div class="score-display" id="scoreDisplay">
+            Draw a circle to start!
+        </div>
+
+        <div class="feedback" id="feedback"></div>
+
+        <div class="progress-bar">
+            <div class="progress" id="progressBar" style="width: 0%"></div>
+        </div>
+
+        <div class="stats">
+            <div class="stat-box">
+                <i class="fas fa-trophy"></i>
+                <div class="stat-value" id="bestScore">0%</div>
+                <div class="stat-label">Best Score</div>
+            </div>
+            <div class="stat-box">
+                <i class="fas fa-chart-line"></i>
+                <div class="stat-value" id="averageScore">0%</div>
+                <div class="stat-label">Average</div>
+            </div>
+            <div class="stat-box">
+                <i class="fas fa-history"></i>
+                <div class="stat-value" id="attempts">0</div>
+                <div class="stat-label">Attempts</div>
+            </div>
+        </div>
+
+        <div class="buttons">
+            <button class="btn btn-primary" id="drawBtn">
+                <i class="fas fa-pen"></i> Draw Circle
+            </button>
+            <button class="btn btn-secondary" id="clearBtn">
+                <i class="fas fa-eraser"></i> Clear
+            </button>
+        </div>
+
+        <div class="instructions">
+            <h3><i class="fas fa-info-circle"></i> How to Play:</h3>
+            <ol>
+                <li>Click and hold the mouse button on the canvas</li>
+                <li>Draw a circle by moving your mouse in a circular motion</li>
+                <li>Release the mouse button when you're done</li>
+                <li>See your score and how close you got to a perfect circle!</li>
+            </ol>
+        </div>
+
+        <div class="tips">
+            <h3><i class="fas fa-lightbulb"></i> Pro Tips:</h3>
+            <ul>
+                <li>Start from the top and move clockwise for best results</li>
+                <li>Keep your movements smooth and steady</li>
+                <li>Practice makes perfect - try multiple times!</li>
+                <li>Aim for consistency in your circle's radius</li>
+            </ul>
+        </div>
+    </div>
+
+    <script>
+        // Game variables
+        let canvas = document.getElementById('circleCanvas');
+        let ctx = canvas.getContext('2d');
+        let isDrawing = false;
+        let points = [];
+        let bestScore = 0;
+        let totalScore = 0;
+        let attempts = 0;
+        let drawingGuide = document.getElementById('drawingGuide');
+        let scoreDisplay = document.getElementById('scoreDisplay');
+        let feedback = document.getElementById('feedback');
+        let progressBar = document.getElementById('progressBar');
+        let drawBtn = document.getElementById('drawBtn');
+        let clearBtn = document.getElementById('clearBtn');
+
+        // Initialize canvas
+        function initCanvas() {
+            ctx.clearRect(0, 0, canvas.width, canvas.height);
+            ctx.fillStyle = '#f8f9fa';
+            ctx.fillRect(0, 0, canvas.width, canvas.height);
+            drawingGuide.classList.remove('hidden');
+        }
+
+        // Start drawing
+        function startDrawing(e) {
+            if (isDrawing) return;
+            isDrawing = true;
+            points = [];
+            initCanvas();
+            
+            // Get mouse position relative to canvas
+            const rect = canvas.getBoundingClientRect();
+            const x = e.clientX - rect.left;
+            const y = e.clientY - rect.top;
+            
+            points.push({ x, y });
+            
+            // Draw starting point
+            ctx.beginPath();
+            ctx.arc(x, y, 3, 0, Math.PI * 2);
+            ctx.fillStyle = '#667eea';
+            ctx.fill();
+        }
+
+        // Continue drawing
+        function draw(e) {
+            if (!isDrawing) return;
+            
+            const rect = canvas.getBoundingClientRect();
+            const x = e.clientX - rect.left;
+            const y = e.clientY - rect.top;
+            
+            points.push({ x, y });
+            
+            // Draw line to new point
+            ctx.beginPath();
+            ctx.moveTo(points[points.length - 2].x, points[points.length - 2].y);
+            ctx.lineTo(x, y);
+            ctx.strokeStyle = '#667eea';
+            ctx.lineWidth = 4;
+            ctx.lineCap = 'round';
+            ctx.stroke();
+        }
+
+        // Stop drawing and evaluate
+        function stopDrawing() {
+            if (!isDrawing) return;
+            isDrawing = false;
+            
+            if (points.length < 10) {
+                feedback.textContent = 'Too few points! Draw a proper circle.';
+                feedback.className = 'feedback bad-score';
+                return;
+            }
+            
+            evaluateCircle();
+        }
+
+        // Evaluate circle perfection
+        function evaluateCircle() {
+            // Hide drawing guide
+            drawingGuide.classList.add('hidden');
+            
+            // Calculate center and average radius
+            let centerX = 0, centerY = 0;
+            for (let point of points) {
+                centerX += point.x;
+                centerY += point.y;
+            }
+            centerX /= points.length;
+            centerY /= points.length;
+            
+            // Calculate radii and statistics
+            let radii = [];
+            let maxRadius = 0;
+            let minRadius = Infinity;
+            
+            for (let point of points) {
+                const dx = point.x - centerX;
+                const dy = point.y - centerY;
+                const radius = Math.sqrt(dx * dx + dy * dy);
+                radii.push(radius);
+                
+                if (radius > maxRadius) maxRadius = radius;
+                if (radius < minRadius) minRadius = radius;
+            }
+            
+            // Calculate average radius
+            const avgRadius = radii.reduce((sum, r) => sum + r, 0) / radii.length;
+            
+            // Calculate variance (how much radii deviate from average)
+            const variance = radii.reduce((sum, r) => sum + Math.pow(r - avgRadius, 2), 0) / radii.length;
+            const stdDev = Math.sqrt(variance);
+            
+            // Calculate perfection score (0-100%)
+            // Lower standard deviation = more perfect circle
+            const perfectionScore = Math.max(0, 100 - (stdDev / avgRadius) * 1000);
+            const score = Math.min(100, Math.round(perfectionScore));
+            
+            // Update stats
+            attempts++;
+            totalScore += score;
+            if (score > bestScore) bestScore = score;
+            
+            // Update display
+            updateScoreDisplay(score);
+            updateStats();
+            
+            // Draw result circle
+            drawResultCircle(centerX, centerY, avgRadius, score);
+            
+            // Show feedback
+            showFeedback(score);
+            
+            // Create confetti for perfect scores
+            if (score >= 95) {
+                createConfetti();
+            }
+        }
+
+        // Draw the evaluated circle
+        function drawResultCircle(centerX, centerY, radius, score) {
+            // Draw perfect circle outline
+            ctx.beginPath();
+            ctx.arc(centerX, centerY, radius, 0, Math.PI * 2);
+            ctx.strokeStyle = score >= 90 ? '#4caf50' : score >= 70 ? '#2196f3' : '#f44336';
+            ctx.lineWidth = 2;
+            ctx.setLineDash([5, 5]);
+            ctx.stroke();
+            ctx.setLineDash([]);
+            
+            // Draw center point
+            ctx.beginPath();
+            ctx.arc(centerX, centerY, 5, 0, Math.PI * 2);
+            ctx.fillStyle = '#ff4081';
+            ctx.fill();
+            
+            // Draw radius lines
+            ctx.strokeStyle = 'rgba(102, 126, 234, 0.3)';
+            ctx.lineWidth = 1;
+            for (let i = 0; i < 12; i++) {
+                const angle = (i * Math.PI * 2) / 12;
+                ctx.beginPath();
+                ctx.moveTo(centerX, centerY);
+                ctx.lineTo(
+                    centerX + Math.cos(angle) * radius,
+                    centerY + Math.sin(angle) * radius
+                );
+                ctx.stroke();
+            }
+        }
+
+        // Update score display
+        function updateScoreDisplay(score) {
+            scoreDisplay.textContent = `Your Score: ${score}%`;
+            
+            if (score >= 90) {
+                scoreDisplay.className = 'score-display perfect-score';
+            } else if (score >= 70) {
+                scoreDisplay.className = 'score-display good-score';
+            } else {
+                scoreDisplay.className = 'score-display bad-score';
+            }
+            
+            // Animate progress bar
+            progressBar.style.width = `${score}%`;
+        }
+
+        // Show feedback message
+        function showFeedback(score) {
+            if (score >= 95) {
+                feedback.textContent = '🏆 ABSOLUTELY PERFECT! You\'re a circle master!';
+                feedback.className = 'feedback perfect-score rainbow-text';
+            } else if (score >= 90) {
+                feedback.textContent = '⭐ EXCELLENT! Nearly perfect circle!';
+                feedback.className = 'feedback perfect-score';
+            } else if (score >= 80) {
+                feedback.textContent = '👍 GREAT JOB! Very close to perfect!';
+                feedback.className = 'feedback good-score';
+            } else if (score >= 70) {
+                feedback.textContent = '😊 GOOD! Keep practicing!';
+                feedback.className = 'feedback good-score';
+            } else if (score >= 60) {
+                feedback.textContent = '🙂 NOT BAD! You can do better!';
+                feedback.className = 'feedback';
+            } else if (score >= 50) {
+                feedback.textContent = '😐 DECENT EFFORT! Try again!';
+                feedback.className = 'feedback bad-score';
+            } else {
+                feedback.textContent = '😕 NEEDS WORK! Practice makes perfect!';
+                feedback.className = 'feedback bad-score';
+            }
+        }
+
+        // Create confetti effect
+        function createConfetti() {
+            const colors = ['#ff4081', '#3f51b5', '#4caf50', '#ff9800', '#2196f3', '#9c27b0'];
+            const confettiCount = 50;
+            
+            for (let i = 0; i < confettiCount; i++) {
+                const confetti = document.createElement('div');
+                confetti.className = 'confetti';
+                confetti.style.backgroundColor = colors[Math.floor(Math.random() * colors.length)];
+                confetti.style.left = `${Math.random() * 100}%`;
+                confetti.style.animationDuration = `${Math.random() * 2 + 1}s`;
+                confetti.style.animationDelay = `${Math.random() * 0.5}s`;
+                document.querySelector('.canvas-container').appendChild(confetti);
+                
+                // Remove confetti after animation
+                setTimeout(() => {
+                    confetti.remove();
+                }, 3000);
+            }
+        }
+
+        // Update statistics display
+        function updateStats() {
+            document.getElementById('bestScore').textContent = `${bestScore}%`;
+            document.getElementById('averageScore').textContent = `${Math.round(totalScore / attempts)}%`;
+            document.getElementById('attempts').textContent = attempts;
+        }
+
+        // Clear canvas
+        function clearCanvas() {
+            initCanvas();
+            scoreDisplay.textContent = 'Draw a circle to start!';
+            scoreDisplay.className = 'score-display';
+            feedback.textContent = '';
+            progressBar.style.width = '0%';
+            drawingGuide.classList.remove('hidden');
+        }
+
+        // Event listeners
+        canvas.addEventListener('mousedown', startDrawing);
+        canvas.addEventListener('mousemove', draw);
+        canvas.addEventListener('mouseup', stopDrawing);
+        canvas.addEventListener('mouseout', stopDrawing);
+        
+        // Touch support for mobile
+        canvas.addEventListener('touchstart', (e) => {
+            e.preventDefault();
+            const touch = e.touches[0];
+            const mouseEvent = new MouseEvent('mousedown', {
+                clientX: touch.clientX,
+                clientY: touch.clientY
+            });
+            canvas.dispatchEvent(mouseEvent);
+        });
+        
+        canvas.addEventListener('touchmove', (e) => {
+            e.preventDefault();
+            const touch = e.touches[0];
+            const mouseEvent = new MouseEvent('mousemove', {
+                clientX: touch.clientX,
+                clientY: touch.clientY
+            });
+            canvas.dispatchEvent(mouseEvent);
+        });
+        
+        canvas.addEventListener('touchend', (e) => {
+            e.preventDefault();
+            const mouseEvent = new MouseEvent('mouseup', {});
+            canvas.dispatchEvent(mouseEvent);
+        });
+
+        drawBtn.addEventListener('click', () => {
+            clearCanvas();
+            canvas.style.cursor = 'crosshair';
+        });
+
+        clearBtn.addEventListener('click', clearCanvas);
+
+        // Initialize game
+        initCanvas();
+        canvas.style.cursor = 'crosshair';
+
+        // Add glow effect on hover
+        drawBtn.addEventListener('mouseenter', () => drawBtn.classList.add('glow'));
+        drawBtn.addEventListener('mouseleave', () => drawBtn.classList.remove('glow'));
+        clearBtn.addEventListener('mouseenter', () => clearBtn.classList.add('glow'));
+        clearBtn.addEventListener('mouseleave', () => clearBtn.classList.remove('glow'));
+    </script>
+</body>
+</html>
