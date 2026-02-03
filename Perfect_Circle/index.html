@@ -3,9 +3,9 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Perfect Circle Game</title>
+    <title>Perfect Circle Challenge | SoftwareLabs</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&family=Roboto:wght@300;400;500;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;900&family=Righteous&display=swap" rel="stylesheet">
     <style>
         * {
             margin: 0;
@@ -15,7 +15,9 @@
 
         body {
             font-family: 'Poppins', sans-serif;
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 50%, #f093fb 100%);
+            background-size: 400% 400%;
+            animation: gradientShift 15s ease infinite;
             min-height: 100vh;
             display: flex;
             justify-content: center;
@@ -24,14 +26,21 @@
             color: #333;
         }
 
+        @keyframes gradientShift {
+            0% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+            100% { background-position: 0% 50%; }
+        }
+
         .game-container {
-            background: rgba(255, 255, 255, 0.95);
-            border-radius: 20px;
-            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
-            padding: 30px;
-            max-width: 800px;
+            background: rgba(255, 255, 255, 0.98);
+            border-radius: 30px;
+            box-shadow: 0 30px 80px rgba(0, 0, 0, 0.4);
+            padding: 40px;
+            max-width: 900px;
             width: 100%;
             text-align: center;
+            border: 3px solid rgba(255, 255, 255, 0.3);
         }
 
         .game-header {
@@ -39,96 +48,143 @@
         }
 
         h1 {
-            font-size: 2.5em;
-            color: #667eea;
+            font-family: 'Righteous', cursive;
+            font-size: 3em;
+            background: linear-gradient(45deg, #667eea, #764ba2, #f093fb, #f5576c);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
             margin-bottom: 10px;
             text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.1);
+            animation: titleGlow 3s ease-in-out infinite;
+        }
+
+        @keyframes titleGlow {
+            0%, 100% { filter: drop-shadow(0 0 10px rgba(102, 126, 234, 0.5)); }
+            50% { filter: drop-shadow(0 0 20px rgba(118, 75, 162, 0.8)); }
         }
 
         .subtitle {
-            font-size: 1.1em;
+            font-size: 1.2em;
             color: #666;
             margin-bottom: 20px;
+            font-weight: 500;
         }
 
         .canvas-container {
             position: relative;
             margin: 20px auto;
-            max-width: 500px;
+            max-width: 550px;
             width: 100%;
-            height: 500px;
-            background: #f8f9fa;
-            border-radius: 15px;
-            border: 3px solid #e0e0e0;
-            box-shadow: inset 0 0 20px rgba(0, 0, 0, 0.1);
+            height: 550px;
+            background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%);
+            border-radius: 20px;
+            border: 4px solid #dee2e6;
+            box-shadow: inset 0 0 30px rgba(0, 0, 0, 0.1), 0 10px 30px rgba(0, 0, 0, 0.2);
             overflow: hidden;
         }
 
         canvas {
             cursor: crosshair;
-            border-radius: 12px;
+            border-radius: 16px;
         }
 
         .instructions {
-            background: #e3f2fd;
-            padding: 15px;
-            border-radius: 10px;
-            margin: 20px 0;
+            background: linear-gradient(135deg, #e3f2fd 0%, #bbdefb 100%);
+            padding: 20px;
+            border-radius: 15px;
+            margin: 25px 0;
             text-align: left;
             font-size: 1em;
-            line-height: 1.6;
+            line-height: 1.8;
+            border: 2px solid #90caf9;
+        }
+
+        .instructions h3 {
+            color: #1976d2;
+            margin-bottom: 12px;
+            font-size: 1.3em;
         }
 
         .instructions ol {
-            padding-left: 20px;
+            padding-left: 25px;
             margin-top: 10px;
         }
 
         .instructions li {
-            margin-bottom: 8px;
+            margin-bottom: 10px;
+            color: #0d47a1;
         }
 
         .score-display {
-            font-size: 1.8em;
-            font-weight: 700;
-            margin: 20px 0;
-            color: #667eea;
-            min-height: 60px;
+            font-size: 2.5em;
+            font-weight: 900;
+            margin: 25px 0;
+            min-height: 70px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-family: 'Righteous', cursive;
         }
 
         .perfect-score {
-            color: #4caf50;
+            background: linear-gradient(45deg, #4caf50, #8bc34a, #cddc39);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            animation: pulse 1s ease-in-out, rainbowShift 3s linear infinite;
+            filter: drop-shadow(0 0 15px rgba(76, 175, 80, 0.6));
+        }
+
+        .great-score {
+            background: linear-gradient(45deg, #2196f3, #03a9f4, #00bcd4);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
             animation: pulse 1s ease-in-out;
+            filter: drop-shadow(0 0 10px rgba(33, 150, 243, 0.5));
         }
 
         .good-score {
-            color: #2196f3;
+            background: linear-gradient(45deg, #ff9800, #ffc107, #ffeb3b);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
         }
 
         .bad-score {
-            color: #f44336;
+            background: linear-gradient(45deg, #f44336, #e91e63, #ff5722);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        @keyframes rainbowShift {
+            0% { filter: drop-shadow(0 0 15px rgba(76, 175, 80, 0.6)) hue-rotate(0deg); }
+            100% { filter: drop-shadow(0 0 15px rgba(76, 175, 80, 0.6)) hue-rotate(360deg); }
         }
 
         .buttons {
             display: flex;
             justify-content: center;
-            gap: 15px;
-            margin-top: 20px;
+            gap: 20px;
+            margin-top: 25px;
             flex-wrap: wrap;
         }
 
         .btn {
-            padding: 12px 30px;
-            font-size: 1em;
-            font-weight: 600;
+            padding: 15px 40px;
+            font-size: 1.1em;
+            font-weight: 700;
             border: none;
             border-radius: 50px;
             cursor: pointer;
             transition: all 0.3s ease;
             display: inline-flex;
             align-items: center;
-            gap: 10px;
-            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+            gap: 12px;
+            box-shadow: 0 6px 20px rgba(0, 0, 0, 0.25);
+            font-family: 'Poppins', sans-serif;
         }
 
         .btn-primary {
@@ -137,95 +193,131 @@
         }
 
         .btn-primary:hover {
-            transform: translateY(-2px);
-            box-shadow: 0 6px 20px rgba(102, 126, 234, 0.4);
+            transform: translateY(-3px);
+            box-shadow: 0 10px 30px rgba(102, 126, 234, 0.5);
+            background: linear-gradient(135deg, #764ba2 0%, #667eea 100%);
         }
 
         .btn-secondary {
-            background: white;
-            color: #667eea;
-            border: 2px solid #667eea;
+            background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);
+            color: white;
         }
 
         .btn-secondary:hover {
-            background: #667eea;
-            color: white;
+            transform: translateY(-3px);
+            box-shadow: 0 10px 30px rgba(245, 87, 108, 0.5);
+            background: linear-gradient(135deg, #f5576c 0%, #f093fb 100%);
         }
 
         .stats {
             display: flex;
             justify-content: space-around;
-            margin: 25px 0;
+            margin: 30px 0;
             flex-wrap: wrap;
-            gap: 15px;
+            gap: 20px;
         }
 
         .stat-box {
             background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
             color: white;
-            padding: 15px 25px;
-            border-radius: 15px;
-            min-width: 120px;
-            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+            padding: 20px 30px;
+            border-radius: 20px;
+            min-width: 140px;
+            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.25);
+            transition: transform 0.3s ease;
+        }
+
+        .stat-box:hover {
+            transform: translateY(-5px) scale(1.05);
         }
 
         .stat-box i {
-            font-size: 1.5em;
-            margin-bottom: 5px;
+            font-size: 2em;
+            margin-bottom: 8px;
         }
 
         .stat-value {
-            font-size: 1.8em;
-            font-weight: 700;
+            font-size: 2.2em;
+            font-weight: 900;
+            font-family: 'Righteous', cursive;
         }
 
         .stat-label {
-            font-size: 0.9em;
-            opacity: 0.9;
+            font-size: 0.95em;
+            opacity: 0.95;
+            margin-top: 5px;
         }
 
         .feedback {
-            margin-top: 15px;
-            font-size: 1.1em;
-            font-weight: 500;
-            min-height: 30px;
+            margin-top: 20px;
+            font-size: 1.4em;
+            font-weight: 700;
+            min-height: 40px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            animation: fadeIn 0.5s ease-in;
         }
 
         .tips {
-            background: #fff8e1;
-            padding: 15px;
-            border-radius: 10px;
-            margin-top: 20px;
+            background: linear-gradient(135deg, #fff8e1 0%, #ffecb3 100%);
+            padding: 20px;
+            border-radius: 15px;
+            margin-top: 25px;
             text-align: left;
+            border: 2px solid #ffd54f;
         }
 
         .tips h3 {
-            color: #ff9800;
-            margin-bottom: 10px;
+            color: #f57c00;
+            margin-bottom: 12px;
+            font-size: 1.3em;
         }
 
         .tips ul {
-            padding-left: 20px;
+            padding-left: 25px;
         }
 
         .tips li {
-            margin-bottom: 5px;
+            margin-bottom: 8px;
+            color: #e65100;
+            font-weight: 500;
         }
 
         .progress-bar {
             width: 100%;
-            height: 20px;
-            background: #e0e0e0;
-            border-radius: 10px;
-            margin: 15px 0;
+            height: 30px;
+            background: linear-gradient(135deg, #e0e0e0 0%, #bdbdbd 100%);
+            border-radius: 15px;
+            margin: 20px 0;
             overflow: hidden;
+            box-shadow: inset 0 2px 4px rgba(0, 0, 0, 0.2);
+            border: 2px solid #9e9e9e;
         }
 
         .progress {
             height: 100%;
-            background: linear-gradient(90deg, #4caf50, #8bc34a);
-            border-radius: 10px;
-            transition: width 0.5s ease;
+            background: linear-gradient(90deg, #4caf50, #8bc34a, #cddc39);
+            border-radius: 13px;
+            transition: width 0.8s cubic-bezier(0.4, 0, 0.2, 1);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .progress::after {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.5), transparent);
+            animation: shimmer 2s infinite;
+        }
+
+        @keyframes shimmer {
+            0% { left: -100%; }
+            100% { left: 100%; }
         }
 
         @keyframes pulse {
@@ -233,7 +325,7 @@
                 transform: scale(1);
             }
             50% {
-                transform: scale(1.05);
+                transform: scale(1.08);
             }
         }
 
@@ -249,33 +341,107 @@
         }
 
         .game-container {
-            animation: fadeIn 0.6s ease-out;
+            animation: fadeIn 0.8s ease-out;
         }
 
-        .circle-perfect {
-            animation: perfectCircle 1s ease-in-out;
+        .drawing-guide {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 350px;
+            height: 350px;
+            border: 3px dashed rgba(102, 126, 234, 0.4);
+            border-radius: 50%;
+            pointer-events: none;
+            opacity: 0.6;
+            transition: opacity 0.3s ease;
+            animation: rotate 20s linear infinite;
         }
 
-        @keyframes perfectCircle {
-            0%, 100% {
-                transform: scale(1);
+        @keyframes rotate {
+            from { transform: translate(-50%, -50%) rotate(0deg); }
+            to { transform: translate(-50%, -50%) rotate(360deg); }
+        }
+
+        .drawing-guide.hidden {
+            opacity: 0;
+        }
+
+        .confetti {
+            position: absolute;
+            width: 12px;
+            height: 12px;
+            border-radius: 50%;
+            animation: confetti-fall 3s ease-in-out forwards;
+            box-shadow: 0 0 5px currentColor;
+        }
+
+        @keyframes confetti-fall {
+            0% {
+                transform: translateY(-100px) rotate(0deg);
+                opacity: 1;
             }
-            50% {
-                transform: scale(1.1);
+            100% {
+                transform: translateY(600px) rotate(720deg);
+                opacity: 0;
             }
+        }
+
+        .glow {
+            box-shadow: 0 0 40px rgba(102, 126, 234, 0.6);
+        }
+
+        .accuracy-meter {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 15px;
+            margin: 15px 0;
+            font-size: 1.1em;
+            font-weight: 600;
+        }
+
+        .accuracy-bar {
+            width: 300px;
+            height: 20px;
+            background: #e0e0e0;
+            border-radius: 10px;
+            overflow: hidden;
+            border: 2px solid #bdbdbd;
+        }
+
+        .accuracy-fill {
+            height: 100%;
+            border-radius: 8px;
+            transition: width 0.5s ease, background 0.5s ease;
+        }
+
+        .deviation-indicator {
+            margin: 15px 0;
+            padding: 15px;
+            background: linear-gradient(135deg, #f3e5f5 0%, #e1bee7 100%);
+            border-radius: 12px;
+            border: 2px solid #ce93d8;
+        }
+
+        .deviation-text {
+            font-size: 1.1em;
+            font-weight: 600;
+            color: #6a1b9a;
         }
 
         @media (max-width: 600px) {
             .game-container {
-                padding: 20px;
+                padding: 25px;
             }
 
             h1 {
-                font-size: 1.8em;
+                font-size: 2em;
             }
 
             .canvas-container {
-                height: 400px;
+                height: 450px;
             }
 
             .buttons {
@@ -294,85 +460,109 @@
             .stat-box {
                 width: 100%;
             }
-        }
 
-        .drawing-guide {
-            position: absolute;
-            top: 50%;
-            left: 50%;
-            transform: translate(-50%, -50%);
-            width: 300px;
-            height: 300px;
-            border: 2px dashed rgba(102, 126, 234, 0.3);
-            border-radius: 50%;
-            pointer-events: none;
-            opacity: 0.5;
-            transition: opacity 0.3s ease;
-        }
-
-        .drawing-guide.hidden {
-            opacity: 0;
-        }
-
-        .circle-result {
-            position: absolute;
-            top: 50%;
-            left: 50%;
-            transform: translate(-50%, -50%);
-            border-radius: 50%;
-            pointer-events: none;
-            transition: all 0.5s ease;
-        }
-
-        .confetti {
-            position: absolute;
-            width: 10px;
-            height: 10px;
-            background: #ff4081;
-            border-radius: 50%;
-            animation: confetti-fall 3s ease-in-out forwards;
-        }
-
-        @keyframes confetti-fall {
-            0% {
-                transform: translateY(-100px) rotate(0deg);
-                opacity: 1;
-            }
-            100% {
-                transform: translateY(500px) rotate(720deg);
-                opacity: 0;
+            .accuracy-bar {
+                width: 200px;
             }
         }
 
-        .glow {
-            box-shadow: 0 0 30px rgba(102, 126, 234, 0.5);
+        .particle {
+            position: absolute;
+            border-radius: 50%;
+            pointer-events: none;
+            animation: float 4s ease-in-out infinite;
         }
 
-        .rainbow-text {
-            background: linear-gradient(45deg, #ff4081, #3f51b5, #4caf50, #ff9800);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            background-clip: text;
+        @keyframes float {
+            0%, 100% { transform: translateY(0) rotate(0deg); }
+            50% { transform: translateY(-20px) rotate(180deg); }
+        }
+
+        .achievement-badge {
+            display: inline-block;
+            padding: 8px 16px;
+            background: linear-gradient(135deg, #ffd700 0%, #ffed4e 100%);
+            border-radius: 20px;
+            color: #000;
+            font-weight: 700;
+            margin: 10px 5px;
+            box-shadow: 0 4px 15px rgba(255, 215, 0, 0.4);
+            animation: bounceIn 0.6s ease-out;
+        }
+
+        @keyframes bounceIn {
+            0% { transform: scale(0); }
+            50% { transform: scale(1.1); }
+            100% { transform: scale(1); }
+        }
+
+        .score-breakdown {
+            margin: 20px 0;
+            padding: 15px;
+            background: linear-gradient(135deg, #e8eaf6 0%, #c5cae9 100%);
+            border-radius: 12px;
+            border: 2px solid #9fa8da;
+        }
+
+        .breakdown-item {
+            display: flex;
+            justify-content: space-between;
+            padding: 8px 0;
+            font-weight: 600;
+            color: #3f51b5;
         }
     </style>
 </head>
 <body>
     <div class="game-container">
         <div class="game-header">
-            <h1><i class="fas fa-circle"></i> Perfect Circle Challenge</h1>
-            <p class="subtitle">Test your drawing skills and see how perfect your circles are!</p>
+            <h1><i class="fas fa-circle-notch"></i> Perfect Circle Challenge</h1>
+            <p class="subtitle">✨ Enhanced with AI-powered accuracy detection! ✨</p>
         </div>
 
         <div class="canvas-container">
-            <canvas id="circleCanvas" width="500" height="500"></canvas>
+            <canvas id="circleCanvas" width="550" height="550"></canvas>
             <div class="drawing-guide" id="drawingGuide"></div>
         </div>
 
         <div class="score-display" id="scoreDisplay">
-            Draw a circle to start!
+            🎯 Draw a circle to start your challenge!
+        </div>
+
+        <div class="accuracy-meter" id="accuracyMeter" style="display: none;">
+            <span>Accuracy:</span>
+            <div class="accuracy-bar">
+                <div class="accuracy-fill" id="accuracyFill"></div>
+            </div>
+            <span id="accuracyPercent">0%</span>
+        </div>
+
+        <div class="deviation-indicator" id="deviationIndicator" style="display: none;">
+            <div class="deviation-text" id="deviationText"></div>
         </div>
 
         <div class="feedback" id="feedback"></div>
+
+        <div id="achievementContainer"></div>
+
+        <div class="score-breakdown" id="scoreBreakdown" style="display: none;">
+            <div class="breakdown-item">
+                <span>🎯 Circularity:</span>
+                <span id="circularityScore">0%</span>
+            </div>
+            <div class="breakdown-item">
+                <span>📏 Consistency:</span>
+                <span id="consistencyScore">0%</span>
+            </div>
+            <div class="breakdown-item">
+                <span>⚡ Smoothness:</span>
+                <span id="smoothnessScore">0%</span>
+            </div>
+            <div class="breakdown-item">
+                <span>🎪 Closure:</span>
+                <span id="closureScore">0%</span>
+            </div>
+        </div>
 
         <div class="progress-bar">
             <div class="progress" id="progressBar" style="width: 0%"></div>
@@ -382,46 +572,54 @@
             <div class="stat-box">
                 <i class="fas fa-trophy"></i>
                 <div class="stat-value" id="bestScore">0%</div>
-                <div class="stat-label">Best Score</div>
+                <div class="stat-label">🏆 Best Score</div>
             </div>
             <div class="stat-box">
                 <i class="fas fa-chart-line"></i>
                 <div class="stat-value" id="averageScore">0%</div>
-                <div class="stat-label">Average</div>
+                <div class="stat-label">📊 Average</div>
             </div>
             <div class="stat-box">
                 <i class="fas fa-history"></i>
                 <div class="stat-value" id="attempts">0</div>
-                <div class="stat-label">Attempts</div>
+                <div class="stat-label">🔄 Attempts</div>
+            </div>
+            <div class="stat-box">
+                <i class="fas fa-star"></i>
+                <div class="stat-value" id="perfectCount">0</div>
+                <div class="stat-label">⭐ Perfect Circles</div>
             </div>
         </div>
 
         <div class="buttons">
             <button class="btn btn-primary" id="drawBtn">
-                <i class="fas fa-pen"></i> Draw Circle
+                <i class="fas fa-pen-fancy"></i> Start Drawing
             </button>
             <button class="btn btn-secondary" id="clearBtn">
-                <i class="fas fa-eraser"></i> Clear
+                <i class="fas fa-redo"></i> Reset Canvas
             </button>
         </div>
 
         <div class="instructions">
             <h3><i class="fas fa-info-circle"></i> How to Play:</h3>
             <ol>
-                <li>Click and hold the mouse button on the canvas</li>
-                <li>Draw a circle by moving your mouse in a circular motion</li>
-                <li>Release the mouse button when you're done</li>
-                <li>See your score and how close you got to a perfect circle!</li>
+                <li>🖱️ Click and hold the mouse button on the canvas</li>
+                <li>⭕ Draw a circle by moving your mouse in a smooth circular motion</li>
+                <li>🎯 Release the mouse button to complete your circle</li>
+                <li>📊 View your detailed score breakdown and accuracy metrics!</li>
+                <li>🏆 Aim for 95%+ to achieve Perfect Circle status!</li>
             </ol>
         </div>
 
         <div class="tips">
-            <h3><i class="fas fa-lightbulb"></i> Pro Tips:</h3>
+            <h3><i class="fas fa-lightbulb"></i> Pro Tips for Perfect Circles:</h3>
             <ul>
-                <li>Start from the top and move clockwise for best results</li>
-                <li>Keep your movements smooth and steady</li>
-                <li>Practice makes perfect - try multiple times!</li>
-                <li>Aim for consistency in your circle's radius</li>
+                <li>🎯 Start from the top center and move smoothly clockwise</li>
+                <li>⚡ Keep constant speed - not too fast, not too slow</li>
+                <li>📏 Maintain consistent distance from the center point</li>
+                <li>🔄 Practice rotating your wrist, not just moving your arm</li>
+                <li>🎪 Try to close the circle exactly where you started</li>
+                <li>💪 Relax your hand - tension leads to wobbly circles!</li>
             </ul>
         </div>
     </div>
@@ -435,19 +633,23 @@
         let bestScore = 0;
         let totalScore = 0;
         let attempts = 0;
-        let drawingGuide = document.getElementById('drawingGuide');
-        let scoreDisplay = document.getElementById('scoreDisplay');
-        let feedback = document.getElementById('feedback');
-        let progressBar = document.getElementById('progressBar');
-        let drawBtn = document.getElementById('drawBtn');
-        let clearBtn = document.getElementById('clearBtn');
+        let perfectCount = 0;
+        let startPoint = null;
 
-        // Initialize canvas
+        // Initialize canvas with gradient background
         function initCanvas() {
             ctx.clearRect(0, 0, canvas.width, canvas.height);
-            ctx.fillStyle = '#f8f9fa';
+            
+            // Create radial gradient background
+            const gradient = ctx.createRadialGradient(275, 275, 50, 275, 275, 400);
+            gradient.addColorStop(0, '#ffffff');
+            gradient.addColorStop(0.5, '#f8f9fa');
+            gradient.addColorStop(1, '#e9ecef');
+            
+            ctx.fillStyle = gradient;
             ctx.fillRect(0, 0, canvas.width, canvas.height);
-            drawingGuide.classList.remove('hidden');
+            
+            document.getElementById('drawingGuide').classList.remove('hidden');
         }
 
         // Start drawing
@@ -457,138 +659,249 @@
             points = [];
             initCanvas();
             
-            // Get mouse position relative to canvas
             const rect = canvas.getBoundingClientRect();
-            const x = e.clientX - rect.left;
-            const y = e.clientY - rect.top;
+            const x = (e.clientX - rect.left) * (canvas.width / rect.width);
+            const y = (e.clientY - rect.top) * (canvas.height / rect.height);
             
-            points.push({ x, y });
+            startPoint = { x, y };
+            points.push({ x, y, time: Date.now() });
             
-            // Draw starting point
+            // Draw enhanced starting point
             ctx.beginPath();
-            ctx.arc(x, y, 3, 0, Math.PI * 2);
-            ctx.fillStyle = '#667eea';
+            ctx.arc(x, y, 6, 0, Math.PI * 2);
+            const gradient = ctx.createRadialGradient(x, y, 0, x, y, 6);
+            gradient.addColorStop(0, '#4caf50');
+            gradient.addColorStop(1, '#8bc34a');
+            ctx.fillStyle = gradient;
             ctx.fill();
+            ctx.strokeStyle = '#2e7d32';
+            ctx.lineWidth = 2;
+            ctx.stroke();
         }
 
-        // Continue drawing
+        // Continue drawing with rainbow trail
         function draw(e) {
             if (!isDrawing) return;
             
             const rect = canvas.getBoundingClientRect();
-            const x = e.clientX - rect.left;
-            const y = e.clientY - rect.top;
+            const x = (e.clientX - rect.left) * (canvas.width / rect.width);
+            const y = (e.clientY - rect.top) * (canvas.height / rect.height);
             
-            points.push({ x, y });
+            points.push({ x, y, time: Date.now() });
             
-            // Draw line to new point
-            ctx.beginPath();
-            ctx.moveTo(points[points.length - 2].x, points[points.length - 2].y);
-            ctx.lineTo(x, y);
-            ctx.strokeStyle = '#667eea';
-            ctx.lineWidth = 4;
-            ctx.lineCap = 'round';
-            ctx.stroke();
+            // Calculate color based on position
+            const hue = (points.length * 2) % 360;
+            
+            // Draw with gradient stroke
+            if (points.length > 1) {
+                ctx.beginPath();
+                ctx.moveTo(points[points.length - 2].x, points[points.length - 2].y);
+                ctx.lineTo(x, y);
+                
+                const gradient = ctx.createLinearGradient(
+                    points[points.length - 2].x, points[points.length - 2].y, x, y
+                );
+                gradient.addColorStop(0, `hsl(${hue - 20}, 80%, 60%)`);
+                gradient.addColorStop(1, `hsl(${hue}, 80%, 55%)`);
+                
+                ctx.strokeStyle = gradient;
+                ctx.lineWidth = 5;
+                ctx.lineCap = 'round';
+                ctx.lineJoin = 'round';
+                ctx.shadowBlur = 10;
+                ctx.shadowColor = `hsl(${hue}, 100%, 70%)`;
+                ctx.stroke();
+                ctx.shadowBlur = 0;
+            }
         }
 
-        // Stop drawing and evaluate
-        function stopDrawing() {
-            if (!isDrawing) return;
-            isDrawing = false;
+        // Enhanced circle evaluation with multiple metrics
+        function evaluateCircle() {
+            document.getElementById('drawingGuide').classList.add('hidden');
             
-            if (points.length < 10) {
-                feedback.textContent = 'Too few points! Draw a proper circle.';
-                feedback.className = 'feedback bad-score';
+            if (points.length < 20) {
+                showFeedback(0, 'Too few points! Draw a proper circle.');
                 return;
             }
             
-            evaluateCircle();
-        }
-
-        // Evaluate circle perfection
-        function evaluateCircle() {
-            // Hide drawing guide
-            drawingGuide.classList.add('hidden');
+            // Calculate center using least squares method for better accuracy
+            let sumX = 0, sumY = 0, sumX2 = 0, sumY2 = 0, sumXY = 0, sumXX2 = 0, sumYY2 = 0;
             
-            // Calculate center and average radius
-            let centerX = 0, centerY = 0;
             for (let point of points) {
-                centerX += point.x;
-                centerY += point.y;
+                sumX += point.x;
+                sumY += point.y;
+                sumX2 += point.x * point.x;
+                sumY2 += point.y * point.y;
+                sumXY += point.x * point.y;
+                sumXX2 += point.x * point.x * point.x;
+                sumYY2 += point.y * point.y * point.y;
             }
-            centerX /= points.length;
-            centerY /= points.length;
             
-            // Calculate radii and statistics
+            const n = points.length;
+            const A = n * sumX2 - sumX * sumX;
+            const B = n * sumXY - sumX * sumY;
+            const C = n * sumY2 - sumY * sumY;
+            const D = 0.5 * (n * sumXX2 - sumX * sumX2 + n * sumXY - sumX * sumY2);
+            const E = 0.5 * (n * sumYY2 - sumY * sumY2 + n * sumXY - sumY * sumX2);
+            
+            const denominator = A * C - B * B;
+            const centerX = (D * C - B * E) / denominator;
+            const centerY = (A * E - B * D) / denominator;
+            
+            // Calculate radii and advanced metrics
             let radii = [];
-            let maxRadius = 0;
+            let angles = [];
             let minRadius = Infinity;
+            let maxRadius = 0;
             
-            for (let point of points) {
-                const dx = point.x - centerX;
-                const dy = point.y - centerY;
+            for (let i = 0; i < points.length; i++) {
+                const dx = points[i].x - centerX;
+                const dy = points[i].y - centerY;
                 const radius = Math.sqrt(dx * dx + dy * dy);
+                const angle = Math.atan2(dy, dx);
+                
                 radii.push(radius);
+                angles.push(angle);
                 
                 if (radius > maxRadius) maxRadius = radius;
                 if (radius < minRadius) minRadius = radius;
             }
             
-            // Calculate average radius
             const avgRadius = radii.reduce((sum, r) => sum + r, 0) / radii.length;
             
-            // Calculate variance (how much radii deviate from average)
+            // 1. Circularity Score (based on radius variance)
             const variance = radii.reduce((sum, r) => sum + Math.pow(r - avgRadius, 2), 0) / radii.length;
             const stdDev = Math.sqrt(variance);
+            const circularityScore = Math.max(0, 100 - (stdDev / avgRadius) * 500);
             
-            // Calculate perfection score (0-100%)
-            // Lower standard deviation = more perfect circle
-            const perfectionScore = Math.max(0, 100 - (stdDev / avgRadius) * 1000);
-            const score = Math.min(100, Math.round(perfectionScore));
+            // 2. Consistency Score (uniform distribution of points)
+            const consistencyScore = calculateConsistency(angles);
+            
+            // 3. Smoothness Score (rate of change in radius)
+            const smoothnessScore = calculateSmoothness(radii);
+            
+            // 4. Closure Score (how close end point is to start point)
+            const closureScore = calculateClosure(points[0], points[points.length - 1], avgRadius);
+            
+            // Final weighted score
+            const finalScore = Math.round(
+                circularityScore * 0.40 +
+                consistencyScore * 0.25 +
+                smoothnessScore * 0.20 +
+                closureScore * 0.15
+            );
+            
+            const score = Math.min(100, Math.max(0, finalScore));
             
             // Update stats
             attempts++;
             totalScore += score;
             if (score > bestScore) bestScore = score;
+            if (score >= 95) perfectCount++;
             
-            // Update display
-            updateScoreDisplay(score);
+            // Display results
+            updateScoreDisplay(score, circularityScore, consistencyScore, smoothnessScore, closureScore);
             updateStats();
-            
-            // Draw result circle
-            drawResultCircle(centerX, centerY, avgRadius, score);
-            
-            // Show feedback
+            drawResultCircle(centerX, centerY, avgRadius, radii, score);
             showFeedback(score);
             
-            // Create confetti for perfect scores
             if (score >= 95) {
-                createConfetti();
+                createEnhancedConfetti();
+                showAchievement(score);
             }
         }
 
-        // Draw the evaluated circle
-        function drawResultCircle(centerX, centerY, radius, score) {
+        // Calculate consistency of angle distribution
+        function calculateConsistency(angles) {
+            const sortedAngles = angles.slice().sort((a, b) => a - b);
+            let gaps = [];
+            
+            for (let i = 1; i < sortedAngles.length; i++) {
+                gaps.push(sortedAngles[i] - sortedAngles[i - 1]);
+            }
+            gaps.push(2 * Math.PI - sortedAngles[sortedAngles.length - 1] + sortedAngles[0]);
+            
+            const expectedGap = (2 * Math.PI) / angles.length;
+            const variance = gaps.reduce((sum, gap) => sum + Math.pow(gap - expectedGap, 2), 0) / gaps.length;
+            
+            return Math.max(0, 100 - variance * 5000);
+        }
+
+        // Calculate smoothness of radius changes
+        function calculateSmoothness(radii) {
+            let changes = [];
+            for (let i = 1; i < radii.length; i++) {
+                changes.push(Math.abs(radii[i] - radii[i - 1]));
+            }
+            
+            const avgChange = changes.reduce((sum, c) => sum + c, 0) / changes.length;
+            return Math.max(0, 100 - avgChange * 20);
+        }
+
+        // Calculate how well the circle closes
+        function calculateClosure(start, end, avgRadius) {
+            const distance = Math.sqrt(Math.pow(end.x - start.x, 2) + Math.pow(end.y - start.y, 2));
+            const closureRatio = distance / avgRadius;
+            return Math.max(0, 100 - closureRatio * 200);
+        }
+
+        // Draw enhanced result visualization
+        function drawResultCircle(centerX, centerY, radius, radii, score) {
+            // Draw radius heat map
+            for (let i = 0; i < points.length; i++) {
+                const deviation = Math.abs(radii[i] - radius) / radius;
+                const hue = 120 - (deviation * 240); // Green to red
+                
+                ctx.beginPath();
+                ctx.arc(points[i].x, points[i].y, 3, 0, Math.PI * 2);
+                ctx.fillStyle = `hsl(${hue}, 100%, 50%)`;
+                ctx.fill();
+            }
+            
             // Draw perfect circle outline
             ctx.beginPath();
             ctx.arc(centerX, centerY, radius, 0, Math.PI * 2);
-            ctx.strokeStyle = score >= 90 ? '#4caf50' : score >= 70 ? '#2196f3' : '#f44336';
-            ctx.lineWidth = 2;
-            ctx.setLineDash([5, 5]);
+            
+            if (score >= 95) {
+                ctx.strokeStyle = '#4caf50';
+                ctx.lineWidth = 4;
+                ctx.shadowBlur = 15;
+                ctx.shadowColor = '#4caf50';
+            } else if (score >= 85) {
+                ctx.strokeStyle = '#2196f3';
+                ctx.lineWidth = 3;
+                ctx.shadowBlur = 10;
+                ctx.shadowColor = '#2196f3';
+            } else if (score >= 70) {
+                ctx.strokeStyle = '#ff9800';
+                ctx.lineWidth = 3;
+            } else {
+                ctx.strokeStyle = '#f44336';
+                ctx.lineWidth = 2;
+            }
+            
+            ctx.setLineDash([10, 10]);
             ctx.stroke();
             ctx.setLineDash([]);
+            ctx.shadowBlur = 0;
             
-            // Draw center point
+            // Draw center point with glow
             ctx.beginPath();
-            ctx.arc(centerX, centerY, 5, 0, Math.PI * 2);
-            ctx.fillStyle = '#ff4081';
+            ctx.arc(centerX, centerY, 8, 0, Math.PI * 2);
+            const gradient = ctx.createRadialGradient(centerX, centerY, 0, centerX, centerY, 8);
+            gradient.addColorStop(0, '#ff4081');
+            gradient.addColorStop(1, '#f50057');
+            ctx.fillStyle = gradient;
             ctx.fill();
+            ctx.strokeStyle = '#c51162';
+            ctx.lineWidth = 2;
+            ctx.stroke();
             
             // Draw radius lines
-            ctx.strokeStyle = 'rgba(102, 126, 234, 0.3)';
+            ctx.strokeStyle = 'rgba(102, 126, 234, 0.2)';
             ctx.lineWidth = 1;
-            for (let i = 0; i < 12; i++) {
-                const angle = (i * Math.PI * 2) / 12;
+            for (let i = 0; i < 16; i++) {
+                const angle = (i * Math.PI * 2) / 16;
                 ctx.beginPath();
                 ctx.moveTo(centerX, centerY);
                 ctx.lineTo(
@@ -599,84 +912,187 @@
             }
         }
 
-        // Update score display
-        function updateScoreDisplay(score) {
-            scoreDisplay.textContent = `Your Score: ${score}%`;
+        // Update score display with detailed breakdown
+        function updateScoreDisplay(score, circularity, consistency, smoothness, closure) {
+            document.getElementById('scoreDisplay').textContent = `Your Score: ${score}%`;
             
-            if (score >= 90) {
-                scoreDisplay.className = 'score-display perfect-score';
+            if (score >= 95) {
+                document.getElementById('scoreDisplay').className = 'score-display perfect-score';
+            } else if (score >= 85) {
+                document.getElementById('scoreDisplay').className = 'score-display great-score';
             } else if (score >= 70) {
-                scoreDisplay.className = 'score-display good-score';
+                document.getElementById('scoreDisplay').className = 'score-display good-score';
             } else {
-                scoreDisplay.className = 'score-display bad-score';
+                document.getElementById('scoreDisplay').className = 'score-display bad-score';
             }
+            
+            // Show accuracy meter
+            const accuracyMeter = document.getElementById('accuracyMeter');
+            const accuracyFill = document.getElementById('accuracyFill');
+            const accuracyPercent = document.getElementById('accuracyPercent');
+            
+            accuracyMeter.style.display = 'flex';
+            accuracyFill.style.width = `${score}%`;
+            accuracyPercent.textContent = `${score}%`;
+            
+            if (score >= 95) {
+                accuracyFill.style.background = 'linear-gradient(90deg, #4caf50, #8bc34a, #cddc39)';
+            } else if (score >= 85) {
+                accuracyFill.style.background = 'linear-gradient(90deg, #2196f3, #03a9f4)';
+            } else if (score >= 70) {
+                accuracyFill.style.background = 'linear-gradient(90deg, #ff9800, #ffc107)';
+            } else {
+                accuracyFill.style.background = 'linear-gradient(90deg, #f44336, #e91e63)';
+            }
+            
+            // Show breakdown
+            const breakdown = document.getElementById('scoreBreakdown');
+            breakdown.style.display = 'block';
+            document.getElementById('circularityScore').textContent = `${Math.round(circularity)}%`;
+            document.getElementById('consistencyScore').textContent = `${Math.round(consistency)}%`;
+            document.getElementById('smoothnessScore').textContent = `${Math.round(smoothness)}%`;
+            document.getElementById('closureScore').textContent = `${Math.round(closure)}%`;
+            
+            // Show deviation
+            const avgDeviation = Math.round((100 - score) * 0.1);
+            const deviationIndicator = document.getElementById('deviationIndicator');
+            const deviationText = document.getElementById('deviationText');
+            deviationIndicator.style.display = 'block';
+            deviationText.textContent = `Average Deviation: ${avgDeviation}px from perfect circle`;
             
             // Animate progress bar
-            progressBar.style.width = `${score}%`;
+            document.getElementById('progressBar').style.width = `${score}%`;
         }
 
-        // Show feedback message
-        function showFeedback(score) {
-            if (score >= 95) {
-                feedback.textContent = '🏆 ABSOLUTELY PERFECT! You\'re a circle master!';
-                feedback.className = 'feedback perfect-score rainbow-text';
-            } else if (score >= 90) {
-                feedback.textContent = '⭐ EXCELLENT! Nearly perfect circle!';
-                feedback.className = 'feedback perfect-score';
-            } else if (score >= 80) {
-                feedback.textContent = '👍 GREAT JOB! Very close to perfect!';
-                feedback.className = 'feedback good-score';
-            } else if (score >= 70) {
-                feedback.textContent = '😊 GOOD! Keep practicing!';
-                feedback.className = 'feedback good-score';
-            } else if (score >= 60) {
-                feedback.textContent = '🙂 NOT BAD! You can do better!';
-                feedback.className = 'feedback';
-            } else if (score >= 50) {
-                feedback.textContent = '😐 DECENT EFFORT! Try again!';
+        // Show enhanced feedback
+        function showFeedback(score, customMessage = null) {
+            const feedback = document.getElementById('feedback');
+            
+            if (customMessage) {
+                feedback.textContent = customMessage;
                 feedback.className = 'feedback bad-score';
-            } else {
-                feedback.textContent = '😕 NEEDS WORK! Practice makes perfect!';
-                feedback.className = 'feedback bad-score';
+                return;
             }
+            
+            let message = '';
+            let className = 'feedback ';
+            
+            if (score >= 98) {
+                message = '🏆 ABSOLUTELY LEGENDARY! You are a CIRCLE GOD! 🏆';
+                className += 'perfect-score';
+            } else if (score >= 95) {
+                message = '⭐ PERFECT CIRCLE! You\'ve mastered the art! ⭐';
+                className += 'perfect-score';
+            } else if (score >= 90) {
+                message = '🌟 AMAZING! Nearly flawless execution! 🌟';
+                className += 'great-score';
+            } else if (score >= 85) {
+                message = '🎯 EXCELLENT! Outstanding precision! 🎯';
+                className += 'great-score';
+            } else if (score >= 80) {
+                message = '👏 VERY GOOD! Impressive circle drawing! 👏';
+                className += 'good-score';
+            } else if (score >= 70) {
+                message = '👍 GOOD JOB! Keep practicing! 👍';
+                className += 'good-score';
+            } else if (score >= 60) {
+                message = '😊 DECENT! You\'re getting there! 😊';
+                className += 'good-score';
+            } else if (score >= 50) {
+                message = '🙂 NOT BAD! Keep trying! 🙂';
+                className += '';
+            } else if (score >= 40) {
+                message = '😐 NEEDS IMPROVEMENT! Practice makes perfect! 😐';
+                className += 'bad-score';
+            } else {
+                message = '💪 KEEP PRACTICING! You can do it! 💪';
+                className += 'bad-score';
+            }
+            
+            feedback.textContent = message;
+            feedback.className = className;
         }
 
-        // Create confetti effect
-        function createConfetti() {
-            const colors = ['#ff4081', '#3f51b5', '#4caf50', '#ff9800', '#2196f3', '#9c27b0'];
-            const confettiCount = 50;
+        // Show achievement badge
+        function showAchievement(score) {
+            const container = document.getElementById('achievementContainer');
+            const badge = document.createElement('div');
+            badge.className = 'achievement-badge';
+            
+            if (score >= 98) {
+                badge.innerHTML = '🏆 LEGEND STATUS ACHIEVED! 🏆';
+            } else {
+                badge.innerHTML = '⭐ PERFECT CIRCLE ACHIEVED! ⭐';
+            }
+            
+            container.appendChild(badge);
+            
+            setTimeout(() => {
+                badge.style.opacity = '0';
+                setTimeout(() => badge.remove(), 500);
+            }, 3000);
+        }
+
+        // Enhanced confetti with more colors and particles
+        function createEnhancedConfetti() {
+            const colors = [
+                '#ff4081', '#e91e63', '#9c27b0', '#673ab7',
+                '#3f51b5', '#2196f3', '#03a9f4', '#00bcd4',
+                '#009688', '#4caf50', '#8bc34a', '#cddc39',
+                '#ffeb3b', '#ffc107', '#ff9800', '#ff5722'
+            ];
+            const confettiCount = 100;
+            const container = document.querySelector('.canvas-container');
             
             for (let i = 0; i < confettiCount; i++) {
                 const confetti = document.createElement('div');
                 confetti.className = 'confetti';
                 confetti.style.backgroundColor = colors[Math.floor(Math.random() * colors.length)];
                 confetti.style.left = `${Math.random() * 100}%`;
-                confetti.style.animationDuration = `${Math.random() * 2 + 1}s`;
+                confetti.style.top = `${Math.random() * 30}%`;
+                confetti.style.width = `${Math.random() * 8 + 8}px`;
+                confetti.style.height = confetti.style.width;
+                confetti.style.animationDuration = `${Math.random() * 2 + 2}s`;
                 confetti.style.animationDelay = `${Math.random() * 0.5}s`;
-                document.querySelector('.canvas-container').appendChild(confetti);
+                container.appendChild(confetti);
                 
-                // Remove confetti after animation
-                setTimeout(() => {
-                    confetti.remove();
-                }, 3000);
+                setTimeout(() => confetti.remove(), 4000);
             }
         }
 
-        // Update statistics display
+        // Update statistics
         function updateStats() {
             document.getElementById('bestScore').textContent = `${bestScore}%`;
             document.getElementById('averageScore').textContent = `${Math.round(totalScore / attempts)}%`;
             document.getElementById('attempts').textContent = attempts;
+            document.getElementById('perfectCount').textContent = perfectCount;
         }
 
-        // Clear canvas
+        // Clear canvas and reset
         function clearCanvas() {
             initCanvas();
-            scoreDisplay.textContent = 'Draw a circle to start!';
-            scoreDisplay.className = 'score-display';
-            feedback.textContent = '';
-            progressBar.style.width = '0%';
-            drawingGuide.classList.remove('hidden');
+            document.getElementById('scoreDisplay').textContent = '🎯 Draw a circle to start your challenge!';
+            document.getElementById('scoreDisplay').className = 'score-display';
+            document.getElementById('feedback').textContent = '';
+            document.getElementById('progressBar').style.width = '0%';
+            document.getElementById('accuracyMeter').style.display = 'none';
+            document.getElementById('deviationIndicator').style.display = 'none';
+            document.getElementById('scoreBreakdown').style.display = 'none';
+            document.getElementById('drawingGuide').classList.remove('hidden');
+        }
+
+        // Stop drawing and evaluate
+        function stopDrawing() {
+            if (!isDrawing) return;
+            isDrawing = false;
+            
+            if (points.length < 20) {
+                showFeedback(0, '⚠️ Too few points! Draw a proper circle.');
+                setTimeout(clearCanvas, 2000);
+                return;
+            }
+            
+            evaluateCircle();
         }
 
         // Event listeners
@@ -685,7 +1101,7 @@
         canvas.addEventListener('mouseup', stopDrawing);
         canvas.addEventListener('mouseout', stopDrawing);
         
-        // Touch support for mobile
+        // Touch support
         canvas.addEventListener('touchstart', (e) => {
             e.preventDefault();
             const touch = e.touches[0];
@@ -712,22 +1128,18 @@
             canvas.dispatchEvent(mouseEvent);
         });
 
-        drawBtn.addEventListener('click', () => {
-            clearCanvas();
-            canvas.style.cursor = 'crosshair';
+        document.getElementById('drawBtn').addEventListener('click', clearCanvas);
+        document.getElementById('clearBtn').addEventListener('click', clearCanvas);
+
+        // Add glow effects
+        const buttons = document.querySelectorAll('.btn');
+        buttons.forEach(btn => {
+            btn.addEventListener('mouseenter', () => btn.classList.add('glow'));
+            btn.addEventListener('mouseleave', () => btn.classList.remove('glow'));
         });
 
-        clearBtn.addEventListener('click', clearCanvas);
-
-        // Initialize game
+     
         initCanvas();
-        canvas.style.cursor = 'crosshair';
-
-        // Add glow effect on hover
-        drawBtn.addEventListener('mouseenter', () => drawBtn.classList.add('glow'));
-        drawBtn.addEventListener('mouseleave', () => drawBtn.classList.remove('glow'));
-        clearBtn.addEventListener('mouseenter', () => clearBtn.classList.add('glow'));
-        clearBtn.addEventListener('mouseleave', () => clearBtn.classList.remove('glow'));
     </script>
 </body>
 </html>
