@@ -3,316 +3,763 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Memory Tiles</title>
+    <title>Memory Tiles - Enhanced Edition</title>
+    
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    
+    <!-- Font Awesome 6 -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    
+    <!-- Animate.css -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css">
+    
+    <!-- AOS (Animate On Scroll) -->
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+    
+    <!-- Particles.js -->
+    <script src="https://cdn.jsdelivr.net/particles.js/2.0.0/particles.min.js"></script>
+    
+    <!-- Howler.js for sound effects -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/howler/2.2.4/howler.min.js"></script>
+    
+    <!-- Confetti.js -->
+    <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.9.2/dist/confetti.browser.min.js"></script>
+    
+    <!-- Typed.js for text animations -->
+    <script src="https://cdn.jsdelivr.net/npm/typed.js@2.0.16"></script>
+    
+    <!-- Chart.js for statistics -->
+    <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.1/dist/chart.umd.min.js"></script>
+    
+    <!-- Sweetalert2 -->
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    
+    <!-- GSAP for advanced animations -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+    
+    <!-- Vivus -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/vivus/0.4.6/vivus.min.js"></script>
+    
     <style>
+        @import url('https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700;900&family=Poppins:wght@300;400;600;700&display=swap');
+        
         * {
             margin: 0;
             padding: 0;
             box-sizing: border-box;
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
         }
         
         body {
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            min-height: 100vh;
-            background: linear-gradient(135deg, #1a2a6c, #b21f1f, #1a2a6c);
-            padding: 20px;
+            font-family: 'Poppins', sans-serif;
+            overflow-x: hidden;
         }
         
-        .game-container {
-            background-color: rgba(255, 255, 255, 0.1);
-            backdrop-filter: blur(10px);
-            border-radius: 20px;
-            padding: 30px;
-            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
-            text-align: center;
-            max-width: 500px;
+        #particles-js {
+            position: fixed;
             width: 100%;
+            height: 100%;
+            top: 0;
+            left: 0;
+            z-index: -1;
         }
         
-        h1 {
-            color: white;
-            margin-bottom: 20px;
-            font-size: 2.5rem;
-            text-shadow: 0 2px 4px rgba(0, 0, 0, 0.5);
+        .orbitron {
+            font-family: 'Orbitron', sans-serif;
         }
         
-        .stats {
-            display: flex;
-            justify-content: space-between;
-            margin-bottom: 25px;
-            background: rgba(0, 0, 0, 0.2);
-            padding: 15px;
-            border-radius: 15px;
+        .tile-gradient-1 {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
         }
         
-        .stat-box {
-            color: white;
-            font-size: 1.2rem;
-            font-weight: bold;
+        .tile-gradient-2 {
+            background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);
         }
         
-        .grid {
-            display: grid;
-            grid-template-columns: repeat(2, 1fr);
-            gap: 15px;
-            margin: 20px 0;
+        .tile-gradient-3 {
+            background: linear-gradient(135deg, #4facfe 0%, #00f2fe 100%);
+        }
+        
+        .tile-gradient-4 {
+            background: linear-gradient(135deg, #43e97b 0%, #38f9d7 100%);
+        }
+        
+        .tile-gradient-5 {
+            background: linear-gradient(135deg, #fa709a 0%, #fee140 100%);
+        }
+        
+        .tile-gradient-6 {
+            background: linear-gradient(135deg, #30cfd0 0%, #330867 100%);
+        }
+        
+        .tile-gradient-7 {
+            background: linear-gradient(135deg, #a8edea 0%, #fed6e3 100%);
+        }
+        
+        .tile-gradient-8 {
+            background: linear-gradient(135deg, #ff9a56 0%, #ff6a88 100%);
+        }
+        
+        .tile-gradient-9 {
+            background: linear-gradient(135deg, #ffecd2 0%, #fcb69f 100%);
         }
         
         .tile {
-            aspect-ratio: 1/1;
-            border-radius: 15px;
-            cursor: pointer;
-            transition: all 0.2s ease;
-            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+            transform-style: preserve-3d;
         }
         
         .tile:hover {
-            transform: scale(1.03);
+            transform: translateY(-5px) scale(1.05);
         }
         
         .tile.active {
             transform: scale(0.95);
-            box-shadow: 0 0 20px rgba(255, 255, 255, 0.7);
+            box-shadow: 0 0 40px rgba(255, 255, 255, 0.8), 0 0 80px rgba(255, 255, 255, 0.5);
+            animation: pulse 0.5s ease-in-out;
         }
         
-        /* Tile colors */
-        .tile:nth-child(1) { background: linear-gradient(135deg, #ff416c, #ff4b2b); }
-        .tile:nth-child(2) { background: linear-gradient(135deg, #2193b0, #6dd5ed); }
-        .tile:nth-child(3) { background: linear-gradient(135deg, #834d9b, #d04ed6); }
-        .tile:nth-child(4) { background: linear-gradient(135deg, #11998e, #38ef7d); }
-        
-        .controls {
-            margin-top: 25px;
+        @keyframes pulse {
+            0%, 100% { transform: scale(0.95); }
+            50% { transform: scale(1.1); }
         }
         
-        button {
-            background: linear-gradient(to right, #4A00E0, #8E2DE2);
-            color: white;
-            border: none;
-            padding: 12px 30px;
-            font-size: 1.1rem;
-            border-radius: 50px;
-            cursor: pointer;
+        .glow {
+            animation: glow 2s ease-in-out infinite alternate;
+        }
+        
+        @keyframes glow {
+            from {
+                text-shadow: 0 0 10px #fff, 0 0 20px #fff, 0 0 30px #667eea, 0 0 40px #667eea;
+            }
+            to {
+                text-shadow: 0 0 20px #fff, 0 0 30px #764ba2, 0 0 40px #764ba2, 0 0 50px #764ba2;
+            }
+        }
+        
+        .stat-card {
+            backdrop-filter: blur(10px);
+            background: rgba(255, 255, 255, 0.1);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+        }
+        
+        .game-card {
+            backdrop-filter: blur(20px);
+            background: rgba(255, 255, 255, 0.05);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+        
+        .difficulty-badge {
             transition: all 0.3s ease;
-            font-weight: bold;
-            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
         }
         
-        button:hover {
-            transform: translateY(-3px);
-            box-shadow: 0 6px 20px rgba(0, 0, 0, 0.3);
+        .difficulty-badge:hover {
+            transform: scale(1.1);
         }
         
-        button:active {
-            transform: translateY(1px);
-        }
-        
-        .message {
-            height: 60px;
-            display: flex;
-            align-items: center;
+        .modal {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.8);
+            z-index: 1000;
             justify-content: center;
-            margin: 20px 0;
-            color: white;
-            font-size: 1.4rem;
-            font-weight: bold;
-            min-height: 60px;
-            text-shadow: 0 1px 3px rgba(0, 0, 0, 0.5);
+            align-items: center;
         }
         
-        .instructions {
-            color: rgba(255, 255, 255, 0.8);
-            margin-top: 20px;
-            font-size: 0.95rem;
-            line-height: 1.5;
-            background: rgba(0, 0, 0, 0.2);
-            padding: 15px;
-            border-radius: 15px;
+        .modal.active {
+            display: flex;
         }
         
-        @media (max-width: 500px) {
-            .game-container {
-                padding: 20px;
-            }
-            
-            h1 {
-                font-size: 2rem;
-            }
-            
-            .tile {
-                border-radius: 10px;
-            }
+        @keyframes float {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-20px); }
+        }
+        
+        .float-animation {
+            animation: float 3s ease-in-out infinite;
         }
     </style>
 </head>
-<body>
-    <div class="game-container">
-        <h1>Memory Tiles</h1>
+<body class="min-h-screen bg-gradient-to-br from-purple-900 via-blue-900 to-indigo-900">
+    
+    <!-- Particles Background -->
+    <div id="particles-js"></div>
+    
+    <!-- Main Container -->
+    <div class="container mx-auto px-4 py-8 relative z-10">
         
-        <div class="stats">
-            <div class="stat-box">Level: <span id="level">1</span></div>
-            <div class="stat-box">Score: <span id="score">0</span></div>
+        <!-- Header -->
+        <header class="text-center mb-8" data-aos="fade-down">
+            <h1 class="text-6xl font-bold text-white orbitron glow mb-4 animate__animated animate__fadeInDown">
+                <i class="fas fa-brain mr-4"></i>MEMORY TILES
+            </h1>
+            <p class="text-xl text-purple-200 animate__animated animate__fadeInUp">
+                Test your memory and reach the highest level!
+            </p>
+        </header>
+        
+        <!-- Stats Row -->
+        <div class="grid grid-cols-2 md:grid-cols-4 gap-4 mb-8" data-aos="fade-up">
+            <div class="stat-card rounded-xl p-6 text-center transform hover:scale-105 transition-all">
+                <i class="fas fa-layer-group text-4xl text-yellow-400 mb-2"></i>
+                <p class="text-gray-300 text-sm">Level</p>
+                <p id="level" class="text-4xl font-bold text-white orbitron">1</p>
+            </div>
+            
+            <div class="stat-card rounded-xl p-6 text-center transform hover:scale-105 transition-all">
+                <i class="fas fa-star text-4xl text-blue-400 mb-2"></i>
+                <p class="text-gray-300 text-sm">Score</p>
+                <p id="score" class="text-4xl font-bold text-white orbitron">0</p>
+            </div>
+            
+            <div class="stat-card rounded-xl p-6 text-center transform hover:scale-105 transition-all">
+                <i class="fas fa-trophy text-4xl text-amber-400 mb-2"></i>
+                <p class="text-gray-300 text-sm">Best Score</p>
+                <p id="bestScore" class="text-4xl font-bold text-white orbitron">0</p>
+            </div>
+            
+            <div class="stat-card rounded-xl p-6 text-center transform hover:scale-105 transition-all">
+                <i class="fas fa-fire text-4xl text-red-400 mb-2"></i>
+                <p class="text-gray-300 text-sm">Streak</p>
+                <p id="streak" class="text-4xl font-bold text-white orbitron">0</p>
+            </div>
         </div>
         
-        <div class="message" id="message">Watch the pattern!</div>
-        
-        <div class="grid" id="grid">
-            <div class="tile" data-index="0"></div>
-            <div class="tile" data-index="1"></div>
-            <div class="tile" data-index="2"></div>
-            <div class="tile" data-index="3"></div>
+        <!-- Main Game Area -->
+        <div class="game-card rounded-2xl p-8 max-w-2xl mx-auto mb-8" data-aos="zoom-in">
+            
+            <!-- Message Area -->
+            <div class="text-center mb-8 h-20 flex items-center justify-center">
+                <p id="message" class="text-3xl font-bold text-white animate__animated"></p>
+            </div>
+            
+            <!-- Difficulty Selector -->
+            <div class="flex justify-center gap-4 mb-8" id="difficultySelector">
+                <button class="difficulty-badge px-6 py-3 rounded-full bg-green-500 text-white font-bold hover:bg-green-600" data-difficulty="easy">
+                    <i class="fas fa-smile"></i> Easy (2x2)
+                </button>
+                <button class="difficulty-badge px-6 py-3 rounded-full bg-yellow-500 text-white font-bold hover:bg-yellow-600" data-difficulty="medium">
+                    <i class="fas fa-meh"></i> Medium (3x3)
+                </button>
+                <button class="difficulty-badge px-6 py-3 rounded-full bg-red-500 text-white font-bold hover:bg-red-600" data-difficulty="hard">
+                    <i class="fas fa-fire"></i> Hard (3x3)
+                </button>
+            </div>
+            
+            <!-- Game Grid -->
+            <div id="gridContainer" class="mb-8">
+                <div id="grid" class="grid gap-4 max-w-md mx-auto"></div>
+            </div>
+            
+            <!-- Controls -->
+            <div class="flex flex-col sm:flex-row gap-4 justify-center items-center">
+                <button id="startBtn" class="px-8 py-4 bg-gradient-to-r from-purple-600 to-blue-600 text-white text-xl font-bold rounded-full hover:from-purple-700 hover:to-blue-700 transform hover:scale-105 transition-all shadow-lg">
+                    <i class="fas fa-play mr-2"></i>Start Game
+                </button>
+                
+                <button id="soundBtn" class="px-6 py-4 bg-gray-700 text-white rounded-full hover:bg-gray-600 transition-all">
+                    <i class="fas fa-volume-up text-xl"></i>
+                </button>
+                
+                <button id="statsBtn" class="px-6 py-4 bg-gray-700 text-white rounded-full hover:bg-gray-600 transition-all">
+                    <i class="fas fa-chart-bar text-xl"></i>
+                </button>
+                
+                <button id="helpBtn" class="px-6 py-4 bg-gray-700 text-white rounded-full hover:bg-gray-600 transition-all">
+                    <i class="fas fa-question text-xl"></i>
+                </button>
+            </div>
         </div>
         
-        <div class="controls">
-            <button id="startBtn">Start Game</button>
+        <!-- Instructions -->
+        <div class="game-card rounded-2xl p-6 max-w-2xl mx-auto" data-aos="fade-up">
+            <h3 class="text-2xl font-bold text-white mb-4 flex items-center">
+                <i class="fas fa-info-circle mr-3 text-blue-400"></i>
+                How to Play
+            </h3>
+            <div class="text-purple-200 space-y-2">
+                <p><i class="fas fa-check-circle text-green-400 mr-2"></i>Watch the sequence of tiles that light up</p>
+                <p><i class="fas fa-check-circle text-green-400 mr-2"></i>Remember the order and repeat it by clicking the tiles</p>
+                <p><i class="fas fa-check-circle text-green-400 mr-2"></i>Each level adds one more tile to the sequence</p>
+                <p><i class="fas fa-check-circle text-green-400 mr-2"></i>Higher difficulty = faster sequence & more tiles</p>
+            </div>
         </div>
-        
-        <div class="instructions">
-            <p>Watch the sequence of tiles that light up, then repeat the same sequence by clicking on the tiles.</p>
-            <p>Each level adds one more tile to the sequence!</p>
+    </div>
+    
+    <!-- Stats Modal -->
+    <div id="statsModal" class="modal">
+        <div class="bg-gray-900 rounded-2xl p-8 max-w-md w-full mx-4 animate__animated animate__zoomIn">
+            <div class="flex justify-between items-center mb-6">
+                <h2 class="text-3xl font-bold text-white orbitron">
+                    <i class="fas fa-chart-line mr-2 text-blue-400"></i>Statistics
+                </h2>
+                <button id="closeStatsBtn" class="text-white text-2xl hover:text-red-400">
+                    <i class="fas fa-times"></i>
+                </button>
+            </div>
+            <div class="space-y-4">
+                <div class="bg-gray-800 rounded-lg p-4">
+                    <p class="text-gray-400 text-sm">Games Played</p>
+                    <p id="gamesPlayed" class="text-2xl font-bold text-white orbitron">0</p>
+                </div>
+                <div class="bg-gray-800 rounded-lg p-4">
+                    <p class="text-gray-400 text-sm">Highest Level Reached</p>
+                    <p id="highestLevel" class="text-2xl font-bold text-white orbitron">0</p>
+                </div>
+                <div class="bg-gray-800 rounded-lg p-4">
+                    <p class="text-gray-400 text-sm">Total Score</p>
+                    <p id="totalScore" class="text-2xl font-bold text-white orbitron">0</p>
+                </div>
+                <div class="bg-gray-800 rounded-lg p-4">
+                    <p class="text-gray-400 text-sm">Longest Streak</p>
+                    <p id="longestStreak" class="text-2xl font-bold text-white orbitron">0</p>
+                </div>
+            </div>
         </div>
     </div>
 
+    <!-- AOS Library -->
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    
     <script>
-        document.addEventListener('DOMContentLoaded', () => {
-            // Game elements
-            const grid = document.getElementById('grid');
+        // Initialize AOS
+        AOS.init({
+            duration: 1000,
+            once: true
+        });
+        
+        // Initialize Particles
+        particlesJS('particles-js', {
+            particles: {
+                number: { value: 80, density: { enable: true, value_area: 800 } },
+                color: { value: '#ffffff' },
+                shape: { type: 'circle' },
+                opacity: { value: 0.5, random: false },
+                size: { value: 3, random: true },
+                line_linked: { enable: true, distance: 150, color: '#ffffff', opacity: 0.4, width: 1 },
+                move: { enable: true, speed: 2, direction: 'none', random: false, straight: false, out_mode: 'out', bounce: false }
+            },
+            interactivity: {
+                detect_on: 'canvas',
+                events: { onhover: { enable: true, mode: 'repulse' }, onclick: { enable: true, mode: 'push' }, resize: true },
+                modes: { repulse: { distance: 100, duration: 0.4 }, push: { particles_nb: 4 } }
+            },
+            retina_detect: true
+        });
+        
+        // Sound effects with Howler.js
+        let soundEnabled = true;
+        const sounds = {
+            click: new Howl({ src: ['data:audio/wav;base64,UklGRnoGAABXQVZFZm10IBAAAAABAAEAQB8AAEAfAAABAAgAZGF0YQoGAACBhYqFbF1fdJivrJBhNjVgodDbq2EcBj+a2/LDciUFLIHO8tiJNwgZaLvt559NEAxQp+PwtmMcBjiR1/LMeSwFJHfH8N2QQAoUXrTp66hVFApGn+DyvmwhBDWJ0fPTgjMGHm7A7+OZURE'], volume: 0.3 }),
+            correct: new Howl({ src: ['data:audio/wav;base64,UklGRnoGAABXQVZFZm10IBAAAAABAAEAQB8AAEAfAAABAAgAZGF0YQoGAACBhYqFbF1fdJivrJBhNjVgodDbq2EcBj+a2/LDciUFLIHO8tiJNwgZaLvt559NEAxQp+PwtmMcBjiR1/LMeSwFJHfH8N2QQAoUXrTp66hVFApGn+DyvmwhBDWJ0fPTgjMGHm7A7+OZURE'], volume: 0.5 }),
+            wrong: new Howl({ src: ['data:audio/wav;base64,UklGRnoGAABXQVZFZm10IBAAAAABAAEAQB8AAEAfAAABAAgAZGF0YQoGAACBhYqFbF1fdJivrJBhNjVgodDbq2EcBj+a2/LDciUFLIHO8tiJNwgZaLvt559NEAxQp+PwtmMcBjiR1/LMeSwFJHfH8N2QQAoUXrTp66hVFApGn+DyvmwhBDWJ0fPTgjMGHm7A7+OZURE'], volume: 0.5 })
+        };
+        
+        // Game state
+        let gameState = {
+            sequence: [],
+            playerSequence: [],
+            level: 1,
+            score: 0,
+            bestScore: parseInt(localStorage.getItem('bestScore')) || 0,
+            streak: 0,
+            longestStreak: parseInt(localStorage.getItem('longestStreak')) || 0,
+            isPlaying: false,
+            isShowingSequence: false,
+            difficulty: 'easy',
+            gridSize: 2,
+            speed: 600,
+            gamesPlayed: parseInt(localStorage.getItem('gamesPlayed')) || 0,
+            highestLevel: parseInt(localStorage.getItem('highestLevel')) || 0,
+            totalScore: parseInt(localStorage.getItem('totalScore')) || 0
+        };
+        
+        // DOM elements
+        const grid = document.getElementById('grid');
+        const gridContainer = document.getElementById('gridContainer');
+        const startBtn = document.getElementById('startBtn');
+        const soundBtn = document.getElementById('soundBtn');
+        const statsBtn = document.getElementById('statsBtn');
+        const helpBtn = document.getElementById('helpBtn');
+        const messageEl = document.getElementById('message');
+        const levelEl = document.getElementById('level');
+        const scoreEl = document.getElementById('score');
+        const bestScoreEl = document.getElementById('bestScore');
+        const streakEl = document.getElementById('streak');
+        const difficultyBtns = document.querySelectorAll('.difficulty-badge');
+        const statsModal = document.getElementById('statsModal');
+        const closeStatsBtn = document.getElementById('closeStatsBtn');
+        
+        // Initialize best score display
+        bestScoreEl.textContent = gameState.bestScore;
+        
+        // Create grid based on difficulty
+        function createGrid() {
+            grid.innerHTML = '';
+            grid.className = `grid gap-4 max-w-md mx-auto`;
+            grid.style.gridTemplateColumns = `repeat(${gameState.gridSize}, 1fr)`;
+            
+            const totalTiles = gameState.gridSize * gameState.gridSize;
+            const icons = [
+                'fa-star', 'fa-heart', 'fa-bolt', 'fa-gem',
+                'fa-crown', 'fa-rocket', 'fa-sun', 'fa-moon',
+                'fa-fire'
+            ];
+            
+            for (let i = 0; i < totalTiles; i++) {
+                const tile = document.createElement('div');
+                tile.className = `tile tile-gradient-${(i % 9) + 1} rounded-xl shadow-2xl cursor-pointer flex items-center justify-center aspect-square`;
+                tile.dataset.index = i;
+                tile.innerHTML = `<i class="fas ${icons[i % icons.length]} text-white text-4xl md:text-5xl opacity-80"></i>`;
+                grid.appendChild(tile);
+            }
+        }
+        
+        // Update stats display
+        function updateStats() {
+            levelEl.textContent = gameState.level;
+            scoreEl.textContent = gameState.score;
+            bestScoreEl.textContent = gameState.bestScore;
+            streakEl.textContent = gameState.streak;
+            
+            // Animate numbers
+            gsap.from([levelEl, scoreEl, streakEl], {
+                scale: 1.5,
+                duration: 0.3,
+                ease: 'back.out'
+            });
+        }
+        
+        // Generate next sequence
+        function generateSequence() {
+            const totalTiles = gameState.gridSize * gameState.gridSize;
+            const randomTile = Math.floor(Math.random() * totalTiles);
+            gameState.sequence.push(randomTile);
+        }
+        
+        // Flash a tile
+        function flashTile(index) {
+            return new Promise(resolve => {
+                const tiles = document.querySelectorAll('.tile');
+                const tile = tiles[index];
+                
+                if (soundEnabled) sounds.click.play();
+                
+                tile.classList.add('active');
+                gsap.to(tile, { scale: 1.1, duration: 0.2 });
+                
+                setTimeout(() => {
+                    tile.classList.remove('active');
+                    gsap.to(tile, { scale: 1, duration: 0.2 });
+                    resolve();
+                }, gameState.speed);
+            });
+        }
+        
+        // Show sequence to player
+        async function showSequence() {
+            gameState.isShowingSequence = true;
+            disablePlayerInput();
+            
+            messageEl.textContent = '👀 Watch carefully!';
+            messageEl.className = 'text-3xl font-bold text-white animate__animated animate__pulse';
+            
+            await new Promise(resolve => setTimeout(resolve, 1000));
+            
+            for (let i = 0; i < gameState.sequence.length; i++) {
+                await flashTile(gameState.sequence[i]);
+                await new Promise(resolve => setTimeout(resolve, 200));
+            }
+            
+            gameState.isShowingSequence = false;
+            messageEl.textContent = '🎮 Your turn!';
+            messageEl.className = 'text-3xl font-bold text-white animate__animated animate__bounceIn';
+            enablePlayerInput();
+        }
+        
+        // Enable player input
+        function enablePlayerInput() {
             const tiles = document.querySelectorAll('.tile');
-            const startBtn = document.getElementById('startBtn');
-            const messageEl = document.getElementById('message');
-            const levelEl = document.getElementById('level');
-            const scoreEl = document.getElementById('score');
+            tiles.forEach(tile => {
+                tile.style.cursor = 'pointer';
+                tile.addEventListener('click', handleTileClick);
+            });
+        }
+        
+        // Disable player input
+        function disablePlayerInput() {
+            const tiles = document.querySelectorAll('.tile');
+            tiles.forEach(tile => {
+                tile.style.cursor = 'not-allowed';
+                tile.removeEventListener('click', handleTileClick);
+            });
+        }
+        
+        // Handle tile click
+        async function handleTileClick(e) {
+            if (gameState.isShowingSequence || !gameState.isPlaying) return;
             
-            // Game state
-            let sequence = [];
-            let playerSequence = [];
-            let level = 1;
-            let score = 0;
-            let isPlaying = false;
-            let isShowingSequence = false;
-            let currentIndex = 0;
+            const tile = e.currentTarget;
+            const index = parseInt(tile.dataset.index);
+            gameState.playerSequence.push(index);
             
-            // Initialize game
-            function initGame() {
-                sequence = [];
-                playerSequence = [];
-                level = 1;
-                score = 0;
+            await flashTile(index);
+            
+            // Check if move is correct
+            const currentStep = gameState.playerSequence.length - 1;
+            if (gameState.playerSequence[currentStep] !== gameState.sequence[currentStep]) {
+                // Wrong move
+                gameOver();
+                return;
+            }
+            
+            // Check if sequence is complete
+            if (gameState.playerSequence.length === gameState.sequence.length) {
+                sequenceComplete();
+            }
+        }
+        
+        // Sequence complete
+        function sequenceComplete() {
+            if (soundEnabled) sounds.correct.play();
+            
+            gameState.score += gameState.level * 10;
+            gameState.streak++;
+            
+            if (gameState.score > gameState.bestScore) {
+                gameState.bestScore = gameState.score;
+                localStorage.setItem('bestScore', gameState.bestScore);
+                confetti({
+                    particleCount: 100,
+                    spread: 70,
+                    origin: { y: 0.6 }
+                });
+            }
+            
+            if (gameState.streak > gameState.longestStreak) {
+                gameState.longestStreak = gameState.streak;
+                localStorage.setItem('longestStreak', gameState.longestStreak);
+            }
+            
+            updateStats();
+            
+            messageEl.textContent = '✨ Perfect!';
+            messageEl.className = 'text-3xl font-bold text-green-400 animate__animated animate__tada';
+            
+            setTimeout(() => {
+                gameState.level++;
+                if (gameState.level > gameState.highestLevel) {
+                    gameState.highestLevel = gameState.level;
+                    localStorage.setItem('highestLevel', gameState.highestLevel);
+                }
+                
                 updateStats();
-                messageEl.textContent = "Watch the pattern!";
-                startBtn.textContent = "Restart Game";
-                startBtn.disabled = true;
-            }
-            
-            // Update stats display
-            function updateStats() {
-                levelEl.textContent = level;
-                scoreEl.textContent = score;
-            }
-            
-            // Generate next sequence
-            function generateSequence() {
-                // Add a new random tile to the sequence
-                const randomTile = Math.floor(Math.random() * 4);
-                sequence.push(randomTile);
-            }
-            
-            // Flash a tile
-            function flashTile(index) {
-                return new Promise(resolve => {
-                    const tile = tiles[index];
-                    tile.classList.add('active');
-                    
-                    setTimeout(() => {
-                        tile.classList.remove('active');
-                        resolve();
-                    }, 500);
-                });
-            }
-            
-            // Show the sequence to the player
-            async function showSequence() {
-                isShowingSequence = true;
-                messageEl.textContent = "Watch carefully!";
+                gameState.playerSequence = [];
                 
-                for (let i = 0; i < sequence.length; i++) {
-                    await new Promise(resolve => setTimeout(resolve, 600));
-                    await flashTile(sequence[i]);
+                // Increase difficulty
+                if (gameState.level % 5 === 0 && gameState.speed > 300) {
+                    gameState.speed -= 50;
+                    Swal.fire({
+                        title: 'Speed Boost!',
+                        text: 'The game is getting faster!',
+                        icon: 'info',
+                        timer: 2000,
+                        showConfirmButton: false,
+                        background: '#1f2937',
+                        color: '#fff'
+                    });
                 }
                 
-                isShowingSequence = false;
-                messageEl.textContent = "Your turn!";
-                enablePlayerInput();
-            }
-            
-            // Enable player input
-            function enablePlayerInput() {
-                tiles.forEach(tile => {
-                    tile.style.cursor = 'pointer';
-                    tile.addEventListener('click', handleTileClick);
-                });
-            }
-            
-            // Disable player input
-            function disablePlayerInput() {
-                tiles.forEach(tile => {
-                    tile.style.cursor = 'default';
-                    tile.removeEventListener('click', handleTileClick);
-                });
-            }
-            
-            // Handle tile click
-            function handleTileClick(e) {
-                if (isShowingSequence || !isPlaying) return;
-                
-                const index = parseInt(e.target.dataset.index);
-                playerSequence.push(index);
-                flashTile(index);
-                
-                // Check if the move is correct
-                if (playerSequence[playerSequence.length - 1] !== sequence[playerSequence.length - 1]) {
-                    // Wrong move
-                    messageEl.textContent = "Game Over! Try again.";
-                    isPlaying = false;
-                    disablePlayerInput();
-                    startBtn.disabled = false;
-                    return;
-                }
-                
-                // Check if sequence is complete
-                if (playerSequence.length === sequence.length) {
-                    // Correct sequence
-                    score += level * 10;
-                    updateStats();
-                    messageEl.textContent = "Correct! Level up!";
-                    
-                    // Prepare for next level
-                    setTimeout(() => {
-                        level++;
-                        updateStats();
-                        playerSequence = [];
-                        generateSequence();
-                        showSequence();
-                    }, 1500);
-                }
-            }
-            
-            // Start the game
-            function startGame() {
-                initGame();
-                isPlaying = true;
                 generateSequence();
                 showSequence();
+            }, 1500);
+        }
+        
+        // Game over
+        function gameOver() {
+            if (soundEnabled) sounds.wrong.play();
+            
+            gameState.isPlaying = false;
+            gameState.streak = 0;
+            disablePlayerInput();
+            
+            // Update total score
+            gameState.totalScore += gameState.score;
+            localStorage.setItem('totalScore', gameState.totalScore);
+            
+            messageEl.textContent = '💥 Game Over!';
+            messageEl.className = 'text-3xl font-bold text-red-400 animate__animated animate__shakeX';
+            
+            // Shake animation
+            gsap.to(gridContainer, {
+                x: -10,
+                duration: 0.1,
+                repeat: 5,
+                yoyo: true,
+                onComplete: () => gsap.set(gridContainer, { x: 0 })
+            });
+            
+            setTimeout(() => {
+                Swal.fire({
+                    title: 'Game Over!',
+                    html: `
+                        <div class="text-left space-y-2">
+                            <p class="text-lg"><i class="fas fa-layer-group text-yellow-400"></i> Level Reached: <strong>${gameState.level}</strong></p>
+                            <p class="text-lg"><i class="fas fa-star text-blue-400"></i> Final Score: <strong>${gameState.score}</strong></p>
+                            <p class="text-lg"><i class="fas fa-trophy text-amber-400"></i> Best Score: <strong>${gameState.bestScore}</strong></p>
+                        </div>
+                    `,
+                    icon: 'error',
+                    confirmButtonText: 'Play Again',
+                    background: '#1f2937',
+                    color: '#fff',
+                    confirmButtonColor: '#8b5cf6'
+                }).then((result) => {
+                    if (result.isConfirmed) {
+                        startGame();
+                    }
+                });
+                
+                startBtn.disabled = false;
+                startBtn.innerHTML = '<i class="fas fa-redo mr-2"></i>Play Again';
+            }, 1000);
+        }
+        
+        // Start game
+        function startGame() {
+            // Update games played
+            gameState.gamesPlayed++;
+            localStorage.setItem('gamesPlayed', gameState.gamesPlayed);
+            
+            gameState.sequence = [];
+            gameState.playerSequence = [];
+            gameState.level = 1;
+            gameState.score = 0;
+            gameState.streak = 0;
+            gameState.isPlaying = true;
+            
+            // Reset speed based on difficulty
+            switch(gameState.difficulty) {
+                case 'easy': gameState.speed = 600; break;
+                case 'medium': gameState.speed = 400; break;
+                case 'hard': gameState.speed = 200; break;
             }
             
-            // Event listeners
-            startBtn.addEventListener('click', startGame);
+            updateStats();
+            createGrid();
             
-            // Initialize the game
-            initGame();
+            messageEl.textContent = '🎮 Get Ready!';
+            messageEl.className = 'text-3xl font-bold text-white animate__animated animate__bounceIn';
+            
+            startBtn.disabled = true;
+            startBtn.innerHTML = '<i class="fas fa-spinner fa-spin mr-2"></i>Playing...';
+            
+            document.getElementById('difficultySelector').style.display = 'none';
+            
+            setTimeout(() => {
+                generateSequence();
+                showSequence();
+            }, 1500);
+        }
+        
+        // Event Listeners
+        startBtn.addEventListener('click', startGame);
+        
+        // Difficulty selection
+        difficultyBtns.forEach(btn => {
+            btn.addEventListener('click', () => {
+                const difficulty = btn.dataset.difficulty;
+                gameState.difficulty = difficulty;
+                
+                switch(difficulty) {
+                    case 'easy':
+                        gameState.gridSize = 2;
+                        gameState.speed = 600;
+                        break;
+                    case 'medium':
+                        gameState.gridSize = 3;
+                        gameState.speed = 400;
+                        break;
+                    case 'hard':
+                        gameState.gridSize = 3;
+                        gameState.speed = 200;
+                        break;
+                }
+                
+                difficultyBtns.forEach(b => b.classList.remove('ring-4', 'ring-white'));
+                btn.classList.add('ring-4', 'ring-white');
+                
+                createGrid();
+            });
+        });
+        
+        // Sound toggle
+        soundBtn.addEventListener('click', () => {
+            soundEnabled = !soundEnabled;
+            soundBtn.innerHTML = soundEnabled 
+                ? '<i class="fas fa-volume-up text-xl"></i>' 
+                : '<i class="fas fa-volume-mute text-xl"></i>';
+            
+            gsap.to(soundBtn, { rotation: 360, duration: 0.5 });
+            setTimeout(() => gsap.set(soundBtn, { rotation: 0 }), 500);
+        });
+        
+        // Stats modal
+        statsBtn.addEventListener('click', () => {
+            document.getElementById('gamesPlayed').textContent = gameState.gamesPlayed;
+            document.getElementById('highestLevel').textContent = gameState.highestLevel;
+            document.getElementById('totalScore').textContent = gameState.totalScore;
+            document.getElementById('longestStreak').textContent = gameState.longestStreak;
+            statsModal.classList.add('active');
+        });
+        
+        closeStatsBtn.addEventListener('click', () => {
+            statsModal.classList.remove('active');
+        });
+        
+        statsModal.addEventListener('click', (e) => {
+            if (e.target === statsModal) {
+                statsModal.classList.remove('active');
+            }
+        });
+        
+        // Help button
+        helpBtn.addEventListener('click', () => {
+            Swal.fire({
+                title: '<i class="fas fa-gamepad"></i> How to Play',
+                html: `
+                    <div class="text-left space-y-3">
+                        <p><i class="fas fa-check-circle text-green-400"></i> Watch the sequence of tiles that light up</p>
+                        <p><i class="fas fa-check-circle text-green-400"></i> Click the tiles in the same order</p>
+                        <p><i class="fas fa-check-circle text-green-400"></i> Each level adds one more tile</p>
+                        <p><i class="fas fa-check-circle text-green-400"></i> Every 5 levels, the game speeds up!</p>
+                        <hr class="my-2">
+                        <p class="font-bold"><i class="fas fa-star text-yellow-400"></i> Scoring:</p>
+                        <p class="text-sm">Each level gives you Level × 10 points</p>
+                        <p class="text-sm">Keep your streak going for high scores!</p>
+                    </div>
+                `,
+                icon: 'info',
+                confirmButtonText: 'Got it!',
+                background: '#1f2937',
+                color: '#fff',
+                confirmButtonColor: '#8b5cf6'
+            });
+        });
+        
+        // Initialize
+        createGrid();
+        
+        // Keyboard shortcuts
+        document.addEventListener('keydown', (e) => {
+            if (e.key === ' ' && !gameState.isPlaying) {
+                e.preventDefault();
+                startGame();
+            }
         });
     </script>
 </body>
