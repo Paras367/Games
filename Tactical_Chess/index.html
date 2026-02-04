@@ -1,0 +1,1044 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tactical Chess Puzzles</title>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/chess.js/0.10.3/chess.min.js"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/chessboard-js/1.0.0/chessboard-1.0.0.min.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/chessboard-js/1.0.0/chessboard-1.0.0.min.js"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700&family=Roboto:wght@300;400;500;700&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --primary: #2c3e50;
+            --secondary: #3498db;
+            --accent: #e74c3c;
+            --light: #ecf0f1;
+            --dark: #2c3e50;
+            --success: #27ae60;
+            --warning: #f39c12;
+            --board-light: #f0d9b5;
+            --board-dark: #b58863;
+            --piece-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+            --panel-shadow: 0 10px 30px rgba(0, 0, 0, 0.15);
+            --transition: all 0.3s ease;
+        }
+
+        body {
+            font-family: 'Roboto', sans-serif;
+            background: linear-gradient(135deg, #1a2a6c, #2c3e50, #4a6491);
+            color: var(--light);
+            line-height: 1.6;
+            padding: 20px;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            background-attachment: fixed;
+        }
+
+        .header {
+            text-align: center;
+            margin-bottom: 30px;
+            width: 100%;
+            max-width: 1000px;
+            padding: 20px;
+            background: rgba(0, 20, 40, 0.85);
+            border-radius: 15px;
+            box-shadow: var(--panel-shadow);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            margin-top: 10px;
+        }
+
+        h1 {
+            font-family: 'Montserrat', sans-serif;
+            font-size: 3.5rem;
+            margin-bottom: 10px;
+            background: linear-gradient(to right, #3498db, #8e44ad, #e74c3c);
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+            text-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
+            letter-spacing: 1px;
+            position: relative;
+            display: inline-block;
+        }
+
+        h1::after {
+            content: "";
+            position: absolute;
+            bottom: -10px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 70%;
+            height: 4px;
+            background: linear-gradient(to right, #3498db, #8e44ad, #e74c3c);
+            border-radius: 2px;
+        }
+
+        .subtitle {
+            font-size: 1.4rem;
+            color: #bdc3c7;
+            margin-top: 15px;
+            max-width: 700px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .container {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 30px;
+            max-width: 1400px;
+            width: 100%;
+        }
+
+        .board-container {
+            background: rgba(30, 40, 50, 0.92);
+            border-radius: 15px;
+            padding: 25px;
+            box-shadow: var(--panel-shadow);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            min-width: 450px;
+        }
+
+        #board {
+            width: 450px;
+            border-radius: 8px;
+            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.5);
+            margin-bottom: 25px;
+            border: 2px solid var(--secondary);
+        }
+
+        .status-container {
+            background: rgba(0, 20, 40, 0.85);
+            border-radius: 12px;
+            padding: 20px;
+            width: 100%;
+            text-align: center;
+            margin-bottom: 25px;
+            border: 1px solid rgba(52, 152, 219, 0.3);
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+        }
+
+        #status {
+            font-family: 'Montserrat', sans-serif;
+            font-size: 1.8rem;
+            font-weight: 600;
+            min-height: 36px;
+            padding: 8px 15px;
+            border-radius: 8px;
+            background: rgba(44, 62, 80, 0.7);
+            margin-bottom: 15px;
+            letter-spacing: 0.5px;
+        }
+
+        #description {
+            font-size: 1.35rem;
+            color: #3498db;
+            font-weight: 500;
+            min-height: 32px;
+            margin-top: 8px;
+        }
+
+        .feedback {
+            font-size: 1.5rem;
+            font-weight: 700;
+            min-height: 40px;
+            padding: 10px;
+            border-radius: 8px;
+            margin-top: 10px;
+            display: none;
+        }
+
+        .correct {
+            background: rgba(39, 174, 96, 0.25);
+            color: #2ecc71;
+            display: block;
+            animation: pulse 0.5s;
+        }
+
+        .incorrect {
+            background: rgba(231, 76, 60, 0.25);
+            color: #e74c3c;
+            display: block;
+            animation: shake 0.5s;
+        }
+
+        .puzzle-info {
+            display: flex;
+            justify-content: space-between;
+            width: 100%;
+            margin-top: 15px;
+            font-size: 1.15rem;
+            color: #bdc3c7;
+        }
+
+        .controls {
+            display: flex;
+            gap: 15px;
+            margin-top: 20px;
+            flex-wrap: wrap;
+            justify-content: center;
+        }
+
+        button {
+            background: linear-gradient(to right, var(--secondary), #1a5276);
+            color: white;
+            border: none;
+            padding: 14px 28px;
+            font-family: 'Montserrat', sans-serif;
+            font-size: 1.15rem;
+            font-weight: 600;
+            border-radius: 50px;
+            cursor: pointer;
+            transition: var(--transition);
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.25);
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            min-width: 160px;
+            justify-content: center;
+        }
+
+        button:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px rgba(0, 0, 0, 0.3);
+        }
+
+        button:active {
+            transform: translateY(1px);
+        }
+
+        button.secondary {
+            background: linear-gradient(to right, #2c3e50, #1a252f);
+            color: #3498db;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+        }
+
+        button.secondary:hover {
+            background: linear-gradient(to right, #34495e, #2c3e50);
+            color: #2980b9;
+        }
+
+        button.success {
+            background: linear-gradient(to right, var(--success), #1e8449);
+        }
+
+        button.warning {
+            background: linear-gradient(to right, var(--warning), #d35400);
+        }
+
+        button:disabled {
+            opacity: 0.65;
+            cursor: not-allowed;
+            transform: none;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
+        }
+
+        .puzzles-container {
+            background: rgba(30, 40, 50, 0.92);
+            border-radius: 15px;
+            padding: 30px;
+            box-shadow: var(--panel-shadow);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            min-width: 350px;
+            max-width: 450px;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .puzzles-header {
+            text-align: center;
+            margin-bottom: 25px;
+            padding-bottom: 15px;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .puzzles-header h2 {
+            font-family: 'Montserrat', sans-serif;
+            font-size: 2.2rem;
+            color: #3498db;
+            margin-bottom: 8px;
+        }
+
+        .puzzle-list {
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+            max-height: 500px;
+            overflow-y: auto;
+            padding-right: 10px;
+        }
+
+        .puzzle-list::-webkit-scrollbar {
+            width: 6px;
+        }
+
+        .puzzle-list::-webkit-scrollbar-track {
+            background: rgba(0, 0, 0, 0.2);
+            border-radius: 10px;
+        }
+
+        .puzzle-list::-webkit-scrollbar-thumb {
+            background: var(--secondary);
+            border-radius: 10px;
+        }
+
+        .puzzle-item {
+            background: rgba(44, 62, 80, 0.7);
+            border-radius: 12px;
+            padding: 15px;
+            cursor: pointer;
+            transition: var(--transition);
+            border-left: 4px solid var(--secondary);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .puzzle-item:hover {
+            background: rgba(52, 152, 219, 0.15);
+            transform: translateX(5px);
+        }
+
+        .puzzle-item.active {
+            background: rgba(46, 204, 113, 0.15);
+            border-left: 4px solid var(--success);
+            box-shadow: 0 0 15px rgba(46, 204, 113, 0.25);
+        }
+
+        .puzzle-item.solved {
+            border-left: 4px solid var(--success);
+            opacity: 0.85;
+        }
+
+        .puzzle-item.solved:hover {
+            opacity: 1;
+            background: rgba(46, 204, 113, 0.1);
+        }
+
+        .puzzle-title {
+            font-weight: 600;
+            font-size: 1.25rem;
+            margin-bottom: 5px;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .puzzle-desc {
+            font-size: 0.95rem;
+            color: #bdc3c7;
+            margin-left: 28px;
+        }
+
+        .puzzle-difficulty {
+            font-size: 0.9rem;
+            padding: 3px 10px;
+            border-radius: 15px;
+            font-weight: 500;
+        }
+
+        .easy {
+            background: rgba(46, 204, 113, 0.2);
+            color: #27ae60;
+        }
+
+        .medium {
+            background: rgba(241, 196, 15, 0.2);
+            color: #f39c12;
+        }
+
+        .hard {
+            background: rgba(231, 76, 60, 0.2);
+            color: #e74c3c;
+        }
+
+        .stats-container {
+            background: rgba(0, 20, 40, 0.85);
+            border-radius: 12px;
+            padding: 20px;
+            margin-top: 25px;
+            text-align: center;
+            border: 1px solid rgba(52, 152, 219, 0.3);
+        }
+
+        .stats-title {
+            font-family: 'Montserrat', sans-serif;
+            font-size: 1.5rem;
+            margin-bottom: 15px;
+            color: #3498db;
+        }
+
+        .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 12px;
+            text-align: center;
+        }
+
+        .stat-item {
+            padding: 10px;
+            border-radius: 8px;
+            background: rgba(44, 62, 80, 0.6);
+        }
+
+        .stat-value {
+            font-family: 'Montserrat', sans-serif;
+            font-size: 1.8rem;
+            font-weight: 700;
+            margin: 5px 0;
+        }
+
+        .stat-label {
+            font-size: 0.95rem;
+            color: #bdc3c7;
+        }
+
+        .difficulty-indicator {
+            display: inline-block;
+            width: 12px;
+            height: 12px;
+            border-radius: 50%;
+            margin-right: 6px;
+        }
+
+        .difficulty-easy { background-color: #27ae60; }
+        .difficulty-medium { background-color: #f39c12; }
+        .difficulty-hard { background-color: #e74c3c; }
+
+        .promotion-modal {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.85);
+            justify-content: center;
+            align-items: center;
+            z-index: 1000;
+        }
+
+        .promotion-content {
+            background: var(--dark);
+            border-radius: 15px;
+            padding: 30px;
+            text-align: center;
+            box-shadow: 0 15px 50px rgba(0, 0, 0, 0.5);
+            border: 2px solid var(--secondary);
+            max-width: 90%;
+            width: 400px;
+        }
+
+        .promotion-title {
+            font-family: 'Montserrat', sans-serif;
+            font-size: 1.8rem;
+            margin-bottom: 25px;
+            color: var(--secondary);
+        }
+
+        .promotion-pieces {
+            display: flex;
+            justify-content: space-around;
+            margin-top: 20px;
+        }
+
+        .promotion-piece {
+            width: 70px;
+            height: 70px;
+            border-radius: 50%;
+            background: var(--light);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-size: 2.5rem;
+            cursor: pointer;
+            transition: var(--transition);
+            box-shadow: var(--piece-shadow);
+            color: var(--dark);
+            border: 3px solid transparent;
+        }
+
+        .promotion-piece:hover {
+            transform: scale(1.15);
+            border-color: var(--secondary);
+            box-shadow: 0 0 20px rgba(52, 152, 219, 0.6);
+        }
+
+        .promotion-piece.q { color: #3498db; }
+        .promotion-piece.r { color: #e74c3c; }
+        .promotion-piece.b { color: #9b59b6; }
+        .promotion-piece.n { color: #f39c12; }
+
+        .footer {
+            margin-top: 30px;
+            text-align: center;
+            padding: 20px;
+            font-size: 1.05rem;
+            color: #bdc3c7;
+            max-width: 800px;
+            line-height: 1.7;
+        }
+
+        .footer strong {
+            color: #3498db;
+        }
+
+        @keyframes pulse {
+            0% { transform: scale(1); }
+            50% { transform: scale(1.03); }
+            100% { transform: scale(1); }
+        }
+
+        @keyframes shake {
+            0%, 100% { transform: translateX(0); }
+            25% { transform: translateX(-5px); }
+            75% { transform: translateX(5px); }
+        }
+
+        @media (max-width: 900px) {
+            .container {
+                flex-direction: column;
+                align-items: center;
+            }
+            
+            .board-container, .puzzles-container {
+                min-width: 100%;
+                max-width: 600px;
+            }
+            
+            #board {
+                width: 100%;
+                max-width: 500px;
+            }
+            
+            h1 {
+                font-size: 2.8rem;
+            }
+            
+            .subtitle {
+                font-size: 1.25rem;
+            }
+        }
+
+        @media (max-width: 480px) {
+            body {
+                padding: 10px;
+            }
+            
+            .header {
+                padding: 15px;
+                margin-top: 0;
+            }
+            
+            h1 {
+                font-size: 2.3rem;
+            }
+            
+            h1::after {
+                bottom: -8px;
+                width: 60%;
+            }
+            
+            .subtitle {
+                font-size: 1.1rem;
+            }
+            
+            #board {
+                max-width: 350px;
+                width: 100%;
+            }
+            
+            .board-container, .puzzles-container {
+                padding: 20px 15px;
+                min-width: 100%;
+            }
+            
+            button {
+                padding: 12px 22px;
+                font-size: 1.05rem;
+                min-width: 140px;
+            }
+            
+            .controls {
+                gap: 10px;
+                flex-direction: column;
+                align-items: center;
+            }
+            
+            .puzzle-title {
+                font-size: 1.15rem;
+            }
+            
+            .puzzle-desc {
+                font-size: 0.9rem;
+                margin-left: 25px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="header">
+        <h1><i class="fas fa-chess-knight"></i> TACTICAL CHESS PUZZLES <i class="fas fa-chess-knight"></i></h1>
+        <div class="subtitle">Sharpen your chess skills with challenging tactical puzzles. Test your ability to spot winning combinations, forks, pins, and checkmates!</div>
+    </div>
+
+    <div class="container">
+        <div class="board-container">
+            <div id="board"></div>
+            
+            <div class="status-container">
+                <div id="status">White to play</div>
+                <div id="description">Find the best move for White</div>
+                <div id="feedback" class="feedback"></div>
+            </div>
+            
+            <div class="puzzle-info">
+                <div><i class="fas fa-chess-pawn"></i> <span id="puzzle-rating">1200</span> rating</div>
+                <div><i class="fas fa-medal"></i> Puzzle <span id="puzzle-number">1</span> of <span id="total-puzzles">5</span></div>
+                <div><i class="fas fa-bolt"></i> <span id="puzzle-type">Mate in 1</span></div>
+            </div>
+            
+            <div class="controls">
+                <button id="reset-btn" class="secondary">
+                    <i class="fas fa-undo"></i> Reset
+                </button>
+                <button id="hint-btn" class="secondary">
+                    <i class="fas fa-lightbulb"></i> Hint
+                </button>
+                <button id="next-btn" class="warning" disabled>
+                    <i class="fas fa-arrow-right"></i> Next Puzzle
+                </button>
+                <button id="solution-btn" class="secondary">
+                    <i class="fas fa-eye"></i> Show Solution
+                </button>
+            </div>
+        </div>
+        
+        <div class="puzzles-container">
+            <div class="puzzles-header">
+                <h2><i class="fas fa-list"></i> Puzzle Collection</h2>
+                <div>Test your tactical vision with these carefully selected positions</div>
+            </div>
+            
+            <div class="puzzle-list">
+                <div class="puzzle-item active" data-index="0">
+                    <div>
+                        <div class="puzzle-title"><i class="fas fa-chess-knight difficulty-indicator difficulty-easy"></i> Deadly Fork</div>
+                        <div class="puzzle-desc">White to play and win material</div>
+                    </div>
+                    <div class="puzzle-difficulty easy">Easy</div>
+                </div>
+                <div class="puzzle-item" data-index="1">
+                    <div>
+                        <div class="puzzle-title"><i class="fas fa-chess-knight difficulty-indicator difficulty-medium"></i> Pin & Win</div>
+                        <div class="puzzle-desc">Black to play and gain advantage</div>
+                    </div>
+                    <div class="puzzle-difficulty medium">Medium</div>
+                </div>
+                <div class="puzzle-item" data-index="2">
+                    <div>
+                        <div class="puzzle-title"><i class="fas fa-chess-knight difficulty-indicator difficulty-hard"></i> Royal Attack</div>
+                        <div class="puzzle-desc">White to play and checkmate in 2</div>
+                    </div>
+                    <div class="puzzle-difficulty hard">Hard</div>
+                </div>
+                <div class="puzzle-item" data-index="3">
+                    <div>
+                        <div class="puzzle-title"><i class="fas fa-chess-knight difficulty-indicator difficulty-medium"></i> Discovered Attack</div>
+                        <div class="puzzle-desc">Black to play and win the queen</div>
+                    </div>
+                    <div class="puzzle-difficulty medium">Medium</div>
+                </div>
+                <div class="puzzle-item" data-index="4">
+                    <div>
+                        <div class="puzzle-title"><i class="fas fa-chess-knight difficulty-indicator difficulty-hard"></i> Deflection Sacrifice</div>
+                        <div class="puzzle-desc">White to play and force checkmate</div>
+                    </div>
+                    <div class="puzzle-difficulty hard">Hard</div>
+                </div>
+            </div>
+            
+            <div class="stats-container">
+                <div class="stats-title"><i class="fas fa-chart-line"></i> Your Progress</div>
+                <div class="stats-grid">
+                    <div class="stat-item">
+                        <div class="stat-value" id="solved-count">0</div>
+                        <div class="stat-label">Solved</div>
+                    </div>
+                    <div class="stat-item">
+                        <div class="stat-value" id="attempted-count">0</div>
+                        <div class="stat-label">Attempted</div>
+                    </div>
+                    <div class="stat-item">
+                        <div class="stat-value" id="success-rate">0%</div>
+                        <div class="stat-label">Success Rate</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <div class="footer">
+        <p>Tactical Chess Puzzles &copy; 2026 | Train your chess vision with puzzles ranging from beginner to master level</p>
+        <p>Drag and drop pieces to make your move. <strong>Hint:</strong> Look for checks, captures, and threats!</p>
+    </div>
+    
+    <div class="promotion-modal" id="promotion-modal">
+        <div class="promotion-content">
+            <div class="promotion-title">Choose promotion piece</div>
+            <div class="promotion-pieces">
+                <div class="promotion-piece q" data-piece="q">♕</div>
+                <div class="promotion-piece r" data-piece="r">♖</div>
+                <div class="promotion-piece b" data-piece="b">♗</div>
+                <div class="promotion-piece n" data-piece="n">♘</div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            // Puzzle database
+            const puzzles = [
+                {
+                    fen: 'rnbqkb1r/ppp2ppp/4pn2/3p4/3P4/2N1PN2/PPP2PPP/R1BQKB1R w KQkq - 0 5',
+                    userColor: 'w',
+                    solution: ['e4'],
+                    description: 'White to play and win a pawn',
+                    rating: 1100,
+                    type: 'Material gain',
+                    difficulty: 'easy'
+                },
+                {
+                    fen: 'r3k2r/pbppqppp/1pnb1n2/4p3/4P3/2PP1N2/PPBN1PPP/R2Q1RK1 b kq - 0 10',
+                    userColor: 'b',
+                    solution: ['Nxe4'],
+                    description: 'Black to play and win a piece',
+                    rating: 1400,
+                    type: 'Fork',
+                    difficulty: 'medium'
+                },
+                {
+                    fen: '5rk1/1p4pp/2p5/4b3/8/1P4P1/1P3PKP/4R3 w - - 0 35',
+                    userColor: 'w',
+                    solution: ['Re8#'],
+                    description: 'White to play and checkmate',
+                    rating: 1600,
+                    type: 'Checkmate',
+                    difficulty: 'hard'
+                },
+                {
+                    fen: 'r1bqkb1r/ppp2ppp/2n2n2/3pp3/4P3/2PP1N2/PP3PPP/RNBQKB1R b KQkq - 0 5',
+                    userColor: 'b',
+                    solution: ['dxe4'],
+                    description: 'Black to play and win a pawn',
+                    rating: 1300,
+                    type: 'Material gain',
+                    difficulty: 'medium'
+                },
+                {
+                    fen: 'rnbqk2r/ppp2ppp/3b4/3pP3/8/2P2N2/PP3PPP/RNBQKB1R w KQkq - 0 8',
+                    userColor: 'w',
+                    solution: ['Qh5+'],
+                    description: 'White to play and force checkmate',
+                    rating: 1800,
+                    type: 'Checkmate in 2',
+                    difficulty: 'hard'
+                }
+            ];
+
+            // App state
+            let currentPuzzleIndex = 0;
+            let currentPuzzle = puzzles[0];
+            let chess = new Chess(currentPuzzle.fen);
+            let board = null;
+            let userPromotionPiece = 'q';
+            let puzzleStats = {
+                solved: 0,
+                attempted: 0,
+                solvedPuzzles: new Set()
+            };
+            
+            // Initialize the board
+            function initBoard() {
+                const config = {
+                    position: currentPuzzle.fen,
+                    draggable: true,
+                    onDragStart: onDragStart,
+                    onDrop: onDrop,
+                    onSnapEnd: onSnapEnd,
+                    pieceTheme: 'https://chessboardjs.com/img/chesspieces/wikipedia/{piece}.png'
+                };
+                
+                board = Chessboard('board', config);
+                updateStatus();
+            }
+            
+            // Update status messages
+            function updateStatus() {
+                const statusEl = document.getElementById('status');
+                const descEl = document.getElementById('description');
+                const ratingEl = document.getElementById('puzzle-rating');
+                const numberEl = document.getElementById('puzzle-number');
+                const totalEl = document.getElementById('total-puzzles');
+                const typeEl = document.getElementById('puzzle-type');
+                const nextBtn = document.getElementById('next-btn');
+                
+                // Set puzzle info
+                ratingEl.textContent = currentPuzzle.rating;
+                numberEl.textContent = currentPuzzleIndex + 1;
+                totalEl.textContent = puzzles.length;
+                typeEl.textContent = currentPuzzle.type;
+                
+                // Set description and turn
+                descEl.textContent = currentPuzzle.description;
+                const turn = currentPuzzle.userColor === 'w' ? 'White' : 'Black';
+                statusEl.textContent = `${turn} to play`;
+                statusEl.className = '';
+                
+                // Reset feedback
+                document.getElementById('feedback').textContent = '';
+                document.getElementById('feedback').className = 'feedback';
+                
+                // Enable/disable next button
+                if (puzzleStats.solvedPuzzles.has(currentPuzzleIndex)) {
+                    nextBtn.disabled = false;
+                } else {
+                    nextBtn.disabled = true;
+                }
+            }
+            
+            // Validate move on drag start
+            function onDragStart(source, piece, position, orientation) {
+                // Only allow user to move pieces of their color
+                const pieceColor = piece[0] === 'w' ? 'w' : 'b';
+                const isUserTurn = chess.turn() === currentPuzzle.userColor;
+                const isUserPiece = pieceColor === currentPuzzle.userColor;
+                
+                // Don't allow dragging if not user's turn or not user's piece
+                return isUserTurn && isUserPiece;
+            }
+            
+            // Handle piece drop
+            function onDrop(source, target) {
+                // Check if it's user's turn
+                if (chess.turn() !== currentPuzzle.userColor) {
+                    return 'snapback';
+                }
+                
+                // Check for promotion
+                let promotion = '';
+                const piece = chess.get(source);
+                if (piece && piece.type === 'p') {
+                    const targetRank = target[1];
+                    if ((piece.color === 'w' && targetRank === '8') || 
+                        (piece.color === 'b' && targetRank === '1')) {
+                        // Show promotion modal
+                        document.getElementById('promotion-modal').style.display = 'flex';
+                        
+                        // Wait for user selection
+                        return new Promise((resolve) => {
+                            const modal = document.getElementById('promotion-modal');
+                            const pieces = modal.querySelectorAll('.promotion-piece');
+                            
+                            const handlePromotion = (pieceType) => {
+                                userPromotionPiece = pieceType;
+                                modal.style.display = 'none';
+                                
+                                // Make the move with promotion
+                                const move = chess.move({
+                                    from: source,
+                                    to: target,
+                                    promotion: userPromotionPiece
+                                });
+                                
+                                if (move === null) {
+                                    resolve('snapback');
+                                } else {
+                                    resolve('');
+                                    checkPuzzleSolution(move.san);
+                                }
+                                
+                                // Remove event listeners
+                                pieces.forEach(p => p.removeEventListener('click', () => {}));
+                            };
+                            
+                            pieces.forEach(pieceEl => {
+                                pieceEl.addEventListener('click', () => {
+                                    const pieceType = pieceEl.getAttribute('data-piece');
+                                    handlePromotion(pieceType);
+                                });
+                            });
+                        });
+                    }
+                }
+                
+                // Try to make the move
+                const move = chess.move({
+                    from: source,
+                    to: target,
+                    promotion: promotion || 'q' // default to queen if needed
+                });
+                
+                // Illegal move
+                if (move === null) return 'snapback';
+                
+                // Check if the move solves the puzzle
+                checkPuzzleSolution(move.san);
+                
+                return '';
+            }
+            
+            // Handle snap end (visual update)
+            function onSnapEnd() {
+                board.position(chess.fen());
+            }
+            
+            // Check if the move is the solution
+            function checkPuzzleSolution(moveSan) {
+                const feedbackEl = document.getElementById('feedback');
+                const nextBtn = document.getElementById('next-btn');
+                
+                puzzleStats.attempted++;
+                document.getElementById('attempted-count').textContent = puzzleStats.attempted;
+                
+                // Check if move matches solution
+                if (moveSan === currentPuzzle.solution[0]) {
+                    // Correct solution
+                    feedbackEl.textContent = '✓ Correct! Brilliant tactic!';
+                    feedbackEl.className = 'feedback correct';
+                    
+                    // Update stats
+                    if (!puzzleStats.solvedPuzzles.has(currentPuzzleIndex)) {
+                        puzzleStats.solved++;
+                        puzzleStats.solvedPuzzles.add(currentPuzzleIndex);
+                        document.getElementById('solved-count').textContent = puzzleStats.solved;
+                    }
+                    
+                    // Calculate success rate
+                    const successRate = Math.round((puzzleStats.solved / puzzleStats.attempted) * 100);
+                    document.getElementById('success-rate').textContent = `${successRate}%`;
+                    
+                    // Enable next button
+                    nextBtn.disabled = false;
+                    
+                    // Highlight solved puzzle in list
+                    document.querySelectorAll('.puzzle-item')[currentPuzzleIndex].classList.add('solved');
+                } else {
+                    // Wrong move
+                    feedbackEl.textContent = '✗ Incorrect! Try again.';
+                    feedbackEl.className = 'feedback incorrect';
+                    
+                    // Reset position after delay
+                    setTimeout(() => {
+                        chess = new Chess(currentPuzzle.fen);
+                        board.position(chess.fen());
+                    }, 1200);
+                }
+            }
+            
+            // Reset current puzzle
+            document.getElementById('reset-btn').addEventListener('click', () => {
+                chess = new Chess(currentPuzzle.fen);
+                board.position(chess.fen());
+                updateStatus();
+            });
+            
+            // Show hint
+            document.getElementById('hint-btn').addEventListener('click', () => {
+                const feedbackEl = document.getElementById('feedback');
+                feedbackEl.textContent = `Hint: Look for a ${currentPuzzle.type.toLowerCase()} opportunity!`;
+                feedbackEl.className = 'feedback correct';
+                
+                // Show hint for 3 seconds
+                setTimeout(() => {
+                    if (!feedbackEl.textContent.includes('✓') && !feedbackEl.textContent.includes('✗')) {
+                        feedbackEl.textContent = '';
+                        feedbackEl.className = 'feedback';
+                    }
+                }, 3000);
+            });
+            
+            // Show solution
+            document.getElementById('solution-btn').addEventListener('click', () => {
+                const feedbackEl = document.getElementById('feedback');
+                feedbackEl.textContent = `Solution: ${currentPuzzle.solution[0]}`;
+                feedbackEl.className = 'feedback correct';
+                
+                // Show solution for 4 seconds then reset
+                setTimeout(() => {
+                    chess = new Chess(currentPuzzle.fen);
+                    board.position(chess.fen());
+                    updateStatus();
+                }, 4000);
+            });
+            
+            // Next puzzle
+            document.getElementById('next-btn').addEventListener('click', () => {
+                currentPuzzleIndex = (currentPuzzleIndex + 1) % puzzles.length;
+                currentPuzzle = puzzles[currentPuzzleIndex];
+                chess = new Chess(currentPuzzle.fen);
+                board.position(chess.fen());
+                
+                // Update active puzzle in list
+                document.querySelectorAll('.puzzle-item').forEach((item, index) => {
+                    if (index === currentPuzzleIndex) {
+                        item.classList.add('active');
+                    } else {
+                        item.classList.remove('active');
+                    }
+                });
+                
+                updateStatus();
+            });
+            
+            // Puzzle selection
+            document.querySelectorAll('.puzzle-item').forEach(item => {
+                item.addEventListener('click', () => {
+                    const index = parseInt(item.getAttribute('data-index'));
+                    currentPuzzleIndex = index;
+                    currentPuzzle = puzzles[index];
+                    chess = new Chess(currentPuzzle.fen);
+                    board.position(chess.fen());
+                    
+                    // Update active puzzle in list
+                    document.querySelectorAll('.puzzle-item').forEach((el, i) => {
+                        if (i === index) {
+                            el.classList.add('active');
+                        } else {
+                            el.classList.remove('active');
+                        }
+                    });
+                    
+                    updateStatus();
+                });
+            });
+            
+            // Initialize the app
+            initBoard();
+            
+            // Close promotion modal if clicked outside
+            window.addEventListener('click', (e) => {
+                const modal = document.getElementById('promotion-modal');
+                if (e.target === modal) {
+                    modal.style.display = 'none';
+                }
+            });
+        });
+    </script>
+</body>
+</html>
