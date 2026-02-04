@@ -1,15 +1,84 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+ 
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Tactical Chess Puzzles</title>
-    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/chess.js/0.10.3/chess.min.js"></script>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, user-scalable=yes">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    
+   
+    <title>Tactical Chess Puzzles - Master Your Chess Skills | Paras</title>
+    <meta name="title" content="Tactical Chess Puzzles - Master Your Chess Skills">
+    <meta name="description" content="Sharpen your chess tactics with our interactive puzzle platform. From beginner to master level, train with curated positions featuring forks, pins, checkmates, and sacrifices. Track your progress and improve your rating!">
+    <meta name="keywords" content="chess puzzles, chess tactics, chess training, chess strategy, checkmate puzzles, chess combinations, tactical chess, chess improvement, chess learning, interactive chess">
+    <meta name="author" content="Paras Dhiman, SoftwareLabs">
+    <meta name="robots" content="index, follow, max-snippet:-1, max-image-preview:large, max-video-preview:-1">
+    <meta name="language" content="English">
+    <meta name="revisit-after" content="7 days">
+    <meta name="rating" content="General">
+    <meta name="distribution" content="global">
+    <meta name="theme-color" content="#2c3e50">
+    <meta name="mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    
+ 
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://Paras367.github.io/Games/Tactical_Chess/">
+    <meta property="og:title" content="Tactical Chess Puzzles - Master Your Chess Skills">
+    <meta property="og:description" content="Interactive chess puzzle platform with personalized training, progress tracking, and tactical challenges from beginner to master level.">
+    <meta property="og:image" content="https://softwarelabs.lovable.app/logo.svg">
+    <meta property="og:image:width" content="1200">
+    <meta property="og:image:height" content="630">
+    <meta property="og:site_name" content="Tactical Chess Puzzles">
+    <meta property="og:locale" content="en_US">
+    
+    <!-- Twitter Meta Tags -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:url" content="https://Paras367.github.io/Games/Tactical_Chess/">
+    <meta name="twitter:title" content="Tactical Chess Puzzles - Master Your Chess Skills">
+    <meta name="twitter:description" content="Train your chess tactics with interactive puzzles. Track progress, improve rating, and master combinations!">
+    <meta name="twitter:image" content="https://softwarelabs.lovable.app/logo.svg">
+    <meta name="twitter:creator" content="@ChessTactics">
+    
+   
+    <meta http-equiv="Content-Security-Policy" content="default-src 'self' https: data: 'unsafe-inline' 'unsafe-eval'; img-src 'self' https: data:; font-src 'self' https: data:;">
+    <meta http-equiv="X-Content-Type-Options" content="nosniff">
+    <meta http-equiv="X-Frame-Options" content="SAMEORIGIN">
+    <meta http-equiv="X-XSS-Protection" content="1; mode=block">
+    <meta name="referrer" content="strict-origin-when-cross-origin">
+    
+ 
+    <link rel="icon" type="image/x-icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>♞</text></svg>">
+    <link rel="apple-touch-icon" sizes="180x180" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><rect width='100' height='100' fill='%232c3e50'/><text x='50' y='70' font-size='60' text-anchor='middle' fill='%233498db'>♞</text></svg>">
+    <link rel="icon" type="image/png" sizes="32x32" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>♞</text></svg>">
+    <link rel="manifest" href="data:application/json,{'name':'Tactical Chess Puzzles','short_name':'Chess Tactics','icons':[{'src':'data:image/svg+xml,<svg xmlns=\"http://www.w3.org/2000/svg\" viewBox=\"0 0 100 100\"><rect width=\"100\" height=\"100\" fill=\"%232c3e50\"/><text x=\"50\" y=\"70\" font-size=\"60\" text-anchor=\"middle\" fill=\"%233498db\">♞</text></svg>','sizes':'192x192','type':'image/svg+xml'}],'theme_color':'%232c3e50','background_color':'%231a2a6c','display':'standalone'}">
+    
+ 
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" integrity="sha512-DTOQO9RWCH3ppGqcWaEA1BIZOC6xxalwEsw9c2QQeAIftl+Vegovlnee1c9QX4TctnWMn13TZye+giMm8e2LwA==" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/chessboard-js/1.0.0/chessboard-1.0.0.min.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&family=Montserrat:wght@400;500;600;700;800&family=Roboto:wght@300;400;500;700&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/notyf/3.10.0/notyf.min.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/sweetalert2@11.10.5/dist/sweetalert2.min.css">
+    
+   
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js" integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo=" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/chess.js/0.10.3/chess.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/chessboard-js/1.0.0/chessboard-1.0.0.min.js"></script>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700&family=Roboto:wght@300;400;500;700&display=swap" rel="stylesheet">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/particles.js/2.0.0/particles.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/notyf/3.10.0/notyf.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11.10.5/dist/sweetalert2.all.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/confetti-js/0.0.18/confetti.browser.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.1/dist/chart.umd.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/howler/2.2.4/howler.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/lodash.js/4.17.21/lodash.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.30.1/moment.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.9.2/dist/confetti.browser.min.js"></script>
+    
     <style>
         * {
             margin: 0;
@@ -30,10 +99,13 @@
             --piece-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
             --panel-shadow: 0 10px 30px rgba(0, 0, 0, 0.15);
             --transition: all 0.3s ease;
+            --gradient-1: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            --gradient-2: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);
+            --gradient-3: linear-gradient(135deg, #4facfe 0%, #00f2fe 100%);
         }
 
         body {
-            font-family: 'Roboto', sans-serif;
+            font-family: 'Inter', 'Roboto', sans-serif;
             background: linear-gradient(135deg, #1a2a6c, #2c3e50, #4a6491);
             color: var(--light);
             line-height: 1.6;
@@ -43,54 +115,236 @@
             flex-direction: column;
             align-items: center;
             background-attachment: fixed;
+            position: relative;
+            overflow-x: hidden;
         }
+
+        #particles-js {
+            position: fixed;
+            width: 100%;
+            height: 100%;
+            top: 0;
+            left: 0;
+            z-index: 0;
+            pointer-events: none;
+        }
+
+        .content-wrapper {
+            position: relative;
+            z-index: 1;
+            width: 100%;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        /* Personalization Panel */
+        .personalization-panel {
+            position: fixed;
+            top: 20px;
+            right: 20px;
+            background: rgba(0, 20, 40, 0.95);
+            border-radius: 15px;
+            padding: 20px;
+            box-shadow: var(--panel-shadow);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            z-index: 1000;
+            min-width: 280px;
+            max-height: 90vh;
+            overflow-y: auto;
+            transition: var(--transition);
+            transform: translateX(320px);
+        }
+
+        .personalization-panel.active {
+            transform: translateX(0);
+        }
+
+        .personalization-toggle {
+            position: fixed;
+            top: 20px;
+            right: 20px;
+            background: var(--gradient-1);
+            border: none;
+            padding: 15px;
+            border-radius: 50%;
+            cursor: pointer;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
+            z-index: 999;
+            transition: var(--transition);
+            width: 60px;
+            height: 60px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .personalization-toggle:hover {
+            transform: rotate(90deg) scale(1.1);
+        }
+
+        .personalization-toggle i {
+            color: white;
+            font-size: 1.5rem;
+        }
+
+        .setting-group {
+            margin-bottom: 20px;
+            padding-bottom: 15px;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .setting-group:last-child {
+            border-bottom: none;
+        }
+
+        .setting-label {
+            display: block;
+            margin-bottom: 8px;
+            color: #3498db;
+            font-weight: 600;
+            font-size: 0.95rem;
+        }
+
+        .setting-input {
+            width: 100%;
+            padding: 10px;
+            border-radius: 8px;
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            background: rgba(44, 62, 80, 0.7);
+            color: white;
+            font-family: inherit;
+            transition: var(--transition);
+        }
+
+        .setting-input:focus {
+            outline: none;
+            border-color: var(--secondary);
+            box-shadow: 0 0 10px rgba(52, 152, 219, 0.3);
+        }
+
+        .theme-selector {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 10px;
+            margin-top: 10px;
+        }
+
+        .theme-option {
+            padding: 10px;
+            border-radius: 8px;
+            cursor: pointer;
+            text-align: center;
+            font-size: 0.85rem;
+            transition: var(--transition);
+            border: 2px solid transparent;
+        }
+
+        .theme-option:hover {
+            transform: scale(1.05);
+        }
+
+        .theme-option.active {
+            border-color: var(--secondary);
+            box-shadow: 0 0 15px rgba(52, 152, 219, 0.5);
+        }
+
+        .theme-classic { background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); }
+        .theme-ocean { background: linear-gradient(135deg, #4facfe 0%, #00f2fe 100%); }
+        .theme-sunset { background: linear-gradient(135deg, #fa709a 0%, #fee140 100%); }
+        .theme-forest { background: linear-gradient(135deg, #0ba360 0%, #3cba92 100%); }
+        .theme-midnight { background: linear-gradient(135deg, #232526 0%, #414345 100%); }
+        .theme-royal { background: linear-gradient(135deg, #b92b27 0%, #1565c0 100%); }
 
         .header {
             text-align: center;
             margin-bottom: 30px;
             width: 100%;
             max-width: 1000px;
-            padding: 20px;
-            background: rgba(0, 20, 40, 0.85);
-            border-radius: 15px;
+            padding: 30px;
+            background: rgba(0, 20, 40, 0.9);
+            border-radius: 20px;
             box-shadow: var(--panel-shadow);
             border: 1px solid rgba(255, 255, 255, 0.1);
             margin-top: 10px;
+            animation: fadeInDown 0.8s ease;
+        }
+
+        @keyframes fadeInDown {
+            from {
+                opacity: 0;
+                transform: translateY(-30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
         }
 
         h1 {
-            font-family: 'Montserrat', sans-serif;
-            font-size: 3.5rem;
-            margin-bottom: 10px;
-            background: linear-gradient(to right, #3498db, #8e44ad, #e74c3c);
+            font-family: 'Poppins', 'Montserrat', sans-serif;
+            font-size: 3.8rem;
+            margin-bottom: 15px;
+            background: linear-gradient(to right, #3498db, #8e44ad, #e74c3c, #f39c12);
             -webkit-background-clip: text;
             background-clip: text;
             color: transparent;
             text-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
-            letter-spacing: 1px;
+            letter-spacing: 2px;
             position: relative;
             display: inline-block;
+            font-weight: 800;
+            animation: gradient-shift 3s ease infinite;
+            background-size: 200% 200%;
+        }
+
+        @keyframes gradient-shift {
+            0%, 100% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+        }
+
+        h1 i {
+            animation: bounce 2s infinite;
+        }
+
+        @keyframes bounce {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-10px); }
         }
 
         h1::after {
             content: "";
             position: absolute;
-            bottom: -10px;
+            bottom: -15px;
             left: 50%;
             transform: translateX(-50%);
-            width: 70%;
-            height: 4px;
-            background: linear-gradient(to right, #3498db, #8e44ad, #e74c3c);
-            border-radius: 2px;
+            width: 80%;
+            height: 5px;
+            background: linear-gradient(to right, #3498db, #8e44ad, #e74c3c, #f39c12);
+            border-radius: 3px;
+            animation: pulse-glow 2s ease infinite;
+        }
+
+        @keyframes pulse-glow {
+            0%, 100% { opacity: 0.6; }
+            50% { opacity: 1; box-shadow: 0 0 20px currentColor; }
         }
 
         .subtitle {
-            font-size: 1.4rem;
+            font-size: 1.5rem;
             color: #bdc3c7;
-            margin-top: 15px;
-            max-width: 700px;
+            margin-top: 20px;
+            max-width: 800px;
             margin-left: auto;
             margin-right: auto;
+            line-height: 1.8;
+        }
+
+        .user-greeting {
+            font-size: 1.3rem;
+            color: #3498db;
+            margin-top: 15px;
+            font-weight: 600;
         }
 
         .container {
@@ -98,164 +352,237 @@
             flex-wrap: wrap;
             justify-content: center;
             gap: 30px;
-            max-width: 1400px;
+            max-width: 1500px;
             width: 100%;
+            animation: fadeIn 1s ease;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
         }
 
         .board-container {
-            background: rgba(30, 40, 50, 0.92);
-            border-radius: 15px;
-            padding: 25px;
+            background: rgba(30, 40, 50, 0.95);
+            border-radius: 20px;
+            padding: 30px;
             box-shadow: var(--panel-shadow);
             border: 1px solid rgba(255, 255, 255, 0.1);
             display: flex;
             flex-direction: column;
             align-items: center;
-            min-width: 450px;
+            min-width: 500px;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .board-container::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: radial-gradient(circle, rgba(52, 152, 219, 0.1) 0%, transparent 70%);
+            animation: rotate 20s linear infinite;
+            pointer-events: none;
+        }
+
+        @keyframes rotate {
+            from { transform: rotate(0deg); }
+            to { transform: rotate(360deg); }
         }
 
         #board {
-            width: 450px;
-            border-radius: 8px;
-            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.5);
+            width: 500px;
+            border-radius: 12px;
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.6);
             margin-bottom: 25px;
-            border: 2px solid var(--secondary);
+            border: 3px solid var(--secondary);
+            position: relative;
+            z-index: 1;
+            transition: var(--transition);
+        }
+
+        #board:hover {
+            transform: scale(1.02);
+            box-shadow: 0 25px 50px rgba(0, 0, 0, 0.7);
         }
 
         .status-container {
-            background: rgba(0, 20, 40, 0.85);
-            border-radius: 12px;
-            padding: 20px;
+            background: rgba(0, 20, 40, 0.9);
+            border-radius: 15px;
+            padding: 25px;
             width: 100%;
             text-align: center;
             margin-bottom: 25px;
             border: 1px solid rgba(52, 152, 219, 0.3);
             box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+            position: relative;
+            z-index: 1;
         }
 
         #status {
-            font-family: 'Montserrat', sans-serif;
-            font-size: 1.8rem;
-            font-weight: 600;
-            min-height: 36px;
-            padding: 8px 15px;
-            border-radius: 8px;
+            font-family: 'Poppins', 'Montserrat', sans-serif;
+            font-size: 2rem;
+            font-weight: 700;
+            min-height: 40px;
+            padding: 10px 20px;
+            border-radius: 10px;
             background: rgba(44, 62, 80, 0.7);
             margin-bottom: 15px;
-            letter-spacing: 0.5px;
+            letter-spacing: 1px;
         }
 
         #description {
-            font-size: 1.35rem;
+            font-size: 1.4rem;
             color: #3498db;
-            font-weight: 500;
-            min-height: 32px;
-            margin-top: 8px;
+            font-weight: 600;
+            min-height: 35px;
+            margin-top: 10px;
         }
 
         .feedback {
-            font-size: 1.5rem;
+            font-size: 1.6rem;
             font-weight: 700;
-            min-height: 40px;
-            padding: 10px;
-            border-radius: 8px;
-            margin-top: 10px;
+            min-height: 45px;
+            padding: 12px;
+            border-radius: 10px;
+            margin-top: 12px;
             display: none;
+            animation: fadeIn 0.5s ease;
         }
 
         .correct {
-            background: rgba(39, 174, 96, 0.25);
+            background: rgba(39, 174, 96, 0.3);
             color: #2ecc71;
             display: block;
-            animation: pulse 0.5s;
+            animation: pulse 0.8s;
         }
 
         .incorrect {
-            background: rgba(231, 76, 60, 0.25);
+            background: rgba(231, 76, 60, 0.3);
             color: #e74c3c;
             display: block;
-            animation: shake 0.5s;
+            animation: shake 0.6s;
+        }
+
+        @keyframes pulse {
+            0%, 100% { transform: scale(1); }
+            50% { transform: scale(1.05); }
+        }
+
+        @keyframes shake {
+            0%, 100% { transform: translateX(0); }
+            25% { transform: translateX(-10px); }
+            75% { transform: translateX(10px); }
         }
 
         .puzzle-info {
             display: flex;
             justify-content: space-between;
             width: 100%;
-            margin-top: 15px;
-            font-size: 1.15rem;
+            margin-top: 20px;
+            font-size: 1.2rem;
             color: #bdc3c7;
+            flex-wrap: wrap;
+            gap: 15px;
+        }
+
+        .puzzle-info > div {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            background: rgba(44, 62, 80, 0.5);
+            padding: 8px 15px;
+            border-radius: 20px;
         }
 
         .controls {
             display: flex;
             gap: 15px;
-            margin-top: 20px;
+            margin-top: 25px;
             flex-wrap: wrap;
             justify-content: center;
+            position: relative;
+            z-index: 1;
         }
 
         button {
-            background: linear-gradient(to right, var(--secondary), #1a5276);
+            background: linear-gradient(135deg, var(--secondary), #1a5276);
             color: white;
             border: none;
-            padding: 14px 28px;
-            font-family: 'Montserrat', sans-serif;
-            font-size: 1.15rem;
-            font-weight: 600;
+            padding: 16px 32px;
+            font-family: 'Poppins', 'Montserrat', sans-serif;
+            font-size: 1.2rem;
+            font-weight: 700;
             border-radius: 50px;
             cursor: pointer;
             transition: var(--transition);
-            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.25);
+            box-shadow: 0 6px 20px rgba(0, 0, 0, 0.3);
             display: flex;
             align-items: center;
-            gap: 8px;
-            min-width: 160px;
+            gap: 10px;
+            min-width: 180px;
             justify-content: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        button::before {
+            content: '';
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            width: 0;
+            height: 0;
+            border-radius: 50%;
+            background: rgba(255, 255, 255, 0.2);
+            transition: width 0.6s, height 0.6s, top 0.6s, left 0.6s;
+            transform: translate(-50%, -50%);
+        }
+
+        button:hover::before {
+            width: 300px;
+            height: 300px;
         }
 
         button:hover {
-            transform: translateY(-2px);
-            box-shadow: 0 6px 20px rgba(0, 0, 0, 0.3);
+            transform: translateY(-3px);
+            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.4);
         }
 
         button:active {
-            transform: translateY(1px);
+            transform: translateY(0);
         }
 
         button.secondary {
-            background: linear-gradient(to right, #2c3e50, #1a252f);
+            background: linear-gradient(135deg, #34495e, #2c3e50);
             color: #3498db;
-            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
-        }
-
-        button.secondary:hover {
-            background: linear-gradient(to right, #34495e, #2c3e50);
-            color: #2980b9;
         }
 
         button.success {
-            background: linear-gradient(to right, var(--success), #1e8449);
+            background: linear-gradient(135deg, var(--success), #1e8449);
         }
 
         button.warning {
-            background: linear-gradient(to right, var(--warning), #d35400);
+            background: linear-gradient(135deg, var(--warning), #d35400);
         }
 
         button:disabled {
-            opacity: 0.65;
+            opacity: 0.5;
             cursor: not-allowed;
             transform: none;
-            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
         }
 
         .puzzles-container {
-            background: rgba(30, 40, 50, 0.92);
-            border-radius: 15px;
+            background: rgba(30, 40, 50, 0.95);
+            border-radius: 20px;
             padding: 30px;
             box-shadow: var(--panel-shadow);
             border: 1px solid rgba(255, 255, 255, 0.1);
-            min-width: 350px;
-            max-width: 450px;
+            min-width: 400px;
+            max-width: 500px;
             display: flex;
             flex-direction: column;
         }
@@ -263,28 +590,29 @@
         .puzzles-header {
             text-align: center;
             margin-bottom: 25px;
-            padding-bottom: 15px;
-            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+            padding-bottom: 20px;
+            border-bottom: 2px solid rgba(255, 255, 255, 0.1);
         }
 
         .puzzles-header h2 {
-            font-family: 'Montserrat', sans-serif;
-            font-size: 2.2rem;
+            font-family: 'Poppins', 'Montserrat', sans-serif;
+            font-size: 2.5rem;
             color: #3498db;
-            margin-bottom: 8px;
+            margin-bottom: 10px;
+            font-weight: 800;
         }
 
         .puzzle-list {
             display: flex;
             flex-direction: column;
             gap: 15px;
-            max-height: 500px;
+            max-height: 550px;
             overflow-y: auto;
             padding-right: 10px;
         }
 
         .puzzle-list::-webkit-scrollbar {
-            width: 6px;
+            width: 8px;
         }
 
         .puzzle-list::-webkit-scrollbar-track {
@@ -297,123 +625,151 @@
             border-radius: 10px;
         }
 
+        .puzzle-list::-webkit-scrollbar-thumb:hover {
+            background: #2980b9;
+        }
+
         .puzzle-item {
-            background: rgba(44, 62, 80, 0.7);
-            border-radius: 12px;
-            padding: 15px;
+            background: rgba(44, 62, 80, 0.8);
+            border-radius: 15px;
+            padding: 18px;
             cursor: pointer;
             transition: var(--transition);
-            border-left: 4px solid var(--secondary);
+            border-left: 5px solid var(--secondary);
             display: flex;
             justify-content: space-between;
             align-items: center;
         }
 
         .puzzle-item:hover {
-            background: rgba(52, 152, 219, 0.15);
-            transform: translateX(5px);
+            background: rgba(52, 152, 219, 0.2);
+            transform: translateX(8px);
+            box-shadow: 0 5px 15px rgba(52, 152, 219, 0.3);
         }
 
         .puzzle-item.active {
-            background: rgba(46, 204, 113, 0.15);
-            border-left: 4px solid var(--success);
-            box-shadow: 0 0 15px rgba(46, 204, 113, 0.25);
+            background: rgba(46, 204, 113, 0.2);
+            border-left: 5px solid var(--success);
+            box-shadow: 0 0 20px rgba(46, 204, 113, 0.3);
         }
 
         .puzzle-item.solved {
-            border-left: 4px solid var(--success);
-            opacity: 0.85;
+            border-left: 5px solid var(--success);
+            opacity: 0.9;
         }
 
-        .puzzle-item.solved:hover {
-            opacity: 1;
-            background: rgba(46, 204, 113, 0.1);
+        .puzzle-item.solved::after {
+            content: '✓';
+            position: absolute;
+            right: 15px;
+            top: 50%;
+            transform: translateY(-50%);
+            color: var(--success);
+            font-size: 1.5rem;
+            font-weight: bold;
+        }
+
+        .puzzle-item {
+            position: relative;
         }
 
         .puzzle-title {
-            font-weight: 600;
-            font-size: 1.25rem;
-            margin-bottom: 5px;
+            font-weight: 700;
+            font-size: 1.3rem;
+            margin-bottom: 6px;
             display: flex;
             align-items: center;
-            gap: 8px;
+            gap: 10px;
         }
 
         .puzzle-desc {
-            font-size: 0.95rem;
+            font-size: 1rem;
             color: #bdc3c7;
-            margin-left: 28px;
+            margin-left: 30px;
         }
 
         .puzzle-difficulty {
-            font-size: 0.9rem;
-            padding: 3px 10px;
-            border-radius: 15px;
-            font-weight: 500;
+            font-size: 0.95rem;
+            padding: 5px 12px;
+            border-radius: 20px;
+            font-weight: 600;
         }
 
         .easy {
-            background: rgba(46, 204, 113, 0.2);
+            background: rgba(46, 204, 113, 0.25);
             color: #27ae60;
         }
 
         .medium {
-            background: rgba(241, 196, 15, 0.2);
+            background: rgba(241, 196, 15, 0.25);
             color: #f39c12;
         }
 
         .hard {
-            background: rgba(231, 76, 60, 0.2);
+            background: rgba(231, 76, 60, 0.25);
             color: #e74c3c;
         }
 
         .stats-container {
-            background: rgba(0, 20, 40, 0.85);
-            border-radius: 12px;
-            padding: 20px;
+            background: rgba(0, 20, 40, 0.9);
+            border-radius: 15px;
+            padding: 25px;
             margin-top: 25px;
             text-align: center;
             border: 1px solid rgba(52, 152, 219, 0.3);
         }
 
         .stats-title {
-            font-family: 'Montserrat', sans-serif;
-            font-size: 1.5rem;
-            margin-bottom: 15px;
+            font-family: 'Poppins', 'Montserrat', sans-serif;
+            font-size: 1.8rem;
+            margin-bottom: 20px;
             color: #3498db;
+            font-weight: 700;
         }
 
         .stats-grid {
             display: grid;
             grid-template-columns: repeat(3, 1fr);
-            gap: 12px;
+            gap: 15px;
             text-align: center;
         }
 
         .stat-item {
-            padding: 10px;
-            border-radius: 8px;
-            background: rgba(44, 62, 80, 0.6);
+            padding: 15px;
+            border-radius: 12px;
+            background: rgba(44, 62, 80, 0.7);
+            transition: var(--transition);
+        }
+
+        .stat-item:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 5px 15px rgba(52, 152, 219, 0.3);
         }
 
         .stat-value {
-            font-family: 'Montserrat', sans-serif;
-            font-size: 1.8rem;
-            font-weight: 700;
-            margin: 5px 0;
+            font-family: 'Poppins', 'Montserrat', sans-serif;
+            font-size: 2.2rem;
+            font-weight: 800;
+            margin: 8px 0;
+            background: var(--gradient-1);
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
         }
 
         .stat-label {
-            font-size: 0.95rem;
+            font-size: 1rem;
             color: #bdc3c7;
+            font-weight: 500;
         }
 
         .difficulty-indicator {
             display: inline-block;
-            width: 12px;
-            height: 12px;
+            width: 14px;
+            height: 14px;
             border-radius: 50%;
-            margin-right: 6px;
+            margin-right: 8px;
+            box-shadow: 0 0 10px currentColor;
         }
 
         .difficulty-easy { background-color: #27ae60; }
@@ -427,45 +783,59 @@
             left: 0;
             width: 100%;
             height: 100%;
-            background: rgba(0, 0, 0, 0.85);
+            background: rgba(0, 0, 0, 0.9);
             justify-content: center;
             align-items: center;
-            z-index: 1000;
+            z-index: 2000;
+            backdrop-filter: blur(10px);
         }
 
         .promotion-content {
             background: var(--dark);
-            border-radius: 15px;
-            padding: 30px;
+            border-radius: 20px;
+            padding: 40px;
             text-align: center;
-            box-shadow: 0 15px 50px rgba(0, 0, 0, 0.5);
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.6);
             border: 2px solid var(--secondary);
             max-width: 90%;
-            width: 400px;
+            width: 500px;
+            animation: zoomIn 0.4s ease;
+        }
+
+        @keyframes zoomIn {
+            from {
+                opacity: 0;
+                transform: scale(0.8);
+            }
+            to {
+                opacity: 1;
+                transform: scale(1);
+            }
         }
 
         .promotion-title {
-            font-family: 'Montserrat', sans-serif;
-            font-size: 1.8rem;
-            margin-bottom: 25px;
+            font-family: 'Poppins', 'Montserrat', sans-serif;
+            font-size: 2.2rem;
+            margin-bottom: 30px;
             color: var(--secondary);
+            font-weight: 700;
         }
 
         .promotion-pieces {
             display: flex;
             justify-content: space-around;
-            margin-top: 20px;
+            margin-top: 25px;
         }
 
         .promotion-piece {
-            width: 70px;
-            height: 70px;
+            width: 80px;
+            height: 80px;
             border-radius: 50%;
             background: var(--light);
             display: flex;
             justify-content: center;
             align-items: center;
-            font-size: 2.5rem;
+            font-size: 3rem;
             cursor: pointer;
             transition: var(--transition);
             box-shadow: var(--piece-shadow);
@@ -474,9 +844,9 @@
         }
 
         .promotion-piece:hover {
-            transform: scale(1.15);
+            transform: scale(1.2) rotate(10deg);
             border-color: var(--secondary);
-            box-shadow: 0 0 20px rgba(52, 152, 219, 0.6);
+            box-shadow: 0 0 25px rgba(52, 152, 219, 0.8);
         }
 
         .promotion-piece.q { color: #3498db; }
@@ -484,30 +854,126 @@
         .promotion-piece.b { color: #9b59b6; }
         .promotion-piece.n { color: #f39c12; }
 
+        .achievement-popup {
+            position: fixed;
+            top: 100px;
+            right: 30px;
+            background: var(--gradient-1);
+            padding: 20px 30px;
+            border-radius: 15px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+            z-index: 1500;
+            display: none;
+            animation: slideInRight 0.6s ease;
+        }
+
+        @keyframes slideInRight {
+            from {
+                transform: translateX(400px);
+                opacity: 0;
+            }
+            to {
+                transform: translateX(0);
+                opacity: 1;
+            }
+        }
+
+        .achievement-popup.show {
+            display: block;
+        }
+
+        .achievement-icon {
+            font-size: 3rem;
+            margin-bottom: 10px;
+        }
+
+        .achievement-title {
+            font-size: 1.5rem;
+            font-weight: 700;
+            margin-bottom: 5px;
+        }
+
+        .achievement-text {
+            font-size: 1.1rem;
+        }
+
         .footer {
-            margin-top: 30px;
+            margin-top: 40px;
             text-align: center;
-            padding: 20px;
-            font-size: 1.05rem;
+            padding: 25px;
+            font-size: 1.1rem;
             color: #bdc3c7;
-            max-width: 800px;
-            line-height: 1.7;
+            max-width: 900px;
+            line-height: 1.9;
+            background: rgba(0, 20, 40, 0.7);
+            border-radius: 15px;
         }
 
         .footer strong {
             color: #3498db;
         }
 
-        @keyframes pulse {
-            0% { transform: scale(1); }
-            50% { transform: scale(1.03); }
-            100% { transform: scale(1); }
+        /* Timer Display */
+        .timer-display {
+            position: absolute;
+            top: 20px;
+            left: 20px;
+            background: rgba(0, 20, 40, 0.9);
+            padding: 15px 25px;
+            border-radius: 50px;
+            font-family: 'Poppins', monospace;
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: #3498db;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+            border: 2px solid var(--secondary);
+            z-index: 100;
         }
 
-        @keyframes shake {
-            0%, 100% { transform: translateX(0); }
-            25% { transform: translateX(-5px); }
-            75% { transform: translateX(5px); }
+        .sound-toggle {
+            position: fixed;
+            bottom: 30px;
+            right: 30px;
+            background: var(--gradient-2);
+            border: none;
+            padding: 18px;
+            border-radius: 50%;
+            cursor: pointer;
+            box-shadow: 0 5px 20px rgba(0, 0, 0, 0.4);
+            z-index: 999;
+            transition: var(--transition);
+            width: 65px;
+            height: 65px;
+        }
+
+        .sound-toggle:hover {
+            transform: scale(1.15);
+        }
+
+        .sound-toggle i {
+            color: white;
+            font-size: 1.6rem;
+        }
+
+        @media (max-width: 1200px) {
+            .personalization-panel {
+                top: auto;
+                bottom: 0;
+                right: 0;
+                left: 0;
+                transform: translateY(100%);
+                border-radius: 20px 20px 0 0;
+                max-height: 70vh;
+            }
+            
+            .personalization-panel.active {
+                transform: translateY(0);
+            }
+            
+            .personalization-toggle {
+                bottom: 20px;
+                top: auto;
+            }
         }
 
         @media (max-width: 900px) {
@@ -518,20 +984,27 @@
             
             .board-container, .puzzles-container {
                 min-width: 100%;
-                max-width: 600px;
+                max-width: 650px;
             }
             
             #board {
                 width: 100%;
-                max-width: 500px;
+                max-width: 550px;
             }
             
             h1 {
-                font-size: 2.8rem;
+                font-size: 3rem;
             }
             
             .subtitle {
-                font-size: 1.25rem;
+                font-size: 1.3rem;
+            }
+
+            .timer-display {
+                position: relative;
+                top: auto;
+                left: auto;
+                margin-bottom: 20px;
             }
         }
 
@@ -541,166 +1014,207 @@
             }
             
             .header {
-                padding: 15px;
+                padding: 20px;
                 margin-top: 0;
             }
             
             h1 {
-                font-size: 2.3rem;
-            }
-            
-            h1::after {
-                bottom: -8px;
-                width: 60%;
+                font-size: 2.5rem;
             }
             
             .subtitle {
-                font-size: 1.1rem;
+                font-size: 1.15rem;
             }
             
             #board {
-                max-width: 350px;
-                width: 100%;
+                max-width: 400px;
             }
             
             .board-container, .puzzles-container {
                 padding: 20px 15px;
-                min-width: 100%;
             }
             
             button {
-                padding: 12px 22px;
-                font-size: 1.05rem;
-                min-width: 140px;
+                padding: 14px 25px;
+                font-size: 1.1rem;
+                min-width: 150px;
             }
             
-            .controls {
-                gap: 10px;
-                flex-direction: column;
-                align-items: center;
+            .personalization-toggle,
+            .sound-toggle {
+                width: 55px;
+                height: 55px;
             }
-            
-            .puzzle-title {
-                font-size: 1.15rem;
-            }
-            
-            .puzzle-desc {
-                font-size: 0.9rem;
-                margin-left: 25px;
-            }
+        }
+
+        /* Confetti Canvas */
+        #confetti-canvas {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            z-index: 9999;
         }
     </style>
 </head>
 <body>
-    <div class="header">
-        <h1><i class="fas fa-chess-knight"></i> TACTICAL CHESS PUZZLES <i class="fas fa-chess-knight"></i></h1>
-        <div class="subtitle">Sharpen your chess skills with challenging tactical puzzles. Test your ability to spot winning combinations, forks, pins, and checkmates!</div>
-    </div>
+    <div id="particles-js"></div>
+    <canvas id="confetti-canvas"></canvas>
+    
+    <!-- Personalization Toggle -->
+    <button class="personalization-toggle" id="personalization-toggle">
+        <i class="fas fa-cog"></i>
+    </button>
 
-    <div class="container">
-        <div class="board-container">
-            <div id="board"></div>
-            
-            <div class="status-container">
-                <div id="status">White to play</div>
-                <div id="description">Find the best move for White</div>
-                <div id="feedback" class="feedback"></div>
-            </div>
-            
-            <div class="puzzle-info">
-                <div><i class="fas fa-chess-pawn"></i> <span id="puzzle-rating">1200</span> rating</div>
-                <div><i class="fas fa-medal"></i> Puzzle <span id="puzzle-number">1</span> of <span id="total-puzzles">5</span></div>
-                <div><i class="fas fa-bolt"></i> <span id="puzzle-type">Mate in 1</span></div>
-            </div>
-            
-            <div class="controls">
-                <button id="reset-btn" class="secondary">
-                    <i class="fas fa-undo"></i> Reset
-                </button>
-                <button id="hint-btn" class="secondary">
-                    <i class="fas fa-lightbulb"></i> Hint
-                </button>
-                <button id="next-btn" class="warning" disabled>
-                    <i class="fas fa-arrow-right"></i> Next Puzzle
-                </button>
-                <button id="solution-btn" class="secondary">
-                    <i class="fas fa-eye"></i> Show Solution
-                </button>
+    <!-- Personalization Panel -->
+    <div class="personalization-panel" id="personalization-panel">
+        <h3 style="margin-bottom: 20px; color: #3498db; font-size: 1.8rem; font-weight: 700;">
+            <i class="fas fa-user-cog"></i> Personalization
+        </h3>
+        
+        <div class="setting-group">
+            <label class="setting-label">Your Name</label>
+            <input type="text" class="setting-input" id="user-name" placeholder="Enter your name">
+        </div>
+        
+        <div class="setting-group">
+            <label class="setting-label">Chess Rating (ELO)</label>
+            <input type="number" class="setting-input" id="user-rating" placeholder="e.g., 1500" min="0" max="3000">
+        </div>
+        
+        <div class="setting-group">
+            <label class="setting-label">Theme</label>
+            <div class="theme-selector">
+                <div class="theme-option theme-classic active" data-theme="classic">Classic</div>
+                <div class="theme-option theme-ocean" data-theme="ocean">Ocean</div>
+                <div class="theme-option theme-sunset" data-theme="sunset">Sunset</div>
+                <div class="theme-option theme-forest" data-theme="forest">Forest</div>
+                <div class="theme-option theme-midnight" data-theme="midnight">Midnight</div>
+                <div class="theme-option theme-royal" data-theme="royal">Royal</div>
             </div>
         </div>
         
-        <div class="puzzles-container">
-            <div class="puzzles-header">
-                <h2><i class="fas fa-list"></i> Puzzle Collection</h2>
-                <div>Test your tactical vision with these carefully selected positions</div>
+        <div class="setting-group">
+            <label class="setting-label">Difficulty Preference</label>
+            <select class="setting-input" id="difficulty-pref">
+                <option value="all">All Levels</option>
+                <option value="easy">Easy Only</option>
+                <option value="medium">Medium Only</option>
+                <option value="hard">Hard Only</option>
+            </select>
+        </div>
+        
+        <div class="setting-group">
+            <label class="setting-label">Board Orientation</label>
+            <select class="setting-input" id="board-orientation">
+                <option value="white">White Bottom</option>
+                <option value="black">Black Bottom</option>
+            </select>
+        </div>
+        
+        <div class="setting-group">
+            <label class="setting-label">
+                <input type="checkbox" id="show-hints" checked> Show Hints
+            </label>
+        </div>
+        
+        <div class="setting-group">
+            <label class="setting-label">
+                <input type="checkbox" id="enable-timer"> Enable Timer
+            </label>
+        </div>
+        
+        <div class="setting-group">
+            <label class="setting-label">
+                <input type="checkbox" id="enable-sound" checked> Enable Sound
+            </label>
+        </div>
+    </div>
+
+    <div class="content-wrapper">
+        <div class="header animate__animated animate__fadeInDown">
+            <h1><i class="fas fa-chess-knight"></i> TACTICAL CHESS PUZZLES <i class="fas fa-chess-knight"></i></h1>
+            <div class="subtitle">Sharpen your chess skills with challenging tactical puzzles. Master forks, pins, skewers, and checkmates!</div>
+            <div class="user-greeting" id="user-greeting">Welcome, Chess Master! 👋</div>
+        </div>
+
+        <div class="timer-display" id="timer-display" style="display: none;">
+            <i class="fas fa-clock"></i> <span id="timer">00:00</span>
+        </div>
+
+        <div class="container">
+            <div class="board-container animate__animated animate__fadeInLeft">
+                <div id="board"></div>
+                
+                <div class="status-container">
+                    <div id="status">White to play</div>
+                    <div id="description">Find the best move for White</div>
+                    <div id="feedback" class="feedback"></div>
+                </div>
+                
+                <div class="puzzle-info">
+                    <div><i class="fas fa-chess-pawn"></i> <span id="puzzle-rating">1200</span> ELO</div>
+                    <div><i class="fas fa-medal"></i> Puzzle <span id="puzzle-number">1</span> of <span id="total-puzzles">5</span></div>
+                    <div><i class="fas fa-bolt"></i> <span id="puzzle-type">Mate in 1</span></div>
+                </div>
+                
+                <div class="controls">
+                    <button id="reset-btn" class="secondary">
+                        <i class="fas fa-undo"></i> Reset
+                    </button>
+                    <button id="hint-btn" class="secondary">
+                        <i class="fas fa-lightbulb"></i> Hint
+                    </button>
+                    <button id="next-btn" class="warning" disabled>
+                        <i class="fas fa-arrow-right"></i> Next
+                    </button>
+                    <button id="solution-btn" class="secondary">
+                        <i class="fas fa-eye"></i> Solution
+                    </button>
+                </div>
             </div>
             
-            <div class="puzzle-list">
-                <div class="puzzle-item active" data-index="0">
-                    <div>
-                        <div class="puzzle-title"><i class="fas fa-chess-knight difficulty-indicator difficulty-easy"></i> Deadly Fork</div>
-                        <div class="puzzle-desc">White to play and win material</div>
-                    </div>
-                    <div class="puzzle-difficulty easy">Easy</div>
+            <div class="puzzles-container animate__animated animate__fadeInRight">
+                <div class="puzzles-header">
+                    <h2><i class="fas fa-list"></i> Puzzle Collection</h2>
+                    <div>Carefully curated tactical positions</div>
                 </div>
-                <div class="puzzle-item" data-index="1">
-                    <div>
-                        <div class="puzzle-title"><i class="fas fa-chess-knight difficulty-indicator difficulty-medium"></i> Pin & Win</div>
-                        <div class="puzzle-desc">Black to play and gain advantage</div>
-                    </div>
-                    <div class="puzzle-difficulty medium">Medium</div>
+                
+                <div class="puzzle-list" id="puzzle-list">
+                    <!-- Puzzles will be dynamically generated -->
                 </div>
-                <div class="puzzle-item" data-index="2">
-                    <div>
-                        <div class="puzzle-title"><i class="fas fa-chess-knight difficulty-indicator difficulty-hard"></i> Royal Attack</div>
-                        <div class="puzzle-desc">White to play and checkmate in 2</div>
-                    </div>
-                    <div class="puzzle-difficulty hard">Hard</div>
-                </div>
-                <div class="puzzle-item" data-index="3">
-                    <div>
-                        <div class="puzzle-title"><i class="fas fa-chess-knight difficulty-indicator difficulty-medium"></i> Discovered Attack</div>
-                        <div class="puzzle-desc">Black to play and win the queen</div>
-                    </div>
-                    <div class="puzzle-difficulty medium">Medium</div>
-                </div>
-                <div class="puzzle-item" data-index="4">
-                    <div>
-                        <div class="puzzle-title"><i class="fas fa-chess-knight difficulty-indicator difficulty-hard"></i> Deflection Sacrifice</div>
-                        <div class="puzzle-desc">White to play and force checkmate</div>
-                    </div>
-                    <div class="puzzle-difficulty hard">Hard</div>
-                </div>
-            </div>
-            
-            <div class="stats-container">
-                <div class="stats-title"><i class="fas fa-chart-line"></i> Your Progress</div>
-                <div class="stats-grid">
-                    <div class="stat-item">
-                        <div class="stat-value" id="solved-count">0</div>
-                        <div class="stat-label">Solved</div>
-                    </div>
-                    <div class="stat-item">
-                        <div class="stat-value" id="attempted-count">0</div>
-                        <div class="stat-label">Attempted</div>
-                    </div>
-                    <div class="stat-item">
-                        <div class="stat-value" id="success-rate">0%</div>
-                        <div class="stat-label">Success Rate</div>
+                
+                <div class="stats-container">
+                    <div class="stats-title"><i class="fas fa-chart-line"></i> Your Progress</div>
+                    <div class="stats-grid">
+                        <div class="stat-item">
+                            <div class="stat-value" id="solved-count">0</div>
+                            <div class="stat-label">Solved</div>
+                        </div>
+                        <div class="stat-item">
+                            <div class="stat-value" id="attempted-count">0</div>
+                            <div class="stat-label">Attempted</div>
+                        </div>
+                        <div class="stat-item">
+                            <div class="stat-value" id="success-rate">0%</div>
+                            <div class="stat-label">Success</div>
+                        </div>
                     </div>
                 </div>
             </div>
         </div>
-    </div>
-    
-    <div class="footer">
-        <p>Tactical Chess Puzzles &copy; 2026 | Train your chess vision with puzzles ranging from beginner to master level</p>
-        <p>Drag and drop pieces to make your move. <strong>Hint:</strong> Look for checks, captures, and threats!</p>
+        
+        <div class="footer">
+            <p><strong>SoftwareLabs</strong> © 2026 | Train your tactical vision from beginner to grandmaster level.</p>
+            <p>Drag pieces to make your move. Look for <strong>checks</strong>, <strong>captures</strong>, and <strong>threats</strong>!</p>
+        </div>
     </div>
     
     <div class="promotion-modal" id="promotion-modal">
         <div class="promotion-content">
-            <div class="promotion-title">Choose promotion piece</div>
+            <div class="promotion-title"><i class="fas fa-crown"></i> Choose Promotion Piece</div>
             <div class="promotion-pieces">
                 <div class="promotion-piece q" data-piece="q">♕</div>
                 <div class="promotion-piece r" data-piece="r">♖</div>
@@ -710,10 +1224,56 @@
         </div>
     </div>
 
+    <div class="achievement-popup" id="achievement-popup">
+        <div class="achievement-icon">🏆</div>
+        <div class="achievement-title">Achievement Unlocked!</div>
+        <div class="achievement-text" id="achievement-text"></div>
+    </div>
+
+    <button class="sound-toggle" id="sound-toggle">
+        <i class="fas fa-volume-up"></i>
+    </button>
+
     <script>
         document.addEventListener('DOMContentLoaded', () => {
-            // Puzzle database
-            const puzzles = [
+        
+            particlesJS('particles-js', {
+                particles: {
+                    number: { value: 80, density: { enable: true, value_area: 800 } },
+                    color: { value: '#3498db' },
+                    shape: { type: 'circle' },
+                    opacity: { value: 0.5, random: true },
+                    size: { value: 3, random: true },
+                    line_linked: { enable: true, distance: 150, color: '#3498db', opacity: 0.4, width: 1 },
+                    move: { enable: true, speed: 2, direction: 'none', random: true, out_mode: 'out' }
+                },
+                interactivity: {
+                    detect_on: 'canvas',
+                    events: { onhover: { enable: true, mode: 'repulse' }, onclick: { enable: true, mode: 'push' } }
+                }
+            });
+
+           
+            const notyf = new Notyf({
+                duration: 3000,
+                position: { x: 'right', y: 'top' },
+                types: [
+                    { type: 'success', background: '#27ae60', icon: { className: 'fas fa-check-circle', tagName: 'i' } },
+                    { type: 'error', background: '#e74c3c', icon: { className: 'fas fa-times-circle', tagName: 'i' } },
+                    { type: 'info', background: '#3498db', icon: { className: 'fas fa-info-circle', tagName: 'i' } }
+                ]
+            });
+
+         
+            let soundEnabled = true;
+            const sounds = {
+                move: new Howl({ src: ['https://www.soundjay.com/buttons/sounds/button-3.mp3'], volume: 0.3 }),
+                correct: new Howl({ src: ['https://www.soundjay.com/misc/sounds/bell-ringing-05.mp3'], volume: 0.5 }),
+                wrong: new Howl({ src: ['https://www.soundjay.com/misc/sounds/fail-buzzer-01.mp3'], volume: 0.3 })
+            };
+
+        
+            const allPuzzles = [
                 {
                     fen: 'rnbqkb1r/ppp2ppp/4pn2/3p4/3P4/2N1PN2/PPP2PPP/R1BQKB1R w KQkq - 0 5',
                     userColor: 'w',
@@ -721,7 +1281,8 @@
                     description: 'White to play and win a pawn',
                     rating: 1100,
                     type: 'Material gain',
-                    difficulty: 'easy'
+                    difficulty: 'easy',
+                    name: 'Deadly Fork'
                 },
                 {
                     fen: 'r3k2r/pbppqppp/1pnb1n2/4p3/4P3/2PP1N2/PPBN1PPP/R2Q1RK1 b kq - 0 10',
@@ -730,7 +1291,8 @@
                     description: 'Black to play and win a piece',
                     rating: 1400,
                     type: 'Fork',
-                    difficulty: 'medium'
+                    difficulty: 'medium',
+                    name: 'Pin & Win'
                 },
                 {
                     fen: '5rk1/1p4pp/2p5/4b3/8/1P4P1/1P3PKP/4R3 w - - 0 35',
@@ -739,7 +1301,8 @@
                     description: 'White to play and checkmate',
                     rating: 1600,
                     type: 'Checkmate',
-                    difficulty: 'hard'
+                    difficulty: 'hard',
+                    name: 'Royal Attack'
                 },
                 {
                     fen: 'r1bqkb1r/ppp2ppp/2n2n2/3pp3/4P3/2PP1N2/PP3PPP/RNBQKB1R b KQkq - 0 5',
@@ -748,7 +1311,8 @@
                     description: 'Black to play and win a pawn',
                     rating: 1300,
                     type: 'Material gain',
-                    difficulty: 'medium'
+                    difficulty: 'medium',
+                    name: 'Discovered Attack'
                 },
                 {
                     fen: 'rnbqk2r/ppp2ppp/3b4/3pP3/8/2P2N2/PP3PPP/RNBQKB1R w KQkq - 0 8',
@@ -757,22 +1321,269 @@
                     description: 'White to play and force checkmate',
                     rating: 1800,
                     type: 'Checkmate in 2',
-                    difficulty: 'hard'
+                    difficulty: 'hard',
+                    name: 'Deflection Sacrifice'
                 }
             ];
 
+            // User preferences
+            let userPreferences = {
+                name: localStorage.getItem('userName') || '',
+                rating: localStorage.getItem('userRating') || '',
+                theme: localStorage.getItem('theme') || 'classic',
+                difficulty: localStorage.getItem('difficulty') || 'all',
+                orientation: localStorage.getItem('orientation') || 'white',
+                showHints: localStorage.getItem('showHints') !== 'false',
+                enableTimer: localStorage.getItem('enableTimer') === 'true',
+                enableSound: localStorage.getItem('enableSound') !== 'false'
+            };
+
+            // Apply saved preferences
+            document.getElementById('user-name').value = userPreferences.name;
+            document.getElementById('user-rating').value = userPreferences.rating;
+            document.getElementById('difficulty-pref').value = userPreferences.difficulty;
+            document.getElementById('board-orientation').value = userPreferences.orientation;
+            document.getElementById('show-hints').checked = userPreferences.showHints;
+            document.getElementById('enable-timer').checked = userPreferences.enableTimer;
+            document.getElementById('enable-sound').checked = userPreferences.enableSound;
+            soundEnabled = userPreferences.enableSound;
+
+            // Update greeting
+            function updateGreeting() {
+                const greeting = document.getElementById('user-greeting');
+                const name = userPreferences.name || 'Chess Master';
+                const rating = userPreferences.rating ? ` (${userPreferences.rating} ELO)` : '';
+                greeting.textContent = `Welcome, ${name}${rating}! 👋`;
+            }
+            updateGreeting();
+
+            // Theme management
+            const themes = {
+                classic: { primary: '#1a2a6c', secondary: '#3498db', accent: '#e74c3c' },
+                ocean: { primary: '#1a5490', secondary: '#4facfe', accent: '#00f2fe' },
+                sunset: { primary: '#4a1942', secondary: '#fa709a', accent: '#fee140' },
+                forest: { primary: '#0a4d3c', secondary: '#0ba360', accent: '#3cba92' },
+                midnight: { primary: '#232526', secondary: '#414345', accent: '#636466' },
+                royal: { primary: '#1a1a5e', secondary: '#b92b27', accent: '#1565c0' }
+            };
+
+            function applyTheme(themeName) {
+                const theme = themes[themeName];
+                if (theme) {
+                    document.documentElement.style.setProperty('--primary', theme.primary);
+                    document.documentElement.style.setProperty('--secondary', theme.secondary);
+                    document.documentElement.style.setProperty('--accent', theme.accent);
+                    document.body.style.background = `linear-gradient(135deg, ${theme.primary}, #2c3e50, ${theme.secondary})`;
+                }
+            }
+            applyTheme(userPreferences.theme);
+
+            // Personalization panel toggle
+            const personalizationToggle = document.getElementById('personalization-toggle');
+            const personalizationPanel = document.getElementById('personalization-panel');
+            
+            personalizationToggle.addEventListener('click', () => {
+                personalizationPanel.classList.toggle('active');
+            });
+
+            // Save preferences
+            function savePreference(key, value) {
+                localStorage.setItem(key, value);
+                userPreferences[key] = value;
+            }
+
+            // Preference change handlers
+            document.getElementById('user-name').addEventListener('change', (e) => {
+                savePreference('userName', e.target.value);
+                savePreference('name', e.target.value);
+                updateGreeting();
+                notyf.success('Name saved!');
+            });
+
+            document.getElementById('user-rating').addEventListener('change', (e) => {
+                savePreference('userRating', e.target.value);
+                savePreference('rating', e.target.value);
+                updateGreeting();
+                notyf.success('Rating saved!');
+            });
+
+            document.querySelectorAll('.theme-option').forEach(option => {
+                option.addEventListener('click', () => {
+                    document.querySelectorAll('.theme-option').forEach(o => o.classList.remove('active'));
+                    option.classList.add('active');
+                    const theme = option.getAttribute('data-theme');
+                    savePreference('theme', theme);
+                    applyTheme(theme);
+                    notyf.success(`${theme.charAt(0).toUpperCase() + theme.slice(1)} theme applied!`);
+                });
+            });
+
+            document.getElementById('difficulty-pref').addEventListener('change', (e) => {
+                savePreference('difficulty', e.target.value);
+                generatePuzzleList();
+                notyf.info('Difficulty preference updated!');
+            });
+
+            document.getElementById('board-orientation').addEventListener('change', (e) => {
+                savePreference('orientation', e.target.value);
+                board.orientation(e.target.value);
+                notyf.info('Board orientation changed!');
+            });
+
+            document.getElementById('show-hints').addEventListener('change', (e) => {
+                savePreference('showHints', e.target.checked);
+            });
+
+            document.getElementById('enable-timer').addEventListener('change', (e) => {
+                savePreference('enableTimer', e.target.checked);
+                if (e.target.checked) {
+                    document.getElementById('timer-display').style.display = 'block';
+                    startTimer();
+                } else {
+                    document.getElementById('timer-display').style.display = 'none';
+                    stopTimer();
+                }
+            });
+
+            document.getElementById('enable-sound').addEventListener('change', (e) => {
+                savePreference('enableSound', e.target.checked);
+                soundEnabled = e.target.checked;
+                document.querySelector('#sound-toggle i').className = soundEnabled ? 'fas fa-volume-up' : 'fas fa-volume-mute';
+            });
+
+            // Sound toggle button
+            document.getElementById('sound-toggle').addEventListener('click', () => {
+                soundEnabled = !soundEnabled;
+                savePreference('enableSound', soundEnabled);
+                document.getElementById('enable-sound').checked = soundEnabled;
+                document.querySelector('#sound-toggle i').className = soundEnabled ? 'fas fa-volume-up' : 'fas fa-volume-mute';
+                notyf.info(soundEnabled ? 'Sound enabled' : 'Sound muted');
+            });
+
+            // Timer functionality
+            let timerInterval = null;
+            let timerSeconds = 0;
+
+            function startTimer() {
+                timerSeconds = 0;
+                updateTimerDisplay();
+                timerInterval = setInterval(() => {
+                    timerSeconds++;
+                    updateTimerDisplay();
+                }, 1000);
+            }
+
+            function stopTimer() {
+                if (timerInterval) {
+                    clearInterval(timerInterval);
+                    timerInterval = null;
+                }
+            }
+
+            function resetTimer() {
+                stopTimer();
+                if (userPreferences.enableTimer) {
+                    startTimer();
+                }
+            }
+
+            function updateTimerDisplay() {
+                const minutes = Math.floor(timerSeconds / 60);
+                const seconds = timerSeconds % 60;
+                document.getElementById('timer').textContent = 
+                    `${String(minutes).padStart(2, '0')}:${String(seconds).padStart(2, '0')}`;
+            }
+
+         
+            function getFilteredPuzzles() {
+                if (userPreferences.difficulty === 'all') {
+                    return allPuzzles;
+                }
+                return allPuzzles.filter(p => p.difficulty === userPreferences.difficulty);
+            }
+
+          
+            function generatePuzzleList() {
+                const puzzleList = document.getElementById('puzzle-list');
+                const puzzles = getFilteredPuzzles();
+                
+                puzzleList.innerHTML = puzzles.map((puzzle, index) => `
+                    <div class="puzzle-item ${index === 0 ? 'active' : ''}" data-index="${index}">
+                        <div>
+                            <div class="puzzle-title">
+                                <i class="fas fa-chess-knight difficulty-indicator difficulty-${puzzle.difficulty}"></i>
+                                ${puzzle.name}
+                            </div>
+                            <div class="puzzle-desc">${puzzle.description}</div>
+                        </div>
+                        <div class="puzzle-difficulty ${puzzle.difficulty}">${puzzle.difficulty.charAt(0).toUpperCase() + puzzle.difficulty.slice(1)}</div>
+                    </div>
+                `).join('');
+
+                // Add click handlers
+                document.querySelectorAll('.puzzle-item').forEach(item => {
+                    item.addEventListener('click', () => {
+                        const index = parseInt(item.getAttribute('data-index'));
+                        loadPuzzle(index);
+                    });
+                });
+
+                document.getElementById('total-puzzles').textContent = puzzles.length;
+            }
+
             // App state
             let currentPuzzleIndex = 0;
+            let puzzles = getFilteredPuzzles();
             let currentPuzzle = puzzles[0];
             let chess = new Chess(currentPuzzle.fen);
             let board = null;
             let userPromotionPiece = 'q';
-            let puzzleStats = {
+            let puzzleStats = JSON.parse(localStorage.getItem('puzzleStats')) || {
                 solved: 0,
                 attempted: 0,
                 solvedPuzzles: new Set()
             };
-            
+            puzzleStats.solvedPuzzles = new Set(puzzleStats.solvedPuzzles);
+
+            // Update stats display
+            function updateStatsDisplay() {
+                document.getElementById('solved-count').textContent = puzzleStats.solved;
+                document.getElementById('attempted-count').textContent = puzzleStats.attempted;
+                const successRate = puzzleStats.attempted > 0 
+                    ? Math.round((puzzleStats.solved / puzzleStats.attempted) * 100) 
+                    : 0;
+                document.getElementById('success-rate').textContent = `${successRate}%`;
+                
+                // Save to localStorage
+                localStorage.setItem('puzzleStats', JSON.stringify({
+                    ...puzzleStats,
+                    solvedPuzzles: Array.from(puzzleStats.solvedPuzzles)
+                }));
+            }
+            updateStatsDisplay();
+
+            // Load puzzle
+            function loadPuzzle(index) {
+                currentPuzzleIndex = index;
+                puzzles = getFilteredPuzzles();
+                currentPuzzle = puzzles[index];
+                chess = new Chess(currentPuzzle.fen);
+                board.position(chess.fen());
+                board.orientation(currentPuzzle.userColor === 'w' ? 'white' : 'black');
+                
+                // Update active puzzle
+                document.querySelectorAll('.puzzle-item').forEach((item, i) => {
+                    if (i === index) {
+                        item.classList.add('active');
+                    } else {
+                        item.classList.remove('active');
+                    }
+                });
+                
+                updateStatus();
+                resetTimer();
+            }
+
             // Initialize the board
             function initBoard() {
                 const config = {
@@ -781,263 +1592,208 @@
                     onDragStart: onDragStart,
                     onDrop: onDrop,
                     onSnapEnd: onSnapEnd,
-                    pieceTheme: 'https://chessboardjs.com/img/chesspieces/wikipedia/{piece}.png'
+                    pieceTheme: 'https://chessboardjs.com/img/chesspieces/wikipedia/{piece}.png',
+                    orientation: userPreferences.orientation
                 };
                 
                 board = Chessboard('board', config);
                 updateStatus();
+                generatePuzzleList();
+                
+                if (userPreferences.enableTimer) {
+                    document.getElementById('timer-display').style.display = 'block';
+                    startTimer();
+                }
             }
-            
-            // Update status messages
+
+            // Update status
             function updateStatus() {
                 const statusEl = document.getElementById('status');
                 const descEl = document.getElementById('description');
                 const ratingEl = document.getElementById('puzzle-rating');
                 const numberEl = document.getElementById('puzzle-number');
-                const totalEl = document.getElementById('total-puzzles');
                 const typeEl = document.getElementById('puzzle-type');
                 const nextBtn = document.getElementById('next-btn');
                 
-                // Set puzzle info
                 ratingEl.textContent = currentPuzzle.rating;
                 numberEl.textContent = currentPuzzleIndex + 1;
-                totalEl.textContent = puzzles.length;
                 typeEl.textContent = currentPuzzle.type;
-                
-                // Set description and turn
                 descEl.textContent = currentPuzzle.description;
+                
                 const turn = currentPuzzle.userColor === 'w' ? 'White' : 'Black';
                 statusEl.textContent = `${turn} to play`;
-                statusEl.className = '';
                 
-                // Reset feedback
                 document.getElementById('feedback').textContent = '';
                 document.getElementById('feedback').className = 'feedback';
                 
-                // Enable/disable next button
+                nextBtn.disabled = !puzzleStats.solvedPuzzles.has(currentPuzzleIndex);
+                
                 if (puzzleStats.solvedPuzzles.has(currentPuzzleIndex)) {
-                    nextBtn.disabled = false;
-                } else {
-                    nextBtn.disabled = true;
+                    document.querySelectorAll('.puzzle-item')[currentPuzzleIndex]?.classList.add('solved');
                 }
             }
-            
-            // Validate move on drag start
-            function onDragStart(source, piece, position, orientation) {
-                // Only allow user to move pieces of their color
-                const pieceColor = piece[0] === 'w' ? 'w' : 'b';
+
+            function onDragStart(source, piece) {
+                const pieceColor = piece[0];
                 const isUserTurn = chess.turn() === currentPuzzle.userColor;
                 const isUserPiece = pieceColor === currentPuzzle.userColor;
-                
-                // Don't allow dragging if not user's turn or not user's piece
                 return isUserTurn && isUserPiece;
             }
-            
-            // Handle piece drop
+
             function onDrop(source, target) {
-                // Check if it's user's turn
                 if (chess.turn() !== currentPuzzle.userColor) {
                     return 'snapback';
                 }
-                
-                // Check for promotion
-                let promotion = '';
+
                 const piece = chess.get(source);
                 if (piece && piece.type === 'p') {
                     const targetRank = target[1];
                     if ((piece.color === 'w' && targetRank === '8') || 
                         (piece.color === 'b' && targetRank === '1')) {
-                        // Show promotion modal
-                        document.getElementById('promotion-modal').style.display = 'flex';
-                        
-                        // Wait for user selection
-                        return new Promise((resolve) => {
-                            const modal = document.getElementById('promotion-modal');
-                            const pieces = modal.querySelectorAll('.promotion-piece');
-                            
-                            const handlePromotion = (pieceType) => {
-                                userPromotionPiece = pieceType;
-                                modal.style.display = 'none';
-                                
-                                // Make the move with promotion
-                                const move = chess.move({
-                                    from: source,
-                                    to: target,
-                                    promotion: userPromotionPiece
-                                });
-                                
-                                if (move === null) {
-                                    resolve('snapback');
-                                } else {
-                                    resolve('');
-                                    checkPuzzleSolution(move.san);
-                                }
-                                
-                                // Remove event listeners
-                                pieces.forEach(p => p.removeEventListener('click', () => {}));
-                            };
-                            
-                            pieces.forEach(pieceEl => {
-                                pieceEl.addEventListener('click', () => {
-                                    const pieceType = pieceEl.getAttribute('data-piece');
-                                    handlePromotion(pieceType);
-                                });
-                            });
-                        });
+                        showPromotionModal(source, target);
+                        return;
                     }
                 }
+
+                const move = chess.move({ from: source, to: target, promotion: 'q' });
                 
-                // Try to make the move
-                const move = chess.move({
-                    from: source,
-                    to: target,
-                    promotion: promotion || 'q' // default to queen if needed
-                });
-                
-                // Illegal move
                 if (move === null) return 'snapback';
                 
-                // Check if the move solves the puzzle
+                if (soundEnabled) sounds.move.play();
                 checkPuzzleSolution(move.san);
-                
-                return '';
             }
-            
-            // Handle snap end (visual update)
+
             function onSnapEnd() {
                 board.position(chess.fen());
             }
-            
-            // Check if the move is the solution
+
+            function showPromotionModal(source, target) {
+                const modal = document.getElementById('promotion-modal');
+                modal.style.display = 'flex';
+                
+                const pieces = modal.querySelectorAll('.promotion-piece');
+                pieces.forEach(pieceEl => {
+                    pieceEl.onclick = () => {
+                        const pieceType = pieceEl.getAttribute('data-piece');
+                        modal.style.display = 'none';
+                        
+                        const move = chess.move({ from: source, to: target, promotion: pieceType });
+                        if (move) {
+                            board.position(chess.fen());
+                            if (soundEnabled) sounds.move.play();
+                            checkPuzzleSolution(move.san);
+                        }
+                    };
+                });
+            }
+
             function checkPuzzleSolution(moveSan) {
                 const feedbackEl = document.getElementById('feedback');
                 const nextBtn = document.getElementById('next-btn');
                 
                 puzzleStats.attempted++;
-                document.getElementById('attempted-count').textContent = puzzleStats.attempted;
                 
-                // Check if move matches solution
                 if (moveSan === currentPuzzle.solution[0]) {
-                    // Correct solution
-                    feedbackEl.textContent = '✓ Correct! Brilliant tactic!';
+                    feedbackEl.textContent = '✓ Brilliant! Perfect move!';
                     feedbackEl.className = 'feedback correct';
                     
-                    // Update stats
+                    if (soundEnabled) sounds.correct.play();
+                    
                     if (!puzzleStats.solvedPuzzles.has(currentPuzzleIndex)) {
                         puzzleStats.solved++;
                         puzzleStats.solvedPuzzles.add(currentPuzzleIndex);
-                        document.getElementById('solved-count').textContent = puzzleStats.solved;
+                        
+                        // Confetti celebration
+                        confetti({
+                            particleCount: 100,
+                            spread: 70,
+                            origin: { y: 0.6 }
+                        });
+                        
+                        // Show achievement
+                        if (puzzleStats.solved === 1) {
+                            showAchievement('First Victory!', 'You solved your first puzzle!');
+                        } else if (puzzleStats.solved === 5) {
+                            showAchievement('Tactical Novice', 'You solved 5 puzzles!');
+                        }
                     }
                     
-                    // Calculate success rate
-                    const successRate = Math.round((puzzleStats.solved / puzzleStats.attempted) * 100);
-                    document.getElementById('success-rate').textContent = `${successRate}%`;
-                    
-                    // Enable next button
                     nextBtn.disabled = false;
-                    
-                    // Highlight solved puzzle in list
-                    document.querySelectorAll('.puzzle-item')[currentPuzzleIndex].classList.add('solved');
+                    document.querySelectorAll('.puzzle-item')[currentPuzzleIndex]?.classList.add('solved');
+                    notyf.success('Puzzle solved!');
                 } else {
-                    // Wrong move
-                    feedbackEl.textContent = '✗ Incorrect! Try again.';
+                    feedbackEl.textContent = '✗ Not quite! Try again.';
                     feedbackEl.className = 'feedback incorrect';
                     
-                    // Reset position after delay
+                    if (soundEnabled) sounds.wrong.play();
+                    
                     setTimeout(() => {
                         chess = new Chess(currentPuzzle.fen);
                         board.position(chess.fen());
-                    }, 1200);
+                        feedbackEl.textContent = '';
+                        feedbackEl.className = 'feedback';
+                    }, 1500);
+                    
+                    notyf.error('Try again!');
                 }
+                
+                updateStatsDisplay();
             }
-            
-            // Reset current puzzle
+
+            function showAchievement(title, text) {
+                const popup = document.getElementById('achievement-popup');
+                document.getElementById('achievement-text').textContent = text;
+                document.querySelector('.achievement-title').textContent = title;
+                popup.classList.add('show');
+                
+                setTimeout(() => {
+                    popup.classList.remove('show');
+                }, 4000);
+            }
+
+            // Button handlers
             document.getElementById('reset-btn').addEventListener('click', () => {
                 chess = new Chess(currentPuzzle.fen);
                 board.position(chess.fen());
                 updateStatus();
+                resetTimer();
+                notyf.info('Puzzle reset');
             });
-            
-            // Show hint
+
             document.getElementById('hint-btn').addEventListener('click', () => {
-                const feedbackEl = document.getElementById('feedback');
-                feedbackEl.textContent = `Hint: Look for a ${currentPuzzle.type.toLowerCase()} opportunity!`;
-                feedbackEl.className = 'feedback correct';
-                
-                // Show hint for 3 seconds
-                setTimeout(() => {
-                    if (!feedbackEl.textContent.includes('✓') && !feedbackEl.textContent.includes('✗')) {
-                        feedbackEl.textContent = '';
-                        feedbackEl.className = 'feedback';
-                    }
-                }, 3000);
-            });
-            
-            // Show solution
-            document.getElementById('solution-btn').addEventListener('click', () => {
-                const feedbackEl = document.getElementById('feedback');
-                feedbackEl.textContent = `Solution: ${currentPuzzle.solution[0]}`;
-                feedbackEl.className = 'feedback correct';
-                
-                // Show solution for 4 seconds then reset
-                setTimeout(() => {
-                    chess = new Chess(currentPuzzle.fen);
-                    board.position(chess.fen());
-                    updateStatus();
-                }, 4000);
-            });
-            
-            // Next puzzle
-            document.getElementById('next-btn').addEventListener('click', () => {
-                currentPuzzleIndex = (currentPuzzleIndex + 1) % puzzles.length;
-                currentPuzzle = puzzles[currentPuzzleIndex];
-                chess = new Chess(currentPuzzle.fen);
-                board.position(chess.fen());
-                
-                // Update active puzzle in list
-                document.querySelectorAll('.puzzle-item').forEach((item, index) => {
-                    if (index === currentPuzzleIndex) {
-                        item.classList.add('active');
-                    } else {
-                        item.classList.remove('active');
-                    }
-                });
-                
-                updateStatus();
-            });
-            
-            // Puzzle selection
-            document.querySelectorAll('.puzzle-item').forEach(item => {
-                item.addEventListener('click', () => {
-                    const index = parseInt(item.getAttribute('data-index'));
-                    currentPuzzleIndex = index;
-                    currentPuzzle = puzzles[index];
-                    chess = new Chess(currentPuzzle.fen);
-                    board.position(chess.fen());
-                    
-                    // Update active puzzle in list
-                    document.querySelectorAll('.puzzle-item').forEach((el, i) => {
-                        if (i === index) {
-                            el.classList.add('active');
-                        } else {
-                            el.classList.remove('active');
-                        }
-                    });
-                    
-                    updateStatus();
-                });
-            });
-            
-            // Initialize the app
-            initBoard();
-            
-            // Close promotion modal if clicked outside
-            window.addEventListener('click', (e) => {
-                const modal = document.getElementById('promotion-modal');
-                if (e.target === modal) {
-                    modal.style.display = 'none';
+                if (!userPreferences.showHints) {
+                    notyf.error('Hints are disabled in settings');
+                    return;
                 }
+                
+                Swal.fire({
+                    title: 'Hint',
+                    text: `Look for a ${currentPuzzle.type.toLowerCase()} opportunity!`,
+                    icon: 'info',
+                    background: '#2c3e50',
+                    color: '#ecf0f1',
+                    confirmButtonColor: '#3498db'
+                });
             });
+
+            document.getElementById('next-btn').addEventListener('click', () => {
+                const nextIndex = (currentPuzzleIndex + 1) % puzzles.length;
+                loadPuzzle(nextIndex);
+            });
+
+            document.getElementById('solution-btn').addEventListener('click', () => {
+                Swal.fire({
+                    title: 'Solution',
+                    html: `<strong>${currentPuzzle.solution[0]}</strong><br><br>${currentPuzzle.description}`,
+                    icon: 'question',
+                    background: '#2c3e50',
+                    color: '#ecf0f1',
+                    confirmButtonColor: '#3498db'
+                });
+            });
+
+         
+            initBoard();
         });
     </script>
 </body>
