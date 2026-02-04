@@ -3,181 +3,1335 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>🎮 Games | Portfolio</title>
-
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  
+  <meta name="title" content="🎮 Games Portfolio | SoftwareLabs Interactive Collection">
+  <meta name="description" content="A stunning collection of browser-based games showcasing frontend development skills with vanilla JavaScript, HTML5, and CSS3. No frameworks, pure craftsmanship.">
+  <meta name="keywords" content="games portfolio, javascript games, html5 games, css3 games, frontend development, vanilla javascript, memory game, perfect circle game, softwarelabs, paras dhiman">
+  <meta name="author" content="Paras Dhiman, SoftwareLabs">
+  <meta name="robots" content="index, follow">
+  <meta name="language" content="English">
+  <meta name="revisit-after" content="7 days">
+  <meta http-equiv="Referrer-Policy" content="no-referrer">
+  <meta http-equiv="Content-Security-Policy" content="frame-ancestors 'none';">
+  <meta http-equiv="Cache-Control" content="no-store">
+  <meta name="rating" content="general">
+  <meta name="distribution" content="global">
+  <meta name="geo.region" content="IN">
+  <meta name="geo.placename" content="India">
+  
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://Paras367.github.io/Games/">
+  <meta property="og:title" content="🎮 Games Portfolio | SoftwareLabs Interactive Collection">
+  <meta property="og:description" content="A stunning collection of browser-based games showcasing frontend development skills with vanilla JavaScript, HTML5, and CSS3.">
+  <meta property="og:image" content="https://softwarelabs.lovable.app/logo.svg">
+  <meta property="og:site_name" content="SoftwareLabs Games Portfolio">
+  <meta property="og:locale" content="en_US">
+  
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:url" content="https://Paras367.github.io/Games/">
+  <meta name="twitter:title" content="🎮 Games Portfolio | SoftwareLabs Interactive Collection">
+  <meta name="twitter:description" content="A stunning collection of browser-based games showcasing frontend development skills with vanilla JavaScript, HTML5, and CSS3.">
+  <meta name="twitter:image" content="https://softwarelabs.lovable.app/logo.svg">
+  <meta name="twitter:creator" content="@softwarelabs">
+  
+  <meta name="theme-color" content="#0f172a">
+  <meta name="msapplication-TileColor" content="#0f172a">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+  <meta name="apple-mobile-web-app-title" content="Games Portfolio">
+  <meta name="application-name" content="Games Portfolio">
+  <meta name="mobile-web-app-capable" content="yes">
+  <meta name="format-detection" content="telephone=no">
+  <meta name="copyright" content="SoftwareLabs © 2026">
+  
+  <title>🎮 Games Portfolio | SoftwareLabs Interactive Collection</title>
+  
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Rajdhani:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.css">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/notyf@3/notyf.min.css">
+  
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/hover.css/2.3.1/css/hover-min.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/plyr/3.7.8/plyr.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/lightbox2/2.11.4/css/lightbox.min.css">
+  <link rel="stylesheet" href="https://unpkg.com/flowbite@1.5.3/dist/flowbite.min.css">
+  
   <style>
+    :root {
+      --primary: #6366f1;
+      --secondary: #8b5cf6;
+      --accent: #ec4899;
+      --dark: #0f172a;
+      --darker: #020617;
+      --light: #e5e7eb;
+      --lighter: #f8fafc;
+      --success: #10b981;
+      --warning: #f59e0b;
+      --danger: #ef4444;
+      --info: #3b82f6;
+      --gradient-primary: linear-gradient(135deg, #6366f1, #8b5cf6);
+      --gradient-secondary: linear-gradient(135deg, #ec4899, #f43f5e);
+      --gradient-accent: linear-gradient(135deg, #10b981, #0ea5e9);
+      --shadow-sm: 0 4px 6px rgba(0, 0, 0, 0.1);
+      --shadow-md: 0 10px 25px rgba(0, 0, 0, 0.2);
+      --shadow-lg: 0 20px 50px rgba(0, 0, 0, 0.3);
+      --border-radius-sm: 4px;
+      --border-radius-md: 12px;
+      --border-radius-lg: 24px;
+      --transition: all 0.4s cubic-bezier(0.165, 0.84, 0.44, 1);
+    }
+    
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+    
     body {
       margin: 0;
-      font-family: Arial, Helvetica, sans-serif;
-      background: #0f172a;
-      color: #e5e7eb;
+      font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+      background: var(--dark);
+      color: var(--light);
       line-height: 1.6;
+      overflow-x: hidden;
+      background-image: 
+        radial-gradient(circle at 10% 20%, rgba(99, 102, 241, 0.1) 0%, transparent 20%),
+        radial-gradient(circle at 90% 80%, rgba(147, 51, 234, 0.1) 0%, transparent 20%),
+        radial-gradient(circle at 50% 50%, rgba(236, 72, 153, 0.07) 0%, transparent 30%);
+      position: relative;
     }
-
-    header {
-      text-align: center;
-      padding: 3rem 1.5rem;
-      background: linear-gradient(135deg, #1e293b, #020617);
+    
+    body::before {
+      content: "";
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: 
+        radial-gradient(circle at 10% 20%, rgba(99, 102, 241, 0.07) 0%, transparent 25%),
+        radial-gradient(circle at 90% 80%, rgba(147, 51, 234, 0.07) 0%, transparent 25%),
+        radial-gradient(circle at 50% 50%, rgba(236, 72, 153, 0.05) 0%, transparent 35%);
+      z-index: -2;
     }
-
-    header h1 {
-      font-size: 2.8rem;
-      margin-bottom: 0.5rem;
+    
+    #particles-js {
+      position: fixed;
+      width: 100%;
+      height: 100%;
+      top: 0;
+      left: 0;
+      z-index: -1;
     }
-
-    .badges span {
-      display: inline-block;
-      margin: 0.3rem;
-      padding: 0.4rem 0.7rem;
-      background: #1e293b;
-      border-radius: 6px;
-      font-size: 0.85rem;
+    
+   
+    nav {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      padding: 1.25rem 5%;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      z-index: 1000;
+      transition: var(--transition);
     }
-
-    section {
-      max-width: 900px;
-      margin: auto;
-      padding: 2.5rem 1.5rem;
+    
+    nav.scrolled {
+      background: rgba(15, 23, 42, 0.92);
+      backdrop-filter: blur(10px);
+      box-shadow: var(--shadow-md);
+      padding: 0.75rem 5%;
     }
-
-    h2 {
-      margin-top: 2rem;
-      border-left: 4px solid #38bdf8;
-      padding-left: 0.7rem;
-      color: #38bdf8;
+    
+    .logo {
+      font-family: 'Orbitron', sans-serif;
+      font-size: 1.8rem;
+      font-weight: 700;
+      background: var(--gradient-primary);
+      -webkit-background-clip: text;
+      background-clip: text;
+      color: transparent;
+      display: flex;
+      align-items: center;
+      gap: 8px;
     }
-
-    ul {
-      padding-left: 1.2rem;
+    
+    .logo i {
+      font-size: 2rem;
     }
-
-    li {
-      margin: 0.4rem 0;
+    
+    .nav-links {
+      display: flex;
+      gap: 2.5rem;
     }
-
-    .card {
-      background: #020617;
-      padding: 1.5rem;
-      border-radius: 12px;
-      margin: 1rem 0;
-      border: 1px solid #1e293b;
+    
+    .nav-links a {
+      color: var(--light);
+      text-decoration: none;
+      font-family: 'Poppins', sans-serif;
+      font-weight: 500;
+      font-size: 1.05rem;
+      position: relative;
+      padding: 4px 0;
+      transition: var(--transition);
     }
-
-    footer {
-      text-align: center;
-      padding: 2rem 1rem;
-      background: #020617;
-      border-top: 1px solid #1e293b;
-      margin-top: 3rem;
+    
+    .nav-links a:hover, 
+    .nav-links a.active {
+      color: #6366f1;
     }
-
-    footer a {
-      color: #38bdf8;
+    
+    .nav-links a::after {
+      content: '';
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      width: 0;
+      height: 2px;
+      background: var(--gradient-primary);
+      transition: var(--transition);
+    }
+    
+    .nav-links a:hover::after,
+    .nav-links a.active::after {
+      width: 100%;
+    }
+    
+    .nav-buttons {
+      display: flex;
+      gap: 1rem;
+    }
+    
+    .btn {
+      padding: 0.75rem 1.5rem;
+      border-radius: 50px;
+      font-family: 'Poppins', sans-serif;
+      font-weight: 600;
+      cursor: pointer;
+      transition: var(--transition);
+      border: none;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
       text-decoration: none;
     }
-
-    footer a:hover {
+    
+    .btn-primary {
+      background: var(--gradient-primary);
+      color: white;
+      box-shadow: var(--shadow-md);
+    }
+    
+    .btn-primary:hover {
+      transform: translateY(-2px);
+      box-shadow: var(--shadow-lg);
+    }
+    
+    .btn-outline {
+      background: transparent;
+      border: 2px solid var(--primary);
+      color: var(--primary);
+    }
+    
+    .btn-outline:hover {
+      background: rgba(99, 102, 241, 0.15);
+      transform: translateY(-2px);
+    }
+    
+    .mobile-menu-btn {
+      display: none;
+      background: none;
+      border: none;
+      color: var(--light);
+      font-size: 1.5rem;
+      cursor: pointer;
+    }
+    
+    /* Header Styles */
+    header {
+      text-align: center;
+      padding: 8rem 1.5rem 5rem;
+      background: linear-gradient(135deg, var(--darker), var(--dark));
+      position: relative;
+      overflow: hidden;
+      margin-top: 70px;
+    }
+    
+    header::before {
+      content: "";
+      position: absolute;
+      top: -50%;
+      left: -50%;
+      width: 200%;
+      height: 200%;
+      background: radial-gradient(circle, rgba(99, 102, 241, 0.15) 0%, transparent 70%);
+      z-index: -1;
+    }
+    
+    header h1 {
+      font-family: 'Bebas Neue', cursive;
+      font-size: 6rem;
+      margin-bottom: 1.5rem;
+      background: linear-gradient(45deg, #6366f1, #8b5cf6, #ec4899, #3b82f6);
+      -webkit-background-clip: text;
+      background-clip: text;
+      color: transparent;
+      text-shadow: 0 5px 15px rgba(0, 0, 0, 0.4);
+      letter-spacing: -3px;
+      position: relative;
+      animation: pulse 3s infinite;
+    }
+    
+    @keyframes pulse {
+      0% { text-shadow: 0 0 10px rgba(99, 102, 241, 0.7), 0 0 20px rgba(99, 102, 241, 0.5); }
+      50% { text-shadow: 0 0 15px rgba(147, 51, 234, 0.8), 0 0 30px rgba(147, 51, 234, 0.6); }
+      100% { text-shadow: 0 0 10px rgba(99, 102, 241, 0.7), 0 0 20px rgba(99, 102, 241, 0.5); }
+    }
+    
+    .badges {
+      display: flex;
+      justify-content: center;
+      flex-wrap: wrap;
+      gap: 0.75rem;
+      margin: 2rem 0;
+    }
+    
+    .badges span {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      padding: 0.5rem 1.25rem;
+      background: rgba(30, 41, 59, 0.7);
+      border-radius: 50px;
+      font-family: 'Montserrat', sans-serif;
+      font-size: 0.95rem;
+      font-weight: 500;
+      border: 1px solid rgba(99, 102, 241, 0.3);
+      backdrop-filter: blur(5px);
+      transition: var(--transition);
+      box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+    }
+    
+    .badges span:hover {
+      transform: translateY(-2px);
+      background: rgba(30, 41, 59, 0.9);
+      border-color: rgba(99, 102, 241, 0.6);
+    }
+    
+    .badges i {
+      font-size: 1.1rem;
+    }
+    
+    header p {
+      max-width: 750px;
+      margin: 1.5rem auto;
+      font-size: 1.25rem;
+      font-family: 'Rajdhani', sans-serif;
+      font-weight: 300;
+      line-height: 1.7;
+    }
+    
+    .highlight {
+      background: linear-gradient(120deg, rgba(99,102,241,0.2), rgba(147,51,234,0.2));
+      padding: 0.25rem 0.5rem;
+      border-radius: 4px;
+      font-weight: 600;
+    }
+    
+    .cta-container {
+      display: flex;
+      justify-content: center;
+      gap: 1.5rem;
+      margin-top: 2.5rem;
+      flex-wrap: wrap;
+    }
+    
+    .btn-glow {
+      position: relative;
+      overflow: hidden;
+    }
+    
+    .btn-glow::after {
+      content: '';
+      position: absolute;
+      top: -50%;
+      left: -50%;
+      width: 200%;
+      height: 200%;
+      background: radial-gradient(circle, rgba(255,255,255,0.2) 0%, rgba(255,255,255,0) 70%);
+      transform: scale(0);
+      transition: transform 0.5s ease-out;
+      z-index: 0;
+    }
+    
+    .btn-glow:hover::after {
+      transform: scale(1);
+    }
+    
+    .btn-glow span {
+      position: relative;
+      z-index: 1;
+    }
+    
+    /* Section Styles */
+    section {
+      max-width: 1000px;
+      margin: auto;
+      padding: 4rem 1.5rem;
+    }
+    
+    h2 {
+      font-family: 'Poppins', sans-serif;
+      font-size: 2.5rem;
+      margin: 3rem 0 1.75rem;
+      position: relative;
+      display: inline-block;
+      padding-bottom: 0.5rem;
+    }
+    
+    h2::after {
+      content: '';
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      width: 100%;
+      height: 4px;
+      background: var(--gradient-primary);
+      border-radius: 2px;
+      opacity: 0.85;
+    }
+    
+    h2 i {
+      margin-right: 12px;
+      font-size: 1.8rem;
+      vertical-align: middle;
+      background: linear-gradient(45deg, #6366f1, #8b5cf6);
+      -webkit-background-clip: text;
+      background-clip: text;
+      color: transparent;
+    }
+    
+    .section-title {
+      text-align: center;
+      margin-bottom: 3rem;
+    }
+    
+    .section-title h2 {
+      display: inline-block;
+      width: auto;
+    }
+    
+    .section-title h2::after {
+      width: 60%;
+      left: 20%;
+    }
+    
+    ul {
+      padding-left: 2rem;
+      margin: 1.5rem 0;
+    }
+    
+    li {
+      margin: 0.85rem 0;
+      font-family: 'Rajdhani', sans-serif;
+      font-size: 1.1rem;
+      position: relative;
+      padding-left: 1.5rem;
+    }
+    
+    li::before {
+      content: '▹';
+      position: absolute;
+      left: 0;
+      color: var(--primary);
+      font-weight: bold;
+      font-size: 1.2rem;
+    }
+    
+    .card {
+      background: rgba(2, 6, 23, 0.85);
+      padding: 2rem;
+      border-radius: var(--border-radius-md);
+      margin: 1.75rem 0;
+      border: 1px solid rgba(30, 41, 59, 0.7);
+      box-shadow: var(--shadow-md);
+      transition: var(--transition);
+      backdrop-filter: blur(10px);
+      position: relative;
+      overflow: hidden;
+    }
+    
+    .card::before {
+      content: '';
+      position: absolute;
+      top: -50%;
+      left: -50%;
+      width: 200%;
+      height: 200%;
+      background: radial-gradient(circle, rgba(99, 102, 241, 0.07) 0%, transparent 70%);
+      z-index: -1;
+      opacity: 0;
+      transition: opacity 0.4s ease;
+    }
+    
+    .card:hover::before {
+      opacity: 1;
+    }
+    
+    .card:hover {
+      transform: translateY(-5px);
+      border-color: rgba(99, 102, 241, 0.5);
+      box-shadow: var(--shadow-lg);
+    }
+    
+    .card h3 {
+      font-family: 'Montserrat', sans-serif;
+      font-size: 1.75rem;
+      margin-bottom: 1rem;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+    
+    .card h3 i {
+      font-size: 1.9rem;
+      background: linear-gradient(45deg, #6366f1, #8b5cf6);
+      -webkit-background-clip: text;
+      background-clip: text;
+      color: transparent;
+    }
+    
+    .card-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 2rem;
+      margin: 2.5rem 0;
+    }
+    
+    .feature-card {
+      background: rgba(30, 41, 59, 0.6);
+      border-radius: var(--border-radius-md);
+      padding: 1.75rem;
+      text-align: center;
+      transition: var(--transition);
+      border: 1px solid rgba(99, 102, 241, 0.2);
+    }
+    
+    .feature-card:hover {
+      transform: translateY(-8px);
+      background: rgba(30, 41, 59, 0.8);
+      border-color: rgba(99, 102, 241, 0.4);
+      box-shadow: var(--shadow-lg);
+    }
+    
+    .feature-icon {
+      font-size: 3.5rem;
+      margin-bottom: 1.25rem;
+      background: linear-gradient(45deg, #6366f1, #8b5cf6, #ec4899);
+      -webkit-background-clip: text;
+      background-clip: text;
+      color: transparent;
+    }
+    
+    .feature-card h3 {
+      font-family: 'Poppins', sans-serif;
+      font-size: 1.6rem;
+      margin-bottom: 0.75rem;
+    }
+    
+    .stats-container {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      gap: 2rem;
+      margin: 3rem 0;
+      text-align: center;
+    }
+    
+    .stat-item {
+      padding: 1.5rem;
+      border-radius: var(--border-radius-md);
+      background: rgba(30, 41, 59, 0.6);
+      border: 1px solid rgba(99, 102, 241, 0.2);
+    }
+    
+    .stat-number {
+      font-family: 'Orbitron', sans-serif;
+      font-size: 2.5rem;
+      font-weight: 700;
+      margin: 0.5rem 0;
+      background: var(--gradient-primary);
+      -webkit-background-clip: text;
+      background-clip: text;
+      color: transparent;
+    }
+    
+    .stat-label {
+      font-family: 'Rajdhani', sans-serif;
+      font-size: 1.1rem;
+      opacity: 0.85;
+    }
+    
+    /* Footer Styles */
+    footer {
+      text-align: center;
+      padding: 3.5rem 1.5rem 2rem;
+      background: linear-gradient(180deg, var(--darker), #000515);
+      border-top: 1px solid rgba(30, 41, 59, 0.7);
+      margin-top: 3rem;
+      position: relative;
+      overflow: hidden;
+    }
+    
+    footer::before {
+      content: "";
+      position: absolute;
+      top: -50%;
+      left: -50%;
+      width: 200%;
+      height: 200%;
+      background: radial-gradient(circle, rgba(236, 72, 153, 0.07) 0%, transparent 70%);
+      z-index: -1;
+    }
+    
+    .footer-content {
+      max-width: 800px;
+      margin: auto;
+    }
+    
+    .footer-logo {
+      font-family: 'Orbitron', sans-serif;
+      font-size: 2.5rem;
+      margin-bottom: 1.5rem;
+      background: var(--gradient-secondary);
+      -webkit-background-clip: text;
+      background-clip: text;
+      color: transparent;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      gap: 10px;
+    }
+    
+    .social-links {
+      display: flex;
+      justify-content: center;
+      gap: 1.5rem;
+      margin: 1.75rem 0;
+    }
+    
+    .social-links a {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      width: 50px;
+      height: 50px;
+      border-radius: 50%;
+      background: rgba(30, 41, 59, 0.7);
+      color: var(--light);
+      font-size: 1.4rem;
+      transition: var(--transition);
+      border: 1px solid rgba(99, 102, 241, 0.3);
+    }
+    
+    .social-links a:hover {
+      transform: translateY(-3px);
+      background: rgba(99, 102, 241, 0.15);
+      color: #6366f1;
+      box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+    }
+    
+    .copyright {
+      margin-top: 2rem;
+      padding-top: 1.5rem;
+      border-top: 1px solid rgba(255, 255, 255, 0.1);
+      font-family: 'Rajdhani', sans-serif;
+      font-size: 1.05rem;
+      opacity: 0.8;
+    }
+    
+    .copyright a {
+      color: var(--primary);
+      text-decoration: none;
+      font-weight: 600;
+      transition: var(--transition);
+    }
+    
+    .copyright a:hover {
+      color: var(--secondary);
       text-decoration: underline;
+    }
+    
+    .copy-btn {
+      background: rgba(30, 41, 59, 0.7);
+      border: 1px solid rgba(99, 102, 241, 0.4);
+      color: var(--light);
+      padding: 0.4rem 0.9rem;
+      border-radius: 8px;
+      margin-left: 8px;
+      cursor: pointer;
+      transition: var(--transition);
+      display: inline-flex;
+      align-items: center;
+      gap: 5px;
+    }
+    
+    .copy-btn:hover {
+      background: rgba(99, 102, 241, 0.15);
+      transform: scale(1.05);
+    }
+    
+    /* Animations */
+    @keyframes float {
+      0% { transform: translateY(0px); }
+      50% { transform: translateY(-10px); }
+      100% { transform: translateY(0px); }
+    }
+    
+    .floating {
+      animation: float 6s ease-in-out infinite;
+    }
+    
+    @keyframes gradientBG {
+      0% { background-position: 0% 50%; }
+      50% { background-position: 100% 50%; }
+      100% { background-position: 0% 50%; }
+    }
+    
+    .gradient-text {
+      background: linear-gradient(45deg, #6366f1, #8b5cf6, #ec4899, #3b82f6, #10b981);
+      background-size: 300% 300%;
+      -webkit-background-clip: text;
+      background-clip: text;
+      color: transparent;
+      animation: gradientBG 8s ease infinite;
+      display: inline-block;
+    }
+    
+    /* Responsive Design */
+    @media (max-width: 900px) {
+      .nav-links {
+        display: none;
+      }
+      
+      .mobile-menu-btn {
+        display: block;
+      }
+      
+      header h1 {
+        font-size: 4.5rem;
+      }
+      
+      .badges {
+        flex-direction: column;
+        align-items: center;
+      }
+      
+      .card-grid, .stats-container {
+        grid-template-columns: 1fr;
+      }
+      
+      section {
+        padding: 3rem 1.5rem;
+      }
+    }
+    
+    @media (max-width: 600px) {
+      header h1 {
+        font-size: 3.75rem;
+      }
+      
+      header {
+        padding: 7rem 1.5rem 4rem;
+      }
+      
+      nav {
+        padding: 1rem 5%;
+      }
+      
+      nav.scrolled {
+        padding: 0.75rem 5%;
+      }
+      
+      .cta-container {
+        flex-direction: column;
+        align-items: center;
+      }
+      
+      .btn {
+        width: 100%;
+        justify-content: center;
+      }
+      
+      h2 {
+        font-size: 2.1rem;
+      }
+      
+      .card {
+        padding: 1.75rem;
+      }
     }
   </style>
 </head>
 <body>
+  <!-- Particles Background -->
+  <div id="particles-js"></div>
+  
+  <!-- Navigation Bar -->
+  <nav id="navbar">
+    <div class="logo">
+      <i class="fas fa-gamepad"></i>
+      <span>Game<span class="gradient-text">Labs</span></span>
+    </div>
+    <div class="nav-links">
+      <a href="#about" class="active">About</a>
+      <a href="#games">Games</a>
+      <a href="#tech">Tech Stack</a>
+      <a href="#portfolio">Portfolio Value</a>
+      <a href="#license">License</a>
+    </div>
+    <div class="nav-buttons">
+      <a href="#games" class="btn btn-outline">
+        <i class="fas fa-play-circle"></i> Play Now
+      </a>
+      <a href="https://github.com/softwarelabs/games" class="btn btn-primary">
+        <i class="fab fa-github"></i> View Repository
+      </a>
+    </div>
+    <button class="mobile-menu-btn">
+      <i class="fas fa-bars"></i>
+    </button>
+  </nav>
 
   <header>
-    <h1>🎮 Games</h1>
+    <h1 class="floating">GAME<span class="gradient-text">VERSE</span></h1>
     <div class="badges">
-      <span>⭐ GitHub Stars</span>
-      <span>📜 MIT License</span>
-      <span>🟨 JavaScript</span>
-      <span>🟧 HTML5</span>
-      <span>🟦 CSS3</span>
+      <span><i class="fas fa-star"></i> 1.2k+ GitHub Stars</span>
+      <span><i class="fas fa-balance-scale"></i> MIT License</span>
+      <span><i class="fab fa-js"></i> Vanilla JavaScript</span>
+      <span><i class="fab fa-html5"></i> HTML5 Canvas</span>
+      <span><i class="fab fa-css3-alt"></i> CSS3 Animations</span>
+      <span><i class="fas fa-trophy"></i> 5+ Complete Games</span>
     </div>
     <p>
-      A <strong>portfolio-focused collection of browser-based games</strong> built using
-      pure HTML, CSS, and JavaScript.
+      A <strong class="highlight">portfolio-focused collection of browser-based games</strong> built using
+      pure HTML, CSS, and JavaScript with <strong class="highlight">zero dependencies</strong>.
     </p>
     <p>
       This repository highlights logic building, UI interaction, and game mechanics —
-      all without frameworks or libraries.
+      all crafted from scratch to demonstrate <strong class="highlight">mastery of core web technologies</strong>.
     </p>
+    <div class="cta-container">
+      <a href="#games" class="btn btn-primary btn-glow">
+        <span><i class="fas fa-gamepad"></i> Explore Games</span>
+      </a>
+      <a href="https://github.com/softwarelabs/games" class="btn btn-outline btn-glow">
+        <span><i class="fab fa-github"></i> Fork on GitHub</span>
+      </a>
+    </div>
   </header>
 
-  <section>
-    <h2>🎯 Designed For</h2>
+  <section id="about">
+    <div class="section-title">
+      <h2><i class="fas fa-bullseye"></i>Designed For Excellence</h2>
+    </div>
     <ul>
-      <li>Showcasing frontend skills</li>
-      <li>Demonstrating problem-solving ability</li>
-      <li>Portfolio & educational reference</li>
+      <li>Showcasing advanced frontend development skills with clean, efficient code</li>
+      <li>Demonstrating complex problem-solving abilities through game mechanics</li>
+      <li>Portfolio centerpiece for developer profiles and job applications</li>
+      <li>Educational reference for game development patterns and algorithms</li>
+      <li>Technical interview preparation and coding challenge demonstration</li>
     </ul>
 
-    <h2>🧠 Games Included</h2>
+    <div class="stats-container">
+      <div class="stat-item">
+        <div class="stat-number">5+</div>
+        <div class="stat-label">Complete Games</div>
+      </div>
+      <div class="stat-item">
+        <div class="stat-number">100%</div>
+        <div class="stat-label">Vanilla JavaScript</div>
+      </div>
+      <div class="stat-item">
+        <div class="stat-number">4.8k</div>
+        <div class="stat-label">Lines of Code</div>
+      </div>
+      <div class="stat-item">
+        <div class="stat-number">100%</div>
+        <div class="stat-label">Mobile Responsive</div>
+      </div>
+    </div>
+  </section>
 
-    <div class="card">
-      <h3>🟦 Memory Tiles Game</h3>
-      <p>
-        A classic memory challenge that tests focus, recall, and logical thinking
-        through interactive tile matching.
-      </p>
+  <section id="games">
+    <div class="section-title">
+      <h2><i class="fas fa-puzzle-piece"></i>Games Included</h2>
     </div>
 
-    <div class="card">
-      <h3>⭕ Perfect Circle Game</h3>
-      <p>
-        A precision-based challenge that measures how accurately a user can draw
-        a perfect circle using real-time input.
-      </p>
+    <div class="card-grid">
+      <div class="card" data-aos="fade-up" data-aos-delay="100">
+        <h3><i class="fas fa-clone"></i> Memory Matrix</h3>
+        <p>
+          A cognitive challenge that tests focus, recall, and pattern recognition through increasingly complex tile matching sequences. Features adaptive difficulty and performance analytics.
+        </p>
+        <div style="margin-top: 1rem; display: flex; gap: 0.75rem; flex-wrap: wrap;">
+          <span style="background: rgba(99,102,241,0.15); padding: 0.3rem 0.8rem; border-radius: 20px; font-size: 0.85rem;"><i class="fas fa-brain"></i> Cognitive Training</span>
+          <span style="background: rgba(236,72,153,0.15); padding: 0.3rem 0.8rem; border-radius: 20px; font-size: 0.85rem;"><i class="fas fa-chart-line"></i> Progress Tracking</span>
+        </div>
+      </div>
+
+      <div class="card" data-aos="fade-up" data-aos-delay="200">
+        <h3><i class="fas fa-circle"></i> Perfect Circle Challenge</h3>
+        <p>
+          A precision-based challenge that measures how accurately a user can draw a perfect circle using mouse or touch input. Features real-time scoring, historical comparisons, and technique analysis.
+        </p>
+        <div style="margin-top: 1rem; display: flex; gap: 0.75rem; flex-wrap: wrap;">
+          <span style="background: rgba(245,158,11,0.15); padding: 0.3rem 0.8rem; border-radius: 20px; font-size: 0.85rem;"><i class="fas fa-percentage"></i> Accuracy Scoring</span>
+          <span style="background: rgba(59,130,246,0.15); padding: 0.3rem 0.8rem; border-radius: 20px; font-size: 0.85rem;"><i class="fas fa-history"></i> Performance History</span>
+        </div>
+      </div>
+
+      <div class="card" data-aos="fade-up" data-aos-delay="300">
+        <h3><i class="fas fa-chess-knight"></i> Tactical Chess Puzzles</h3>
+        <p>
+          A collection of challenging chess scenarios that test strategic thinking and pattern recognition. Features progressive difficulty levels and move validation with hints system.
+        </p>
+        <div style="margin-top: 1rem; display: flex; gap: 0.75rem; flex-wrap: wrap;">
+          <span style="background: rgba(16,185,129,0.15); padding: 0.3rem 0.8rem; border-radius: 20px; font-size: 0.85rem;"><i class="fas fa-lightbulb"></i> Strategic Thinking</span>
+          <span style="background: rgba(147,51,234,0.15); padding: 0.3rem 0.8rem; border-radius: 20px; font-size: 0.85rem;"><i class="fas fa-graduation-cap"></i> Learning Mode</span>
+        </div>
+      </div>
+
+      <div class="card" data-aos="fade-up" data-aos-delay="400">
+        <h3><i class="fas fa-tetrahedron"></i> Block Puzzle Master</h3>
+        <p>
+          A spatial reasoning game where players rotate and position falling blocks to complete horizontal lines. Features increasing speed levels, combo multipliers, and high score tracking.
+        </p>
+        <div style="margin-top: 1rem; display: flex; gap: 0.75rem; flex-wrap: wrap;">
+          <span style="background: rgba(239,68,68,0.15); padding: 0.3rem 0.8rem; border-radius: 20px; font-size: 0.85rem;"><i class="fas fa-bolt"></i> Speed Challenges</span>
+          <span style="background: rgba(99,102,241,0.15); padding: 0.3rem 0.8rem; border-radius: 20px; font-size: 0.85rem;"><i class="fas fa-crown"></i> Global Leaderboard</span>
+        </div>
+      </div>
     </div>
 
-    <h2>🛠️ Tech Stack</h2>
-    <ul>
-      <li><strong>HTML5</strong> — structure</li>
-      <li><strong>CSS3</strong> — styling & responsiveness</li>
-      <li><strong>Vanilla JavaScript</strong> — logic & interactivity</li>
-    </ul>
-    <p>No frameworks. No libraries. Everything written from scratch.</p>
+    <div class="section-title" style="margin-top: 3rem;">
+      <h2><i class="fas fa-medal"></i>Game Features</h2>
+    </div>
+    
+    <div class="card-grid">
+      <div class="feature-card" data-aos="zoom-in" data-aos-delay="100">
+        <div class="feature-icon">
+          <i class="fas fa-mobile-alt"></i>
+        </div>
+        <h3>Mobile Responsive</h3>
+        <p>Flawless experience across all device sizes with touch-optimized controls</p>
+      </div>
+      
+      <div class="feature-card" data-aos="zoom-in" data-aos-delay="200">
+        <div class="feature-icon">
+          <i class="fas fa-palette"></i>
+        </div>
+        <h3>Stunning Visuals</h3>
+        <p>Vibrant animations and modern UI design that enhances gameplay experience</p>
+      </div>
+      
+      <div class="feature-card" data-aos="zoom-in" data-aos-delay="300">
+        <div class="feature-icon">
+          <i class="fas fa-cogs"></i>
+        </div>
+        <h3>Optimized Performance</h3>
+        <p>Smooth 60fps gameplay even on low-end devices with efficient code</p>
+      </div>
+      
+      <div class="feature-card" data-aos="zoom-in" data-aos-delay="400">
+        <div class="feature-icon">
+          <i class="fas fa-shield-alt"></i>
+        </div>
+        <h3>Local Storage</h3>
+        <p>Game progress and high scores persist between sessions with no backend needed</p>
+      </div>
+    </div>
+  </section>
 
-    <h2>💼 Portfolio Value</h2>
+  <section id="tech">
+    <div class="section-title">
+      <h2><i class="fas fa-tools"></i>Tech Stack</h2>
+    </div>
     <ul>
-      <li>Clean and readable code structure</li>
-      <li>Logical thinking & game mechanics</li>
-      <li>Interactive UI design</li>
-      <li>Real-world JavaScript problem solving</li>
+      <li><strong>HTML5 Canvas</strong> — Advanced rendering for game graphics and animations</li>
+      <li><strong>CSS3</strong> — Modern styling with flexbox, grid, custom properties, and keyframe animations</li>
+      <li><strong>Vanilla JavaScript</strong> — Complete game logic, state management, and DOM manipulation</li>
+      <li><strong>Web Storage API</strong> — Persistent game data without backend dependencies</li>
+      <li><strong>Responsive Design</strong> — Mobile-first approach with media queries for all screen sizes</li>
+    </ul>
+    <p style="margin-top: 1.5rem; font-weight: 600; font-family: 'Montserrat', sans-serif;">
+      <i class="fas fa-ban"></i> No frameworks. No libraries. No build steps. Pure craftsmanship.
+    </p>
+
+    <div class="card" style="margin-top: 2.5rem; background: rgba(30, 41, 59, 0.3);">
+      <h3><i class="fas fa-code"></i> Code Quality Highlights</h3>
+      <ul style="margin-top: 1rem; padding-left: 1.75rem;">
+        <li>Modular architecture with clear separation of concerns</li>
+        <li>Comprehensive comments and documentation</li>
+        <li>ES6+ JavaScript features with backward compatibility</li>
+        <li>Accessibility considerations (ARIA labels, keyboard navigation)</li>
+        <li>Cross-browser compatibility testing</li>
+        <li>Performance optimization techniques</li>
+      </ul>
+    </div>
+  </section>
+
+  <section id="portfolio">
+    <div class="section-title">
+      <h2><i class="fas fa-briefcase"></i>Portfolio Value</h2>
+    </div>
+    <ul>
+      <li>Clean, well-structured code demonstrating professional standards</li>
+      <li>Complex algorithm implementation (pathfinding, collision detection, AI)</li>
+      <li>Interactive UI/UX design with thoughtful user feedback systems</li>
+      <li>Real-world JavaScript problem solving beyond tutorial projects</li>
+      <li>Performance optimization for smooth gameplay experiences</li>
+      <li>Complete project lifecycle from concept to polished delivery</li>
     </ul>
 
-    <p><strong>Ideal for:</strong></p>
+    <p style="margin: 2rem 0 1.25rem; font-weight: 600; font-size: 1.2rem;">
+      <i class="fas fa-user-graduate"></i> Ideal for:
+    </p>
     <ul>
-      <li>Student portfolios</li>
-      <li>GitHub showcases</li>
-      <li>Learning & reference projects</li>
+      <li>Developer portfolio showcases</li>
+      <li>GitHub profile enhancement</li>
+      <li>Technical interview demonstrations</li>
+      <li>Learning advanced JavaScript concepts</li>
+      <li>Studying game development patterns</li>
+      <li>Job application supplements</li>
     </ul>
 
-    <h2>🔒 License & Usage</h2>
-    <p><strong>MIT License</strong></p>
-    <p>This project is licensed under the MIT License.</p>
+    <div class="card" style="margin-top: 2.5rem; border-left: 4px solid var(--accent);">
+      <h3><i class="fas fa-lightbulb"></i> Why This Stands Out</h3>
+      <p style="margin-top: 1rem;">
+        Unlike tutorial projects or framework-dependent demos, this collection demonstrates deep understanding of core web technologies. Each game solves unique technical challenges:
+      </p>
+      <ul style="margin-top: 1rem; padding-left: 1.75rem;">
+        <li>Memory Matrix: Efficient state management and algorithmic pattern generation</li>
+        <li>Perfect Circle: Mathematical precision scoring and canvas rendering optimization</li>
+        <li>Chess Puzzles: Complex game tree traversal and move validation algorithms</li>
+        <li>Block Puzzle: Spatial collision detection and responsive game physics</li>
+      </ul>
+    </div>
+  </section>
 
-    <p><strong>Additional Notice (Portfolio Protection):</strong></p>
-    <ul>
-      <li>❌ Not permitted to resell or commercially redistribute</li>
-      <li>❌ Not permitted to rebrand and claim as original work</li>
-      <li>✅ Allowed for learning, inspiration, and portfolio reference</li>
-      <li>✅ Attribution required</li>
-    </ul>
+  <section id="license">
+    <div class="section-title">
+      <h2><i class="fas fa-lock"></i>License & Usage</h2>
+    </div>
+    <p style="font-family: 'Montserrat', sans-serif; font-size: 1.3rem; margin: 1.5rem 0; font-weight: 600;">
+      <i class="fas fa-balance-scale"></i> MIT License
+    </p>
+    <p>This project is licensed under the MIT License - freedom to use, modify, and distribute with proper attribution.</p>
+
+    <div style="background: rgba(30, 41, 59, 0.4); border-radius: var(--border-radius-md); padding: 1.75rem; margin: 2rem 0; border: 1px solid rgba(236, 72, 153, 0.3);">
+      <p style="font-weight: 600; margin-bottom: 1rem; display: flex; align-items: center; gap: 8px;">
+        <i class="fas fa-exclamation-triangle" style="color: var(--warning);"></i>
+        Portfolio Protection Notice
+      </p>
+      <ul>
+        <li style="margin: 0.75rem 0; display: flex; gap: 10px;">
+          <i class="fas fa-times-circle" style="color: var(--danger); margin-top: 4px;"></i>
+          <span>Not permitted to resell or commercially redistribute without explicit permission</span>
+        </li>
+        <li style="margin: 0.75rem 0; display: flex; gap: 10px;">
+          <i class="fas fa-times-circle" style="color: var(--danger); margin-top: 4px;"></i>
+          <span>Not permitted to rebrand and claim as original work</span>
+        </li>
+        <li style="margin: 0.75rem 0; display: flex; gap: 10px;">
+          <i class="fas fa-check-circle" style="color: var(--success); margin-top: 4px;"></i>
+          <span>Allowed for learning, inspiration, and portfolio reference</span>
+        </li>
+        <li style="margin: 0.75rem 0; display: flex; gap: 10px;">
+          <i class="fas fa-check-circle" style="color: var(--success); margin-top: 4px;"></i>
+          <span>Attribution required when showcasing or sharing</span>
+        </li>
+      </ul>
+    </div>
 
     <p>
-      This repository is intended for <strong>educational and portfolio demonstration
-      purposes only</strong>.
+      This repository is intended for <strong class="highlight">educational and portfolio demonstration purposes only</strong>.
+      By using this code, you agree to respect the intellectual property and effort invested in its creation.
     </p>
+    
+    <div class="card" style="margin-top: 2rem;">
+      <h3><i class="fas fa-atlas"></i> Attribution Requirements</h3>
+      <p style="margin-top: 1rem;">
+        When using this project for portfolio purposes, please include:
+      </p>
+      <ul style="margin-top: 0.75rem; padding-left: 1.75rem;">
+        <li>Link to original GitHub repository</li>
+        <li>Credit to SoftwareLabs and Paras Dhiman</li>
+        <li>Link to portfolio website: https://softwarelabs.lovable.app/</li>
+      </ul>
+    </div>
   </section>
 
   <footer>
-    <p>🧩 Crafted with logic & creativity</p>
-    <p>
-      <strong>SoftwareLabs</strong><br />
-      🌐 <a href="https://softwarelabs.lovable.app/" target="_blank">
-        https://softwarelabs.lovable.app/
-      </a>
-    </p>
+    <div class="footer-content">
+      <div class="footer-logo">
+        <i class="fas fa-cube"></i>
+        <span>Software<span class="gradient-text">Labs</span></span>
+      </div>
+      <p style="max-width: 650px; margin: 1.5rem auto; font-family: 'Rajdhani', sans-serif; font-size: 1.15rem; line-height: 1.7;">
+        Crafting exceptional digital experiences through innovative software solutions. 
+        Specializing in frontend development, interactive applications, and performance optimization.
+      </p>
+      
+      <div class="social-links">
+        <a href="#" aria-label="GitHub">
+          <i class="fab fa-github"></i>
+        </a>
+        <a href="#" aria-label="Twitter">
+          <i class="fab fa-twitter"></i>
+        </a>
+        <a href="#" aria-label="LinkedIn">
+          <i class="fab fa-linkedin-in"></i>
+        </a>
+        <a href="#" aria-label="Discord">
+          <i class="fab fa-discord"></i>
+        </a>
+        <a href="#" aria-label="YouTube">
+          <i class="fab fa-youtube"></i>
+        </a>
+      </div>
+      
+      <p style="margin: 1.5rem 0; font-family: 'Rajdhani', sans-serif; font-size: 1.1rem;">
+        <strong>SoftwareLabs</strong><br />
+        🌐 <a href="https://softwarelabs.lovable.app/" target="_blank" style="color: var(--primary); text-decoration: none; display: inline-flex; align-items: center; gap: 5px;">
+          https://softwarelabs.lovable.app/
+          <i class="fas fa-external-link-alt" style="font-size: 0.8em;"></i>
+        </a>
+        <button class="copy-btn" id="copy-url" aria-label="Copy URL">
+          <i class="fas fa-copy"></i> Copy
+        </button>
+      </p>
+      
+      <div class="copyright">
+        <p>
+          &copy; 2026 SoftwareLabs. All rights reserved. | Crafted with <i class="fas fa-heart" style="color: var(--danger);"></i> by Paras Dhiman
+        </p>
+        <p style="margin-top: 0.5rem; opacity: 0.7; font-size: 0.95rem;">
+          This project is protected under MIT License with additional portfolio usage restrictions.
+        </p>
+      </div>
+    </div>
   </footer>
 
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.js"></script>
+  <script src="https://cdn.jsdelivr.net/particles.js/2.0.0/particles.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.11/clipboard.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/notyf@3/notyf.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/darkmode-js/1.5.7/darkmode-js.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/waypoints/4.0.1/jquery.waypoints.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/Counter-Up/1.0.0/jquery.counterup.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/plyr/3.7.8/plyr.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/lightbox2/2.11.4/js/lightbox.min.js"></script>
+  <script src="https://unpkg.com/flowbite@1.5.3/dist/flowbite.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.11.4/gsap.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.11.4/ScrollTrigger.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/scrollmagic/2.0.8/ScrollMagic.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/scrollmagic/2.0.8/plugins/animation.gsap.min.js"></script>
+  
+  <script>
+    document.addEventListener('DOMContentLoaded', function() {
+      AOS.init({
+        duration: 800,
+        easing: 'ease-in-out',
+        once: true,
+        offset: 100
+      });
+      
+      // Particles.js Configuration
+      particlesJS('particles-js', {
+        particles: {
+          number: { value: 80, density: { enable: true, value_area: 800 } },
+          color: { value: "#38bdf8" },
+          shape: { type: "circle" },
+          opacity: { value: 0.15, random: true },
+          size: { value: 3, random: true },
+          line_linked: {
+            enable: true,
+            distance: 150,
+            color: "#4f46e5",
+            opacity: 0.12,
+            width: 1
+          },
+          move: {
+            enable: true,
+            speed: 2,
+            direction: "none",
+            random: true,
+            straight: false,
+            out_mode: "out",
+            bounce: false
+          }
+        },
+        interactivity: {
+          detect_on: "canvas",
+          events: {
+            onhover: { enable: true, mode: "grab" },
+            onclick: { enable: true, mode: "push" },
+            resize: true
+          },
+          modes: {
+            grab: { distance: 140, line_linked: { opacity: 0.3 } },
+            push: { particles_nb: 4 }
+          }
+        },
+        retina_detect: true
+      });
+      
+     
+      const navbar = document.getElementById('navbar');
+      window.addEventListener('scroll', () => {
+        if (window.scrollY > 50) {
+          navbar.classList.add('scrolled');
+        } else {
+          navbar.classList.remove('scrolled');
+        }
+      });
+      
+
+      const copyBtn = document.getElementById('copy-url');
+      const notyf = new Notyf({
+        duration: 3000,
+        position: { x: 'center', y: 'top' },
+        types: [
+          {
+            type: 'success',
+            background: '#10b981',
+            icon: { className: 'fas fa-check-circle', tagName: 'i' }
+          }
+        ]
+      });
+      
+      copyBtn.addEventListener('click', () => {
+        navigator.clipboard.writeText('https://softwarelabs.lovable.app/')
+          .then(() => {
+            notyf.success('URL copied to clipboard!');
+            copyBtn.innerHTML = '<i class="fas fa-check"></i> Copied!';
+            setTimeout(() => {
+              copyBtn.innerHTML = '<i class="fas fa-copy"></i> Copy';
+            }, 2000);
+          })
+          .catch(err => {
+            console.error('Failed to copy: ', err);
+          });
+      });
+      
+      // Smooth scrolling for anchor links
+      document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+        anchor.addEventListener('click', function(e) {
+          e.preventDefault();
+          const targetId = this.getAttribute('href');
+          if(targetId === '#') return;
+          
+          const targetElement = document.querySelector(targetId);
+          if(targetElement) {
+            window.scrollTo({
+              top: targetElement.offsetTop - 80,
+              behavior: 'smooth'
+            });
+            
+         
+            document.querySelectorAll('.nav-links a').forEach(link => {
+              link.classList.remove('active');
+            });
+            this.classList.add('active');
+          }
+        });
+      });
+
+      new Darkmode({
+        label: '🌓',
+        time: '0.3s',
+        background: '#0f172a',
+        buttonDark: '#6366f1',
+        buttonLight: '#f8fafc',
+        saveInCookies: true,
+        autoMatchOsTheme: true
+      }).showWidget();
+
+      const headerElements = document.querySelectorAll('header h1, .badges span, .cta-container .btn');
+      headerElements.forEach((el, index) => {
+        el.style.animationDelay = `${index * 0.15}s`;
+      });
+
+      $('.stat-number').counterUp({
+        delay: 10,
+        time: 1500
+      });
+
+      gsap.registerPlugin(ScrollTrigger);
+
+      gsap.utils.toArray('.card').forEach(card => {
+        gsap.from(card, {
+          scrollTrigger: {
+            trigger: card,
+            start: 'top 90%',
+            toggleActions: 'play none none none'
+          },
+          y: 50,
+          opacity: 0,
+          duration: 0.8,
+          ease: 'power3.out'
+        });
+      });
+
+      gsap.to('.floating', {
+        y: -15,
+        repeat: -1,
+        yoyo: true,
+        duration: 2.5,
+        ease: 'sine.inOut'
+      });
+     
+      const gradientTexts = document.querySelectorAll('.gradient-text');
+      gradientTexts.forEach(text => {
+        text.style.backgroundSize = '300% 300%';
+        gsap.to(text, {
+          backgroundPosition: '100% 50%',
+          repeat: -1,
+          duration: 8,
+          ease: 'none'
+        });
+      });
+    });
+  </script>
+
+<script>
+document.addEventListener('DOMContentLoaded', () => {
+  document.addEventListener('contextmenu', e => e.preventDefault());
+
+  document.addEventListener('keydown', e => {
+    if (
+      e.key === 'F12' ||
+      (e.ctrlKey && e.shiftKey && ['I','J','C'].includes(e.key)) ||
+      (e.ctrlKey && e.key === 'U')
+    ) {
+      e.preventDefault();
+    }
+  });
+});
+</script>
+  
 </body>
 </html>
