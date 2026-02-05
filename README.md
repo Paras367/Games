@@ -1,7 +1,7 @@
 # 🎮 Games
 
-![GitHub stars](https://img.shields.io/github/stars/Farazc60/Games?style=flat-square)
-![GitHub license](https://img.shields.io/github/license/Farazc60/Games?style=flat-square)
+![GitHub stars](https://img.shields.io/github/stars/Paras367/Games?style=flat-square)
+![GitHub license](https://img.shields.io/github/license/Paras367/Games?style=flat-square)
 ![JavaScript](https://img.shields.io/badge/JavaScript-Vanilla-yellow?style=flat-square)
 ![HTML](https://img.shields.io/badge/HTML5-Structure-orange?style=flat-square)
 ![CSS](https://img.shields.io/badge/CSS3-Styling-blue?style=flat-square)
@@ -73,6 +73,6 @@ This project is licensed under the **MIT License**.
 ## 🧩 Crafted with logic & creativity
 
 **SoftwareLabs**  
-🌐 https://softwarelabs.lovable.app/
+ [🌐SoftwareLabs](https://softwarelabs.lovable.app)
 
 
