@@ -78,9 +78,9 @@ The repository exists for **educational and portfolio demonstration purposes**.
 
 ## 🛡️ Recommended Security Headers
 
-Although GitHub Pages limits direct HTTP header configuration, the following headers represent **best-practice enterprise standards**.
+Although GitHub Pages limits direct HTTP header configuration, the headers represent **best-practice enterprise standards**.
 
-They are included here for documentation, awareness, and future deployment scenarios.
+They are included for security and future deployment scenarios.
 
 ---
 
